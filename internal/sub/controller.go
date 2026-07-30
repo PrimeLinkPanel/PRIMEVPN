@@ -434,8 +434,8 @@ func (a *SUBController) serveSubPage(c *gin.Context, basePath string, page PageD
 		"announce":      a.subAnnounce,
 	}
 
-	const defaultPRIMEVPNSubThemeDir = "/usr/local/x-ui/sub_templates/ourenus"
-	const sanaeiDefaultSubThemeDir = "__heimdall_sanaei_default__"
+	const defaultPRIMEVPNSubThemeDir = "/usr/local/primevpn/sub_templates/ourenus"
+	const sanaeiDefaultSubThemeDir = "__primevpn_sanaei_default__"
 
 	themeDir, _ := a.settingService.GetSubThemeDir()
 	themeDir = strings.TrimSpace(themeDir)

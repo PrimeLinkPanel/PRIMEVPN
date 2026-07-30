@@ -3,7 +3,7 @@
 This source tree synchronizes each enabled client's `limitIp` value to:
 
 ```text
-/usr/local/x-ui/bin/client-ip-limits.json
+/usr/local/primevpn/bin/client-ip-limits.json
 ```
 
 The file is consumed by the custom Xray 26.6.1 binary that implements
@@ -24,7 +24,7 @@ Writes are atomic and skipped when content has not changed.
 ## Optional environment variables
 
 ```text
-XRAY_CLIENT_IP_LIMITS_FILE=/usr/local/x-ui/bin/client-ip-limits.json
+XRAY_CLIENT_IP_LIMITS_FILE=/usr/local/primevpn/bin/client-ip-limits.json
 XUI_IP_LIMIT_RELEASE_SECONDS=60
 ```
 
@@ -36,7 +36,7 @@ seconds and defaults to 60.
 A production release must contain both:
 
 1. the panel binary built from this source tree;
-2. the custom Xray binary at `x-ui/bin/xray-linux-amd64`.
+2. the custom Xray binary at `primevpn/bin/xray-linux-amd64`.
 
 Shipping only the panel binary creates the JSON file but does not enforce it.
 Shipping only the custom Xray binary requires manual JSON management.
@@ -55,7 +55,7 @@ npm run build
 
 cd ..
 go test ./web/job ./web/service ./web/controller
-go build -trimpath -o x-ui-panel ./main.go
+go build -trimpath -o primevpn-panel ./main.go
 ```
 
 ## Legacy IP-limit components

@@ -6,22 +6,22 @@ icon: Variable
 
 PRIMEVPN reads its runtime configuration from `XUI_*` environment variables. On a
 script install the installer writes them to the service environment file
-(`/etc/default/x-ui`, or `/etc/conf.d/x-ui` / `/etc/sysconfig/x-ui` depending on
+(`/etc/default/primevpn`, or `/etc/conf.d/primevpn` / `/etc/sysconfig/primevpn` depending on
 the distro); for Docker you set them in `docker-compose.yml` or `docker run -e`.
 Defaults are sensible — set only what you need to change, then restart:
-`systemctl restart x-ui`.
+`systemctl restart primevpn`.
 
 ## Database
 
 | Variable                 | Default     | Description                                                          |
 | ------------------------ | ----------- | -------------------------------------------------------------------- |
 | `XUI_DB_TYPE`            | `sqlite`    | Backend: `sqlite`, or `postgres` (also accepts `postgresql` / `pg`). |
-| `XUI_DB_FOLDER`          | `/etc/x-ui` | Folder for the SQLite database file (`x-ui.db`).                     |
+| `XUI_DB_FOLDER`          | `/etc/primevpn` | Folder for the SQLite database file (`primevpn.db`).                     |
 | `XUI_DB_DSN`             | —           | PostgreSQL connection string (used when `XUI_DB_TYPE=postgres`).     |
 | `XUI_DB_MAX_OPEN_CONNS`  | —           | Max open connections in the PostgreSQL pool.                         |
 | `XUI_DB_MAX_IDLE_CONNS`  | —           | Max idle connections in the PostgreSQL pool.                         |
 
-The default SQLite database path is `/etc/x-ui/x-ui.db`. See
+The default SQLite database path is `/etc/primevpn/primevpn.db`. See
 [Database](/docs/reference/database) for the SQLite ↔ PostgreSQL details.
 
 ## Panel
@@ -38,7 +38,7 @@ The default SQLite database path is `/etc/x-ui/x-ui.db`. See
 | ---------------- | ---------------- | ----------------------------------------------------------- |
 | `XUI_LOG_LEVEL`  | `info`           | `debug`, `info`, `notice`, `warning`, or `error`.           |
 | `XUI_DEBUG`      | `false`          | Debug mode (forces log level to `debug`).                   |
-| `XUI_LOG_FOLDER` | `/var/log/x-ui`  | Log output directory.                                       |
+| `XUI_LOG_FOLDER` | `/var/log/primevpn`  | Log output directory.                                       |
 | `XUI_BIN_FOLDER` | `bin`            | Folder for the Xray-core binary and geosite/geoip files.    |
 
 ## Memory & profiling
@@ -80,4 +80,4 @@ clients, so enable it deliberately.
 
 | Variable             | Description                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------- |
-| `XUI_NONINTERACTIVE` | Set to `1` (or run with no TTY) to install with zero prompts; generated credentials are written to `/etc/x-ui/install-result.env`. See [Installation](/docs/guide/installation#unattended--cloud-init). |
+| `XUI_NONINTERACTIVE` | Set to `1` (or run with no TTY) to install with zero prompts; generated credentials are written to `/etc/primevpn/install-result.env`. See [Installation](/docs/guide/installation#unattended--cloud-init). |

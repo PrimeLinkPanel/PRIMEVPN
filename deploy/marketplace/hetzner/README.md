@@ -25,7 +25,7 @@ hcloud server create \
 After boot, fetch the generated credentials:
 
 ```bash
-ssh root@<server-ip> 'cat /etc/x-ui/install-result.env'
+ssh root@<server-ip> 'cat /etc/primevpn/install-result.env'
 ```
 
 ## "App"-style listing

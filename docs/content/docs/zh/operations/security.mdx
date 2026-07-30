@@ -25,7 +25,7 @@ icon: ShieldCheck
 
 ## 防火墙
 
-只开放你实际使用的端口：SSH、面板端口、订阅端口以及你的入站端口。`x-ui` 菜单
+只开放你实际使用的端口：SSH、面板端口、订阅端口以及你的入站端口。`primevpn` 菜单
 （**22 — Firewall Management**）封装了 `ufw`，或者你也可以在此生成规则：
 
 <FirewallRulesGenerator />
@@ -37,7 +37,7 @@ icon: ShieldCheck
 
 ## 网络调优（BBR）
 
-`x-ui` 菜单（**25 — Enable BBR**）用于切换 Google 的 BBR 拥塞控制算法
+`primevpn` 菜单（**25 — Enable BBR**）用于切换 Google 的 BBR 拥塞控制算法
 （`net.ipv4.tcp_congestion_control = bbr`、`net.core.default_qdisc = fq`），它在拥塞链路
 上通常能提升吞吐量。
 

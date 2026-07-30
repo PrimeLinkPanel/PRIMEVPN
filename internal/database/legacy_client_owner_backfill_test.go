@@ -8,7 +8,7 @@ import (
 )
 
 func TestBackfillLegacyClientsToOwnerAssignsOnlyUnowned(t *testing.T) {
-	dbPath := filepath.Join(t.TempDir(), "x-ui.db")
+	dbPath := filepath.Join(t.TempDir(), "primevpn.db")
 	if err := InitDB(dbPath); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}

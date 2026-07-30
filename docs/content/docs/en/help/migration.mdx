@@ -1,6 +1,6 @@
 ---
 title: Migration
-description: Migrate to PRIMEVPN from x-ui, between servers, or between PRIMEVPN versions.
+description: Migrate to PRIMEVPN from primevpn, between servers, or between PRIMEVPN versions.
 icon: ArrowRightLeft
 ---
 
@@ -13,7 +13,7 @@ Moving to a new server is a database move:
 <Step>
 ### Back up the old server
 
-Copy the database (default `/etc/x-ui/x-ui.db`) and your certificates. See
+Copy the database (default `/etc/primevpn/primevpn.db`) and your certificates. See
 [Backup & restore](/docs/operations/backup-restore).
 </Step>
 
@@ -40,9 +40,9 @@ pulling a new image — the panel migrates its own database. Across **major**
 versions, read the [release notes](https://github.com/sh7CBAC/PRIMEVPN/releases)
 first and take a backup.
 
-## From x-ui
+## From primevpn
 
-Importing an older x-ui panel's database directly into PRIMEVPN is **not
+Importing an older primevpn panel's database directly into PRIMEVPN is **not
 supported** — the schemas differ. Install PRIMEVPN fresh and recreate
 inbounds/clients, exporting share links from the old panel as you go.
 

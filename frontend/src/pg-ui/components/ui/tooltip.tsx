@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as TooltipPrimitive from '@radix-ui/react-tooltip'
+import * as TooltipPrimitive from '@radiprimevpn/react-tooltip'
 
 import { cn } from '@/pg-ui/lib/utils';
 

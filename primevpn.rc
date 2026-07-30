@@ -1,15 +1,15 @@
 #!/sbin/openrc-run
 
-command="/usr/local/x-ui/x-ui"
+command="/usr/local/primevpn/primevpn"
 command_background=true
-pidfile="/run/x-ui.pid"
-description="x-ui Service"
-procname="x-ui"
+pidfile="/run/primevpn.pid"
+description="primevpn Service"
+procname="primevpn"
 depend() {
     need net
 }
 start_pre(){
-    cd /usr/local/x-ui
+    cd /usr/local/primevpn
 }
 reload() {
   ebegin "Reloading ${RC_SVCNAME}"

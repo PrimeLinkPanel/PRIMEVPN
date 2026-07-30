@@ -1,6 +1,6 @@
 ---
 title: 迁移
-description: 从 x-ui 迁移到 PRIMEVPN、在服务器之间迁移，或在不同 PRIMEVPN 版本之间迁移。
+description: 从 primevpn 迁移到 PRIMEVPN、在服务器之间迁移，或在不同 PRIMEVPN 版本之间迁移。
 icon: ArrowRightLeft
 ---
 
@@ -13,7 +13,7 @@ icon: ArrowRightLeft
 <Step>
 ### 备份旧服务器
 
-复制数据库（默认位于 `/etc/x-ui/x-ui.db`）以及你的证书。参见
+复制数据库（默认位于 `/etc/primevpn/primevpn.db`）以及你的证书。参见
 [备份与恢复](/docs/operations/backup-restore)。
 </Step>
 
@@ -38,9 +38,9 @@ icon: ArrowRightLeft
 [版本发布说明](https://github.com/sh7CBAC/PRIMEVPN/releases)
 并做好备份。
 
-## 从 x-ui 迁移
+## 从 primevpn 迁移
 
-将旧版 x-ui 面板的数据库直接导入 PRIMEVPN **不受支持**——两者的数据库结构不同。请全新安装 PRIMEVPN 并重新创建入站/客户端，同时从旧面板逐一导出分享链接。
+将旧版 primevpn 面板的数据库直接导入 PRIMEVPN **不受支持**——两者的数据库结构不同。请全新安装 PRIMEVPN 并重新创建入站/客户端，同时从旧面板逐一导出分享链接。
 
 <Callout type="warn">
   在任何迁移之前都要先做好备份，并在确认新服务器正常工作之前保持旧服务器继续运行。

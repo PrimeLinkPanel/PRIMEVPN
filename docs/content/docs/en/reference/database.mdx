@@ -9,7 +9,7 @@ the backend at install time; both are first-class.
 
 ## SQLite (default)
 
-A single file at `/etc/x-ui/x-ui.db`. Zero setup, ideal for small and medium
+A single file at `/etc/primevpn/primevpn.db`. Zero setup, ideal for small and medium
 deployments. The folder is configurable with
 [`XUI_DB_FOLDER`](/docs/reference/env-vars#database) (on Windows it defaults next
 to the binary).
@@ -19,9 +19,9 @@ to the binary).
 Recommended for high client counts or multi-node setups. The installer can
 install PostgreSQL locally for you, or accept a DSN to an existing server. At
 runtime the backend is selected via environment variables, which the installer
-writes to `/etc/default/x-ui`:
+writes to `/etc/default/primevpn`:
 
-```bash title="/etc/default/x-ui"
+```bash title="/etc/default/primevpn"
 XUI_DB_TYPE=postgres
 XUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable
 ```
@@ -44,13 +44,13 @@ docker compose --profile postgres up -d
 Move an existing SQLite install to PostgreSQL with the built-in command:
 
 ```bash
-x-ui migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
+primevpn migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
 ```
 
-Then set `XUI_DB_TYPE` and `XUI_DB_DSN` in `/etc/default/x-ui` and restart:
+Then set `XUI_DB_TYPE` and `XUI_DB_DSN` in `/etc/default/primevpn` and restart:
 
 ```bash
-systemctl restart x-ui
+systemctl restart primevpn
 ```
 
 <Callout type="info">

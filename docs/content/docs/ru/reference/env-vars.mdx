@@ -6,22 +6,22 @@ icon: Variable
 
 PRIMEVPN читает свою конфигурацию во время выполнения из переменных окружения
 `XUI_*`. При установке через скрипт инсталлятор записывает их в файл окружения
-службы (`/etc/default/x-ui`, либо `/etc/conf.d/x-ui` / `/etc/sysconfig/x-ui` в
+службы (`/etc/default/primevpn`, либо `/etc/conf.d/primevpn` / `/etc/sysconfig/primevpn` в
 зависимости от дистрибутива); для Docker они задаются в `docker-compose.yml` или
 через `docker run -e`. Значения по умолчанию разумны — задавайте только то, что
-нужно изменить, после чего перезапустите: `systemctl restart x-ui`.
+нужно изменить, после чего перезапустите: `systemctl restart primevpn`.
 
 ## База данных
 
 | Variable                 | Default     | Description                                                          |
 | ------------------------ | ----------- | -------------------------------------------------------------------- |
 | `XUI_DB_TYPE`            | `sqlite`    | Бэкенд: `sqlite` или `postgres` (также принимаются `postgresql` / `pg`). |
-| `XUI_DB_FOLDER`          | `/etc/x-ui` | Папка для файла базы данных SQLite (`x-ui.db`).                     |
+| `XUI_DB_FOLDER`          | `/etc/primevpn` | Папка для файла базы данных SQLite (`primevpn.db`).                     |
 | `XUI_DB_DSN`             | —           | Строка подключения к PostgreSQL (используется при `XUI_DB_TYPE=postgres`). |
 | `XUI_DB_MAX_OPEN_CONNS`  | —           | Максимум открытых соединений в пуле PostgreSQL.                         |
 | `XUI_DB_MAX_IDLE_CONNS`  | —           | Максимум простаивающих соединений в пуле PostgreSQL.                         |
 
-Путь к базе данных SQLite по умолчанию — `/etc/x-ui/x-ui.db`. Подробности о
+Путь к базе данных SQLite по умолчанию — `/etc/primevpn/primevpn.db`. Подробности о
 переходе SQLite ↔ PostgreSQL см. в разделе
 [База данных](/docs/reference/database).
 
@@ -39,7 +39,7 @@ PRIMEVPN читает свою конфигурацию во время выпо
 | ---------------- | ---------------- | ----------------------------------------------------------- |
 | `XUI_LOG_LEVEL`  | `info`           | `debug`, `info`, `notice`, `warning` или `error`.           |
 | `XUI_DEBUG`      | `false`          | Режим отладки (принудительно устанавливает уровень логирования `debug`).                   |
-| `XUI_LOG_FOLDER` | `/var/log/x-ui`  | Каталог для вывода логов.                                       |
+| `XUI_LOG_FOLDER` | `/var/log/primevpn`  | Каталог для вывода логов.                                       |
 | `XUI_BIN_FOLDER` | `bin`            | Папка для бинарного файла Xray-core и файлов geosite/geoip.    |
 
 ## Память и профилирование
@@ -82,4 +82,4 @@ Xray) и перезапускает Xray после нескольких неу�
 
 | Variable             | Description                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------- |
-| `XUI_NONINTERACTIVE` | Установите `1` (или запустите без TTY), чтобы выполнить установку без единого запроса; сгенерированные учётные данные записываются в `/etc/x-ui/install-result.env`. См. [Установку](/docs/guide/installation#unattended--cloud-init). |
+| `XUI_NONINTERACTIVE` | Установите `1` (или запустите без TTY), чтобы выполнить установку без единого запроса; сгенерированные учётные данные записываются в `/etc/primevpn/install-result.env`. См. [Установку](/docs/guide/installation#unattended--cloud-init). |

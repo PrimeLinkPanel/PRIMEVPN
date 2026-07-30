@@ -165,7 +165,7 @@ func resolveClientIPLimitsPath() string {
 	if !filepath.IsAbs(binFolder) {
 		// Resolve a relative XUI_BIN_FOLDER from the panel executable rather
 		// than the caller's current directory. In the standard installation
-		// this produces /usr/local/x-ui/bin even when x-ui is launched by a
+		// this produces /usr/local/primevpn/bin even when primevpn is launched by a
 		// wrapper or from a different shell directory.
 		if executable, err := os.Executable(); err == nil {
 			binFolder = filepath.Join(filepath.Dir(executable), binFolder)

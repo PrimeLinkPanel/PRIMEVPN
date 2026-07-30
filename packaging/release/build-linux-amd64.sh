@@ -17,11 +17,11 @@ VERSION="$(
         < "$REPO_ROOT/internal/config/version"
 )"
 
-CUSTOM_XRAY="${HEIMDALL_CUSTOM_XRAY:-}"
-EXPECTED_CUSTOM_XRAY_SHA256="${HEIMDALL_CUSTOM_XRAY_SHA256:-}"
-EXPECTED_PANEL_SHA256="${HEIMDALL_EXPECTED_PANEL_SHA256:-}"
-RUNTIME_BIN_DIR="${HEIMDALL_RUNTIME_BIN_DIR:-/usr/local/x-ui/bin}"
-OUTPUT_DIR="${HEIMDALL_RELEASE_OUTPUT_DIR:-$REPO_ROOT/release-out}"
+CUSTOM_XRAY="${PRIMEVPN_CUSTOM_XRAY:-}"
+EXPECTED_CUSTOM_XRAY_SHA256="${PRIMEVPN_CUSTOM_XRAY_SHA256:-}"
+EXPECTED_PANEL_SHA256="${PRIMEVPN_EXPECTED_PANEL_SHA256:-}"
+RUNTIME_BIN_DIR="${PRIMEVPN_RUNTIME_BIN_DIR:-/usr/local/primevpn/bin}"
+OUTPUT_DIR="${PRIMEVPN_RELEASE_OUTPUT_DIR:-$REPO_ROOT/release-out}"
 
 fail() {
     printf '\nERROR: %s\n' "$*" >&2
@@ -44,13 +44,13 @@ test "$VERSION" = "1.5.0" ||
     fail "release version must be 1.5.0, got: $VERSION"
 
 test -n "$CUSTOM_XRAY" ||
-    fail "HEIMDALL_CUSTOM_XRAY is required"
+    fail "PRIMEVPN_CUSTOM_XRAY is required"
 
 test -f "$CUSTOM_XRAY" ||
     fail "custom Xray file not found: $CUSTOM_XRAY"
 
 test -n "$EXPECTED_CUSTOM_XRAY_SHA256" ||
-    fail "HEIMDALL_CUSTOM_XRAY_SHA256 is required"
+    fail "PRIMEVPN_CUSTOM_XRAY_SHA256 is required"
 
 ACTUAL_CUSTOM_XRAY_SHA256="$(
     sha256sum "$CUSTOM_XRAY" |
@@ -61,7 +61,7 @@ test "$ACTUAL_CUSTOM_XRAY_SHA256" = "$EXPECTED_CUSTOM_XRAY_SHA256" ||
     fail "custom Xray SHA256 mismatch"
 
 test -n "$EXPECTED_PANEL_SHA256" ||
-    fail "HEIMDALL_EXPECTED_PANEL_SHA256 is required"
+    fail "PRIMEVPN_EXPECTED_PANEL_SHA256 is required"
 
 SOURCE_HEAD="$(git -C "$REPO_ROOT" rev-parse HEAD)"
 SOURCE_TREE="$(git -C "$REPO_ROOT" rev-parse HEAD^{tree})"
@@ -93,8 +93,8 @@ STAGE="$WORK/stage"
 VERIFY="$WORK/verify"
 mkdir -p \
     "$BUILD_SRC" \
-    "$STAGE/x-ui/bin" \
-    "$STAGE/x-ui/sub_templates/ourenus" \
+    "$STAGE/primevpn/bin" \
+    "$STAGE/primevpn/sub_templates/ourenus" \
     "$VERIFY" \
     "$OUTPUT_DIR"
 
@@ -139,7 +139,7 @@ printf 'FRONTEND_BUILD=pass\n'
 
 printf '\n===== BUILD VALIDATED LIVE-PARITY PANEL =====\n'
 
-PANEL_BINARY="$WORK/x-ui"
+PANEL_BINARY="$WORK/primevpn"
 
 (
     cd "$BUILD_SRC"
@@ -177,24 +177,24 @@ printf '\n===== ASSEMBLE RELEASE PAYLOAD =====\n'
 
 install -m 0755 \
     "$PANEL_BINARY" \
-    "$STAGE/x-ui/x-ui"
+    "$STAGE/primevpn/primevpn"
 
 for name in \
-    x-ui.sh \
-    x-ui.rc
+    primevpn.sh \
+    primevpn.rc
 do
     test -f "$BUILD_SRC/$name" ||
         fail "required script missing: $name"
 
     install -m 0755 \
         "$BUILD_SRC/$name" \
-        "$STAGE/x-ui/$name"
+        "$STAGE/primevpn/$name"
 done
 
 for name in \
-    x-ui.service.debian \
-    x-ui.service.arch \
-    x-ui.service.rhel \
+    primevpn.service.debian \
+    primevpn.service.arch \
+    primevpn.service.rhel \
     LICENSE
 do
     test -f "$BUILD_SRC/$name" ||
@@ -202,16 +202,16 @@ do
 
     install -m 0644 \
         "$BUILD_SRC/$name" \
-        "$STAGE/x-ui/$name"
+        "$STAGE/primevpn/$name"
 done
 
 install -m 0755 \
     "$BUILD_SRC/packaging/scripts/y-ui.sh" \
-    "$STAGE/x-ui/y-ui.sh"
+    "$STAGE/primevpn/y-ui.sh"
 
 install -m 0755 \
     "$BUILD_SRC/packaging/migrations/y-ui-migration-center.py" \
-    "$STAGE/x-ui/y-ui-migration-center.py"
+    "$STAGE/primevpn/y-ui-migration-center.py"
 
 for name in \
     index.html \
@@ -222,12 +222,12 @@ do
 
     install -m 0644 \
         "$BUILD_SRC/sub_templates/ourenus/$name" \
-        "$STAGE/x-ui/sub_templates/ourenus/$name"
+        "$STAGE/primevpn/sub_templates/ourenus/$name"
 done
 
 install -m 0755 \
     "$CUSTOM_XRAY" \
-    "$STAGE/x-ui/bin/xray-linux-amd64"
+    "$STAGE/primevpn/bin/xray-linux-amd64"
 
 for name in \
     mtg-linux-amd64 \
@@ -252,13 +252,13 @@ do
 
     install -m "$mode" \
         "$RUNTIME_BIN_DIR/$name" \
-        "$STAGE/x-ui/bin/$name"
+        "$STAGE/primevpn/bin/$name"
 done
 
 printf '%s\n' "$VERSION" \
-    > "$STAGE/x-ui/RELEASE_VERSION"
+    > "$STAGE/primevpn/RELEASE_VERSION"
 
-cat > "$STAGE/x-ui/RELEASE_MANIFEST" <<MANIFEST
+cat > "$STAGE/primevpn/RELEASE_MANIFEST" <<MANIFEST
 VERSION=$VERSION
 SOURCE_HEAD=$SOURCE_HEAD
 SOURCE_TREE=$SOURCE_TREE
@@ -271,7 +271,7 @@ CUSTOM_XRAY_SHA256=$ACTUAL_CUSTOM_XRAY_SHA256
 MANIFEST
 
 (
-    cd "$STAGE/x-ui"
+    cd "$STAGE/primevpn"
 
     find . \
         -type f \
@@ -284,7 +284,7 @@ MANIFEST
 
 printf '\n===== PACKAGE DETERMINISTIC ARCHIVE =====\n'
 
-ARCHIVE="$OUTPUT_DIR/x-ui-linux-amd64.tar.gz"
+ARCHIVE="$OUTPUT_DIR/primevpn-linux-amd64.tar.gz"
 ARCHIVE_SHA_FILE="$ARCHIVE.sha256"
 
 rm -f \
@@ -299,7 +299,7 @@ tar \
     --numeric-owner \
     -C "$STAGE" \
     -cf - \
-    x-ui |
+    primevpn |
 gzip -n \
     > "$ARCHIVE"
 
@@ -329,28 +329,28 @@ tar -xzf \
     -C "$VERIFY"
 
 REQUIRED_PATHS=(
-    x-ui/x-ui
-    x-ui/x-ui.sh
-    x-ui/x-ui.rc
-    x-ui/y-ui.sh
-    x-ui/y-ui-migration-center.py
-    x-ui/x-ui.service.debian
-    x-ui/x-ui.service.arch
-    x-ui/x-ui.service.rhel
-    x-ui/LICENSE
-    x-ui/RELEASE_VERSION
-    x-ui/RELEASE_MANIFEST
-    x-ui/SHA256SUMS
-    x-ui/bin/xray-linux-amd64
-    x-ui/bin/mtg-linux-amd64
-    x-ui/bin/geoip.dat
-    x-ui/bin/geosite.dat
-    x-ui/bin/geoip_IR.dat
-    x-ui/bin/geosite_IR.dat
-    x-ui/bin/geoip_RU.dat
-    x-ui/bin/geosite_RU.dat
-    x-ui/sub_templates/ourenus/index.html
-    x-ui/sub_templates/ourenus/index.php
+    primevpn/primevpn
+    primevpn/primevpn.sh
+    primevpn/primevpn.rc
+    primevpn/y-ui.sh
+    primevpn/y-ui-migration-center.py
+    primevpn/primevpn.service.debian
+    primevpn/primevpn.service.arch
+    primevpn/primevpn.service.rhel
+    primevpn/LICENSE
+    primevpn/RELEASE_VERSION
+    primevpn/RELEASE_MANIFEST
+    primevpn/SHA256SUMS
+    primevpn/bin/xray-linux-amd64
+    primevpn/bin/mtg-linux-amd64
+    primevpn/bin/geoip.dat
+    primevpn/bin/geosite.dat
+    primevpn/bin/geoip_IR.dat
+    primevpn/bin/geosite_IR.dat
+    primevpn/bin/geoip_RU.dat
+    primevpn/bin/geosite_RU.dat
+    primevpn/sub_templates/ourenus/index.html
+    primevpn/sub_templates/ourenus/index.php
 )
 
 for path in "${REQUIRED_PATHS[@]}"; do
@@ -358,7 +358,7 @@ for path in "${REQUIRED_PATHS[@]}"; do
         fail "archive required file missing: $path"
 done
 
-if find "$VERIFY/x-ui" \
+if find "$VERIFY/primevpn" \
     -type l \
     -print \
     -quit |
@@ -369,12 +369,12 @@ fi
 
 test "$(
     tr -d '[:space:]' \
-        < "$VERIFY/x-ui/RELEASE_VERSION"
+        < "$VERIFY/primevpn/RELEASE_VERSION"
 )" = "$VERSION" ||
     fail "archive version mismatch"
 
 VERIFIED_PANEL_SHA256="$(
-    sha256sum "$VERIFY/x-ui/x-ui" |
+    sha256sum "$VERIFY/primevpn/primevpn" |
     awk '{print $1}'
 )"
 
@@ -382,7 +382,7 @@ test "$VERIFIED_PANEL_SHA256" = "$PANEL_SHA256" ||
     fail "archive panel SHA mismatch"
 
 VERIFIED_CUSTOM_XRAY_SHA256="$(
-    sha256sum "$VERIFY/x-ui/bin/xray-linux-amd64" |
+    sha256sum "$VERIFY/primevpn/bin/xray-linux-amd64" |
     awk '{print $1}'
 )"
 
@@ -395,7 +395,7 @@ SOURCE_OURENUS_HTML_SHA256="$(
 )"
 
 ARCHIVE_OURENUS_HTML_SHA256="$(
-    sha256sum "$VERIFY/x-ui/sub_templates/ourenus/index.html" |
+    sha256sum "$VERIFY/primevpn/sub_templates/ourenus/index.html" |
     awk '{print $1}'
 )"
 
@@ -408,22 +408,22 @@ SOURCE_OURENUS_PHP_SHA256="$(
 )"
 
 ARCHIVE_OURENUS_PHP_SHA256="$(
-    sha256sum "$VERIFY/x-ui/sub_templates/ourenus/index.php" |
+    sha256sum "$VERIFY/primevpn/sub_templates/ourenus/index.php" |
     awk '{print $1}'
 )"
 
 test "$SOURCE_OURENUS_PHP_SHA256" = "$ARCHIVE_OURENUS_PHP_SHA256" ||
     fail "Ourenus PHP SHA mismatch"
 
-file "$VERIFY/x-ui/x-ui"
-file "$VERIFY/x-ui/bin/xray-linux-amd64"
+file "$VERIFY/primevpn/primevpn"
+file "$VERIFY/primevpn/bin/xray-linux-amd64"
 
-file "$VERIFY/x-ui/bin/xray-linux-amd64" |
+file "$VERIFY/primevpn/bin/xray-linux-amd64" |
 grep -q 'statically linked' ||
     fail "verified custom Xray binary is not static"
 
 (
-    cd "$VERIFY/x-ui"
+    cd "$VERIFY/primevpn"
 
     sha256sum -c SHA256SUMS
 )

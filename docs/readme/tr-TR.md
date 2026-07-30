@@ -17,7 +17,7 @@
 
 **PRIMEVPN**, [Xray-core](https://github.com/XTLS/Xray-core) sunucularını yönetmek için geliştirilmiş profesyonel, açık kaynaklı bir web kontrol panelidir. Tek bir sanal sunucudan (VPS) çok düğümlü (multi-node) dağıtımlara kadar çok çeşitli proxy ve VPN protokollerini kurmak, yapılandırmak ve izlemek için temiz, çok dilli bir arayüz sağlar.
 
-Orijinal X-UI projesinin geliştirilmiş bir çatallaması (fork) olarak inşa edilen PRIMEVPN; çok daha geniş protokol desteği, artırılmış kararlılık, kullanıcı başına trafik hesaplama ve kullanım kolaylığı sağlayan birçok yeni özellik sunar.
+Orijinal PRIMEVPN projesinin geliştirilmiş bir çatallaması (fork) olarak inşa edilen PRIMEVPN; çok daha geniş protokol desteği, artırılmış kararlılık, kullanıcı başına trafik hesaplama ve kullanım kolaylığı sağlayan birçok yeni özellik sunar.
 
 > [!IMPORTANT]
 > Bu proje yalnızca kişisel kullanım için tasarlanmıştır. Lütfen yasadışı amaçlar için veya üretim (production) ortamında kullanmayın.
@@ -82,7 +82,7 @@ Sürekli güncellenen **dev** sürümünü (kararlı bir sürüm değil; `main` 
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
-Kurulum sırasında rastgele bir kullanıcı adı, şifre ve erişim yolu oluşturulur. Kurulumdan sonra, hizmeti başlatabileceğiniz/durdurabileceğiniz, giriş bilgilerinizi görüntüleyebileceğiniz veya sıfırlayabileceğiniz, SSL sertifikalarını yönetebileceğiniz ve çok daha fazlasını yapabileceğiniz yönetim menüsünü açmak için terminalde `x-ui` komutunu çalıştırın.
+Kurulum sırasında rastgele bir kullanıcı adı, şifre ve erişim yolu oluşturulur. Kurulumdan sonra, hizmeti başlatabileceğiniz/durdurabileceğiniz, giriş bilgilerinizi görüntüleyebileceğiniz veya sıfırlayabileceğiniz, SSL sertifikalarını yönetebileceğiniz ve çok daha fazlasını yapabileceğiniz yönetim menüsünü açmak için terminalde `primevpn` komutunu çalıştırın.
 
 Tam dokümantasyon için lütfen [proje Wiki sayfasını](https://github.com/sh7CBAC/PRIMEVPN/wiki) ziyaret edin.
 
@@ -91,7 +91,7 @@ Tam dokümantasyon için lütfen [proje Wiki sayfasını](https://github.com/sh7
 Yükleyici, cloud-init için **etkileşimsiz** olarak da çalışır.
 `XUI_NONINTERACTIVE=1` ayarlayın (veya TTY olmadan boru hattına aktarın); kurulum baştan
 sona hiçbir soru sormadan tamamlanır, rastgele kimlik bilgileri oluşturup bunları
-`/etc/x-ui/install-result.env` dosyasına yazar. Şunlar için [`deploy/`](../../deploy/) klasörüne bakın:
+`/etc/primevpn/install-result.env` dosyasına yazar. Şunlar için [`deploy/`](../../deploy/) klasörüne bakın:
 
 - [Cloud-init user-data](../../deploy/cloud-init/) — herhangi bir bulutta etkileşimsiz kurulum (Hetzner/AWS/DO/Vultr/GCP/Azure/Oracle)
 - [Hetzner Cloud notları](../../deploy/marketplace/hetzner/) — Hetzner üzerinde cloud-init tabanlı dağıtım
@@ -106,10 +106,10 @@ sona hiçbir soru sormadan tamamlanır, rastgele kimlik bilgileri oluşturup bun
 
 PRIMEVPN kurulum sırasında seçilebilecek iki arka uç (backend) destekler:
 
-- **SQLite** (varsayılan) — `/etc/x-ui/x-ui.db` konumunda tek bir dosya. Kurulum gerektirmez, küçük ve orta ölçekli dağıtımlar için idealdir.
+- **SQLite** (varsayılan) — `/etc/primevpn/primevpn.db` konumunda tek bir dosya. Kurulum gerektirmez, küçük ve orta ölçekli dağıtımlar için idealdir.
 - **PostgreSQL** — Yüksek kullanıcı sayıları veya çoklu düğüm (multi-node) kurulumları için önerilir. Yükleyici sizin için yerel olarak PostgreSQL kurabilir veya mevcut bir sunucuya DSN bağlantısı kabul edebilir.
 
-Çalışma anında veritabanı türü ortam değişkenleri (environment variables) ile seçilir (yükleyici bunları sizin için `/etc/default/x-ui` dosyasına yazar):
+Çalışma anında veritabanı türü ortam değişkenleri (environment variables) ile seçilir (yükleyici bunları sizin için `/etc/default/primevpn` dosyasına yazar):
 
 ```
 XUI_DB_TYPE=postgres
@@ -119,9 +119,9 @@ XUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable
 ### Mevcut bir SQLite Kurulumunu PostgreSQL'e Taşıma
 
 ```bash
-x-ui migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
-# ardından /etc/default/x-ui içindeki XUI_DB_TYPE ve XUI_DB_DSN değerlerini ayarlayıp yeniden başlatın:
-systemctl restart x-ui
+primevpn migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
+# ardından /etc/default/primevpn içindeki XUI_DB_TYPE ve XUI_DB_DSN değerlerini ayarlayıp yeniden başlatın:
+systemctl restart primevpn
 ```
 
 Kaynak SQLite dosyasına dokunulmaz; yeni veritabanının düzgün çalıştığını doğruladıktan sonra eski SQLite dosyasını manuel olarak silebilirsiniz.
@@ -136,7 +136,7 @@ docker compose --profile postgres up -d
 
 
 ```bash
-docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
+docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/primevpn
 ```
 
 ## Ortam Değişkenleri (Environment Variables)
@@ -145,7 +145,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
 | --- | --- | --- |
 | `XUI_DB_TYPE` | Veritabanı türü: `sqlite` veya `postgres` | `sqlite` |
 | `XUI_DB_DSN` | PostgreSQL bağlantı dizesi (eğer `XUI_DB_TYPE=postgres` ise) | — |
-| `XUI_DB_FOLDER` | SQLite veritabanı dizini | `/etc/x-ui` |
+| `XUI_DB_FOLDER` | SQLite veritabanı dizini | `/etc/primevpn` |
 | `XUI_DB_MAX_OPEN_CONNS` | Maksimum açık bağlantı sayısı (PostgreSQL havuzu) | — |
 | `XUI_DB_MAX_IDLE_CONNS` | Maksimum boşta bekleme bağlantısı (PostgreSQL havuzu) | — |
 | `XUI_INIT_WEB_BASE_PATH` | Web paneli için başlangıç URI yolu | `/` |

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog'
+import * as AlertDialogPrimitive from '@radiprimevpn/react-alert-dialog'
 
 import { cn } from '@/pg-ui/lib/utils';
 import { buttonVariants } from '@/pg-ui/components/ui/button';

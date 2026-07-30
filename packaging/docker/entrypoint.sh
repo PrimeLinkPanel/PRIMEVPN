@@ -13,4 +13,4 @@ if [ -f /root/.acme.sh/acme.sh ]; then
     fi
 fi
 
-exec /app/x-ui
+exec /app/primevpn

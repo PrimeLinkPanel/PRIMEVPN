@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as TabsPrimitive from '@radix-ui/react-tabs'
+import * as TabsPrimitive from '@radiprimevpn/react-tabs'
 
 import { cn } from '@/pg-ui/lib/utils';
 

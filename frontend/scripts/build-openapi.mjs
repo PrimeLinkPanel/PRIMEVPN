@@ -23,7 +23,7 @@ const SECURITY_SCHEMES = {
   cookieAuth: {
     type: 'apiKey',
     in: 'cookie',
-    name: 'heimdall',
+    name: 'primevpn',
     description: 'Session cookie set by POST /login. Browser-only.',
   },
 };
@@ -266,10 +266,10 @@ function buildSpec() {
   return {
     openapi: '3.0.3',
     info: {
-      title: 'HEIMDALL Panel API',
+      title: 'PRIMEVPN Panel API',
       version: PANEL_VERSION,
       description:
-        'Programmatic interface to a HEIMDALL panel. Most protected APIs accept either a browser session cookie or an API token from Settings → Security → API Token. Operations marked browser-session-only reject Bearer tokens. Treat every API token like a panel password.',
+        'Programmatic interface to a PRIMEVPN panel. Most protected APIs accept either a browser session cookie or an API token from Settings → Security → API Token. Operations marked browser-session-only reject Bearer tokens. Treat every API token like a panel password.',
     },
     servers: [
       { url: '/', description: 'Current panel (basePath aware)' },

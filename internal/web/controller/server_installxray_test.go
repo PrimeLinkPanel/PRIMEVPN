@@ -41,7 +41,7 @@ func TestServerControllerInstallXrayDisabledForPRIMEVPN(t *testing.T) {
 		t.Fatalf("installXray response success = true, want false; body=%s", rec.Body.String())
 	}
 
-	if !strings.Contains(strings.ToLower(envelope.Msg), "heimdall") ||
+	if !strings.Contains(strings.ToLower(envelope.Msg), "primevpn") ||
 		!strings.Contains(strings.ToLower(envelope.Msg), "disabled") {
 		t.Fatalf("response msg = %q, want PRIMEVPN disabled message", envelope.Msg)
 	}

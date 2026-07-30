@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
+import * as RadioGroupPrimitive from '@radiprimevpn/react-radio-group'
 import { Circle } from 'lucide-react';
 
 import { cn } from '@/pg-ui/lib/utils';

@@ -101,7 +101,7 @@ PRIMEVPN is developed and maintained with a focus on quality, stability, and rea
 
 If you find this project useful and want to support its continued development, you can make a donation here:
 
-[Donate to PRIMEVPN](https://reymit.ir/heimdall)
+
 
 Your support helps keep the project moving forward with more energy, better features, and long-term improvements.
 

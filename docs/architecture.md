@@ -275,8 +275,8 @@ PRIMEVPN/
 ├── media/                    # README images
 │
 ├── Dockerfile / docker-compose.yml / packaging/docker/entrypoint.sh / packaging/docker/init.sh   # Container build/run
-├── install.sh / update.sh / x-ui.sh                        # VPS install + management CLI
-├── x-ui.service.*  / x-ui.rc                               # systemd units (debian/rhel/arch) + rc script
+├── install.sh / update.sh / primevpn.sh                        # VPS install + management CLI
+├── primevpn.service.*  / primevpn.rc                               # systemd units (debian/rhel/arch) + rc script
 ├── packaging/windows/                                          # Windows packaging policy and support notes
 └── .github/workflows/        # CI: ci.yml, codeql.yml, docker.yml, release.yml, smoke.yml,
                               #     mutation.yml, cleanup_caches.yml, claude-bot.yml
@@ -567,7 +567,7 @@ root → `go build ./...` / `go run main.go`.
 ## 10. Gotchas & conventions
 
 - **Module path is `.../v3`.** Internal imports use `github.com/mhsanaei/PRIMEVPN/v3/internal/...`.
-- **SQLite vs Postgres.** Default is SQLite at `{XUI_DB_FOLDER}/x-ui.db`. Postgres via
+- **SQLite vs Postgres.** Default is SQLite at `{XUI_DB_FOLDER}/primevpn.db`. Postgres via
   `XUI_DB_TYPE=postgres` + `XUI_DB_DSN`. Some SQL paths are dialect-aware (`database/dialect.go`);
   test both when touching raw queries (there are `*_scale_postgres_test.go` suites).
 - **`Inbound.Settings` / `StreamSettings` / `Sniffing` are raw JSON strings**, not structured

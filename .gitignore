@@ -16,7 +16,7 @@ __pycache__/
 # Build and distribution directories
 backup/
 bin/
-x-ui/
+primevpn/
 dist/
 build/
 !internal/web/dist/
@@ -29,9 +29,9 @@ frontend/node_modules/
 # Compiled binaries and runtime data
 main
 *.exe
-x-ui.db
-x-ui.db-shm
-x-ui.db-wal
+primevpn.db
+primevpn.db-shm
+primevpn.db-wal
 system_metrics.gob
 *.dump
 

@@ -12,7 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// XUIController is the main controller for the X-UI panel, serving the SPA shell.
+// XUIController is the main controller for the PRIMEVPN panel, serving the SPA shell.
 type XUIController struct {
 	BaseController
 }

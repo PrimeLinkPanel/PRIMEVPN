@@ -231,7 +231,7 @@ export default function IndexPage() {
                     <Card
                       title={
                         <Space>
-                          <span className="heimdall-brand-text">HEIMDALL</span>
+                          <span className="primevpn-brand-text">PRIMEVPN</span>
                           {isMobile && displayVersion && (
                             <Tag color={panelUpdateInfo.updateAvailable ? 'orange' : 'green'}>
                               {panelUpdateInfo.updateAvailable

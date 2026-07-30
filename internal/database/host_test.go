@@ -38,7 +38,7 @@ func assertHostSchema(t *testing.T) {
 // TestHostAutoMigrateCreatesColumns verifies the hosts table and every expected
 // column exist after initModels (SQLite).
 func TestHostAutoMigrateCreatesColumns(t *testing.T) {
-	if err := InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = CloseDB() })
@@ -60,7 +60,7 @@ func TestHostAutoMigrateCreatesColumns_Postgres(t *testing.T) {
 // TestPruneOrphanedHosts verifies a host whose inbound_id has no matching inbound
 // is removed by the prune step.
 func TestPruneOrphanedHosts(t *testing.T) {
-	if err := InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = CloseDB() })

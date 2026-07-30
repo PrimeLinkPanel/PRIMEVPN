@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area'
+import * as ScrollAreaPrimitive from '@radiprimevpn/react-scroll-area'
 
 import { cn } from '@/pg-ui/lib/utils';
 import { useTranslation } from 'react-i18next';

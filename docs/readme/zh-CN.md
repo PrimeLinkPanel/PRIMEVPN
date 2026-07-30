@@ -17,7 +17,7 @@
 
 **PRIMEVPN** 是一个先进的开源 Web 控制面板，用于管理 [Xray-core](https://github.com/XTLS/Xray-core) 服务器。它提供简洁、多语言的界面，用于部署、配置和监控各种代理与 VPN 协议——从单台 VPS 到多节点部署。
 
-PRIMEVPN 作为原始 X-UI 项目的增强分支（fork），增加了更广泛的协议支持、更好的稳定性、按客户端的流量统计以及许多提升使用体验的功能。
+PRIMEVPN 作为原始 PRIMEVPN 项目的增强分支（fork），增加了更广泛的协议支持、更好的稳定性、按客户端的流量统计以及许多提升使用体验的功能。
 
 > [!IMPORTANT]
 > 本项目仅供个人使用。请勿将其用于非法目的，也请勿在生产环境中使用。
@@ -82,7 +82,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
-安装过程中会生成随机的用户名、密码和访问路径。安装完成后，运行 `x-ui` 打开管理菜单，您可以在其中启动/停止服务、查看或重置登录凭据、管理 SSL 证书等。
+安装过程中会生成随机的用户名、密码和访问路径。安装完成后，运行 `primevpn` 打开管理菜单，您可以在其中启动/停止服务、查看或重置登录凭据、管理 SSL 证书等。
 
 完整文档请参阅 [项目Wiki](https://github.com/sh7CBAC/PRIMEVPN/wiki)。
 
@@ -91,7 +91,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 安装程序也可以**非交互式**运行，适用于 cloud-init。
 设置 `XUI_NONINTERACTIVE=1`（或在无 TTY 的情况下通过管道传入），它就会全程
 零提示地完成端到端安装，生成随机凭据并写入
-`/etc/x-ui/install-result.env`。请参阅 [`deploy/`](../../deploy/)：
+`/etc/primevpn/install-result.env`。请参阅 [`deploy/`](../../deploy/)：
 
 - [Cloud-init user-data](../../deploy/cloud-init/) — 在任意云平台上无人值守安装（Hetzner/AWS/DO/Vultr/GCP/Azure/Oracle）
 - [Hetzner Cloud 说明](../../deploy/marketplace/hetzner/) — 在 Hetzner 上基于 cloud-init 的部署
@@ -106,10 +106,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 
 PRIMEVPN 支持两种后端，可在安装时选择：
 
-- **SQLite**（默认）— 位于 `/etc/x-ui/x-ui.db` 的单个文件。无需配置，适合中小型部署。
+- **SQLite**（默认）— 位于 `/etc/primevpn/primevpn.db` 的单个文件。无需配置，适合中小型部署。
 - **PostgreSQL** — 推荐用于大量客户端或多节点设置。安装程序可以为您在本地安装 PostgreSQL，或接受指向现有服务器的 DSN。
 
-运行时通过环境变量选择后端（安装程序会为您写入 `/etc/default/x-ui`）：
+运行时通过环境变量选择后端（安装程序会为您写入 `/etc/default/primevpn`）：
 
 ```
 XUI_DB_TYPE=postgres
@@ -119,9 +119,9 @@ XUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable
 ### 将现有的 SQLite 安装迁移到 PostgreSQL
 
 ```bash
-x-ui migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
-# 然后在 /etc/default/x-ui 中设置 XUI_DB_TYPE 和 XUI_DB_DSN 并重启：
-systemctl restart x-ui
+primevpn migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
+# 然后在 /etc/default/primevpn 中设置 XUI_DB_TYPE 和 XUI_DB_DSN 并重启：
+systemctl restart primevpn
 ```
 
 源 SQLite 文件保持不变；在确认新后端正常工作后，请手动删除它。
@@ -136,7 +136,7 @@ docker compose --profile postgres up -d
 
 
 ```bash
-docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
+docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/primevpn
 ```
 
 ## 环境变量
@@ -145,7 +145,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
 | --- | --- | --- |
 | `XUI_DB_TYPE` | 数据库后端：`sqlite` 或 `postgres` | `sqlite` |
 | `XUI_DB_DSN` | PostgreSQL 连接字符串（当 `XUI_DB_TYPE=postgres` 时） | — |
-| `XUI_DB_FOLDER` | SQLite 数据库文件所在目录 | `/etc/x-ui` |
+| `XUI_DB_FOLDER` | SQLite 数据库文件所在目录 | `/etc/primevpn` |
 | `XUI_DB_MAX_OPEN_CONNS` | 最大打开连接数（PostgreSQL 连接池） | — |
 | `XUI_DB_MAX_IDLE_CONNS` | 最大空闲连接数（PostgreSQL 连接池） | — |
 | `XUI_INIT_WEB_BASE_PATH` | Web 面板的初始 URI 路径 | `/` |

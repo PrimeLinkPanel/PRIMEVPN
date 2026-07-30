@@ -9,7 +9,7 @@ icon: DatabaseBackup
 
 ## از چه چیزی پشتیبان بگیریم
 
-- **پایگاه‌داده** — به‌صورت پیش‌فرض یک SQLite در `/etc/x-ui/x-ui.db` (یا پایگاه‌داده‌ی
+- **پایگاه‌داده** — به‌صورت پیش‌فرض یک SQLite در `/etc/primevpn/primevpn.db` (یا پایگاه‌داده‌ی
   PostgreSQL شما اگر از آن backend استفاده می‌کنید).
 - **گواهی‌ها** — هر چیزی که زیر `/root/cert/` (یا هر جایی که گواهی‌های TLS را نگه می‌دارید)
   قرار دارد.
@@ -20,7 +20,7 @@ icon: DatabaseBackup
 مستقیماً از سرور کپی نمایید:
 
 ```bash title="copy the SQLite database"
-cp /etc/x-ui/x-ui.db /root/x-ui-backup-$(date +%F).db
+cp /etc/primevpn/primevpn.db /root/primevpn-backup-$(date +%F).db
 ```
 
 برای بازیابی، پنل را متوقف کنید، پایگاه‌داده را سر جای خود برگردانید و دوباره آن را اجرا کنید.
@@ -41,12 +41,12 @@ cp /etc/x-ui/x-ui.db /root/x-ui-backup-$(date +%F).db
 
 ## دامپ / بازیابی SQLite
 
-دستور `x-ui migrate-db` پایگاه‌داده‌ی SQLite را به یک دامپ متنی SQL ساده و بالعکس تبدیل
+دستور `primevpn migrate-db` پایگاه‌داده‌ی SQLite را به یک دامپ متنی SQL ساده و بالعکس تبدیل
 می‌کند (برای بررسی یا انتقال میان دستگاه‌ها کاربردی است):
 
 ```bash
-x-ui migrate-db --dump /root/x-ui.sql       # SQLite -> SQL text
-x-ui migrate-db --restore /root/x-ui.sql     # SQL text -> SQLite
+primevpn migrate-db --dump /root/primevpn.sql       # SQLite -> SQL text
+primevpn migrate-db --restore /root/primevpn.sql     # SQL text -> SQLite
 ```
 
 برای مهاجرت به PostgreSQL، به [پایگاه‌داده](/docs/reference/database) مراجعه کنید.

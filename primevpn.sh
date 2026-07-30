@@ -328,7 +328,7 @@ reset_user() {
 
     echo -e "Panel login username has been reset to: ${green} ${config_account} ${plain}"
     echo -e "Panel login password has been reset to: ${green} ${config_password} ${plain}"
-    echo -e "${green} Please use the new login username and password to access the X-UI panel. Also remember them! ${plain}"
+    echo -e "${green} Please use the new login username and password to access the PRIMEVPN panel. Also remember them! ${plain}"
     confirm_restart
 }
 

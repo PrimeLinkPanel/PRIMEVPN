@@ -17,7 +17,7 @@
 
 **PRIMEVPN** هي لوحة تحكم ويب متقدمة ومفتوحة المصدر لإدارة خوادم [Xray-core](https://github.com/XTLS/Xray-core). توفّر واجهة نظيفة ومتعددة اللغات لنشر وتكوين ومراقبة مجموعة واسعة من بروتوكولات الوكيل وVPN — من خادم VPS واحد إلى عمليات النشر متعددة العقد.
 
-تم بناء PRIMEVPN كنسخة محسّنة (fork) من مشروع X-UI الأصلي، وتضيف دعمًا أوسع للبروتوكولات، واستقرارًا محسّنًا، ومحاسبة للترافيك لكل عميل، والعديد من ميزات تحسين تجربة الاستخدام.
+تم بناء PRIMEVPN كنسخة محسّنة (fork) من مشروع PRIMEVPN الأصلي، وتضيف دعمًا أوسع للبروتوكولات، واستقرارًا محسّنًا، ومحاسبة للترافيك لكل عميل، والعديد من ميزات تحسين تجربة الاستخدام.
 
 > [!IMPORTANT]
 > هذا المشروع مخصص للاستخدام الشخصي فقط. يرجى عدم استخدامه لأغراض غير قانونية أو في بيئة إنتاجية.
@@ -82,7 +82,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
-أثناء التثبيت، يتم إنشاء اسم مستخدم وكلمة مرور ومسار وصول عشوائية. بعد التثبيت، شغّل `x-ui` لفتح قائمة الإدارة، حيث يمكنك بدء/إيقاف الخدمة، وعرض أو إعادة تعيين بيانات تسجيل الدخول، وإدارة شهادات SSL، والمزيد.
+أثناء التثبيت، يتم إنشاء اسم مستخدم وكلمة مرور ومسار وصول عشوائية. بعد التثبيت، شغّل `primevpn` لفتح قائمة الإدارة، حيث يمكنك بدء/إيقاف الخدمة، وعرض أو إعادة تعيين بيانات تسجيل الدخول، وإدارة شهادات SSL، والمزيد.
 
 للحصول على الوثائق الكاملة، يرجى زيارة [ويكي المشروع](https://github.com/sh7CBAC/PRIMEVPN/wiki).
 
@@ -91,7 +91,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 يعمل المثبِّت أيضًا **بشكل غير تفاعلي** لـ cloud-init.
 عيّن `XUI_NONINTERACTIVE=1` (أو مرّره عبر أنبوب دون TTY) وسيتولى التثبيت من البداية إلى النهاية
 دون أي مطالبات، مُنشئًا بيانات اعتماد عشوائية وكاتبًا إياها في
-`/etc/x-ui/install-result.env`. راجع [`deploy/`](../../deploy/) لـ:
+`/etc/primevpn/install-result.env`. راجع [`deploy/`](../../deploy/) لـ:
 
 - [بيانات مستخدم cloud-init](../../deploy/cloud-init/) — تثبيت غير تفاعلي على أي سحابة (Hetzner/AWS/DO/Vultr/GCP/Azure/Oracle)
 - [ملاحظات Hetzner Cloud](../../deploy/marketplace/hetzner/) — نشر يعتمد على cloud-init على Hetzner
@@ -106,10 +106,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 
 يدعم PRIMEVPN خلفيتين (backends) يتم اختيارهما أثناء التثبيت:
 
-- **SQLite** (افتراضي) — ملف واحد في `/etc/x-ui/x-ui.db`. بدون إعداد، مثالي لعمليات النشر الصغيرة والمتوسطة.
+- **SQLite** (افتراضي) — ملف واحد في `/etc/primevpn/primevpn.db`. بدون إعداد، مثالي لعمليات النشر الصغيرة والمتوسطة.
 - **PostgreSQL** — موصى به لأعداد العملاء الكبيرة أو الإعدادات متعددة العقد. يمكن للمثبِّت تثبيت PostgreSQL محليًا لك، أو قبول DSN لخادم موجود.
 
-في وقت التشغيل، يتم اختيار الخلفية عبر متغيرات البيئة (يكتبها المثبِّت لك في `/etc/default/x-ui`):
+في وقت التشغيل، يتم اختيار الخلفية عبر متغيرات البيئة (يكتبها المثبِّت لك في `/etc/default/primevpn`):
 
 ```
 XUI_DB_TYPE=postgres
@@ -119,9 +119,9 @@ XUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable
 ### ترحيل تثبيت SQLite موجود إلى PostgreSQL
 
 ```bash
-x-ui migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
-# ثم عيّن XUI_DB_TYPE و XUI_DB_DSN في /etc/default/x-ui وأعد التشغيل:
-systemctl restart x-ui
+primevpn migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
+# ثم عيّن XUI_DB_TYPE و XUI_DB_DSN في /etc/default/primevpn وأعد التشغيل:
+systemctl restart primevpn
 ```
 
 يبقى ملف SQLite الأصلي دون تغيير؛ احذفه يدويًا بعد التحقق من الخلفية الجديدة.
@@ -136,7 +136,7 @@ docker compose --profile postgres up -d
 
 
 ```bash
-docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
+docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/primevpn
 ```
 
 ## متغيرات البيئة
@@ -145,7 +145,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
 | --- | --- | --- |
 | `XUI_DB_TYPE` | خلفية قاعدة البيانات: `sqlite` أو `postgres` | `sqlite` |
 | `XUI_DB_DSN` | سلسلة اتصال PostgreSQL (عندما `XUI_DB_TYPE=postgres`) | — |
-| `XUI_DB_FOLDER` | مجلد ملف قاعدة بيانات SQLite | `/etc/x-ui` |
+| `XUI_DB_FOLDER` | مجلد ملف قاعدة بيانات SQLite | `/etc/primevpn` |
 | `XUI_DB_MAX_OPEN_CONNS` | الحد الأقصى للاتصالات المفتوحة (تجمّع PostgreSQL) | — |
 | `XUI_DB_MAX_IDLE_CONNS` | الحد الأقصى للاتصالات الخاملة (تجمّع PostgreSQL) | — |
 | `XUI_INIT_WEB_BASE_PATH` | مسار URI الأولي للوحة الويب | `/` |

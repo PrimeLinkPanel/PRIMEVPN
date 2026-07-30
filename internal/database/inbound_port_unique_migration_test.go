@@ -14,7 +14,7 @@ const legacyInboundsDDL = "CREATE TABLE `inbounds` (`id` integer PRIMARY KEY AUT
 
 func openLegacyPortUniqueDB(t *testing.T) string {
 	t.Helper()
-	dbPath := filepath.Join(t.TempDir(), "x-ui.db")
+	dbPath := filepath.Join(t.TempDir(), "primevpn.db")
 	legacy, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
 	if err != nil {
 		t.Fatalf("open legacy db: %v", err)

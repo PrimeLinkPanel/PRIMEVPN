@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as PopoverPrimitive from '@radix-ui/react-popover'
+import * as PopoverPrimitive from '@radiprimevpn/react-popover'
 
 import { cn } from '@/pg-ui/lib/utils';
 

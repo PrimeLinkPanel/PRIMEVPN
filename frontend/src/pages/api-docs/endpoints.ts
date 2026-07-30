@@ -360,7 +360,7 @@ export const sections: readonly Section[] = [
       {
         method: 'GET',
         path: '/panel/api/server/getPanelUpdateInfo',
-        summary: 'Check whether a newer HEIMDALL release is available on GitHub.',
+        summary: 'Check whether a newer PRIMEVPN release is available on GitHub.',
       },
       {
         method: 'GET',
@@ -1238,7 +1238,7 @@ export const sections: readonly Section[] = [
     id: 'nodes',
     title: 'Nodes',
     description:
-      'Manage remote HEIMDALL panels acting as nodes for a central panel. All endpoints under /panel/api/nodes.',
+      'Manage remote PRIMEVPN panels acting as nodes for a central panel. All endpoints under /panel/api/nodes.',
     endpoints: [
       {
         method: 'GET',
@@ -1512,7 +1512,7 @@ export const sections: readonly Section[] = [
       {
         method: 'POST',
         path: '/panel/api/setting/restartPanel',
-        summary: 'Restart the entire HEIMDALL process after a 3-second grace period. The connection drops immediately; the panel comes back online ~5-10 seconds later.',
+        summary: 'Restart the entire PRIMEVPN process after a 3-second grace period. The connection drops immediately; the panel comes back online ~5-10 seconds later.',
       },
       {
         method: 'POST',

@@ -9,7 +9,7 @@ services:
     # (GOMEMLIMIT, ~90% of this cap) so it GCs before the OOM killer fires.
     # mem_limit: 512m
     volumes:
-      - $PWD/db/:/etc/x-ui/
+      - $PWD/db/:/etc/primevpn/
       - $PWD/cert/:/root/cert/
       # Persists acme.sh state so certificate auto-renewal survives container
       # recreation (the entrypoint re-registers the renewal cron job from it).

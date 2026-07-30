@@ -17,7 +17,7 @@
 
 **PRIMEVPN** es un panel de control web avanzado y de código abierto para gestionar servidores [Xray-core](https://github.com/XTLS/Xray-core). Ofrece una interfaz limpia y multilingüe para desplegar, configurar y monitorear una amplia gama de protocolos de proxy y VPN — desde un único VPS hasta despliegues multinodo.
 
-Construido como un fork mejorado del proyecto X-UI original, PRIMEVPN añade un soporte de protocolos más amplio, mayor estabilidad, contabilidad de tráfico por cliente y muchas funciones que mejoran la experiencia de uso.
+Construido como un fork mejorado del proyecto PRIMEVPN original, PRIMEVPN añade un soporte de protocolos más amplio, mayor estabilidad, contabilidad de tráfico por cliente y muchas funciones que mejoran la experiencia de uso.
 
 > [!IMPORTANT]
 > Este proyecto está destinado únicamente al uso personal. Por favor, no lo uses para fines ilegales ni en un entorno de producción.
@@ -82,7 +82,7 @@ Para instalar la versión **dev** continua (la última prelanzamiento por commit
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
-Durante la instalación se generan un nombre de usuario, una contraseña y una ruta de acceso aleatorios. Tras la instalación, ejecuta `x-ui` para abrir el menú de gestión, donde puedes iniciar/detener el servicio, ver o restablecer tus credenciales de acceso, gestionar certificados SSL y mucho más.
+Durante la instalación se generan un nombre de usuario, una contraseña y una ruta de acceso aleatorios. Tras la instalación, ejecuta `primevpn` para abrir el menú de gestión, donde puedes iniciar/detener el servicio, ver o restablecer tus credenciales de acceso, gestionar certificados SSL y mucho más.
 
 Para la documentación completa, visita la [Wiki del proyecto](https://github.com/sh7CBAC/PRIMEVPN/wiki).
 
@@ -91,7 +91,7 @@ Para la documentación completa, visita la [Wiki del proyecto](https://github.co
 El instalador también se ejecuta de forma **no interactiva** para cloud-init.
 Define `XUI_NONINTERACTIVE=1` (o canalízalo sin TTY) y realizará la instalación de principio a fin sin
 ninguna pregunta, generando credenciales aleatorias y escribiéndolas en
-`/etc/x-ui/install-result.env`. Consulta [`deploy/`](../../deploy/) para:
+`/etc/primevpn/install-result.env`. Consulta [`deploy/`](../../deploy/) para:
 
 - [User-data de cloud-init](../../deploy/cloud-init/) — instalación desatendida en cualquier nube (Hetzner/AWS/DO/Vultr/GCP/Azure/Oracle)
 - [Notas de Hetzner Cloud](../../deploy/marketplace/hetzner/) — despliegue basado en cloud-init en Hetzner
@@ -106,10 +106,10 @@ ninguna pregunta, generando credenciales aleatorias y escribiéndolas en
 
 PRIMEVPN admite dos backends, que se eligen durante la instalación:
 
-- **SQLite** (predeterminado) — un único archivo en `/etc/x-ui/x-ui.db`. Sin configuración, ideal para despliegues pequeños y medianos.
+- **SQLite** (predeterminado) — un único archivo en `/etc/primevpn/primevpn.db`. Sin configuración, ideal para despliegues pequeños y medianos.
 - **PostgreSQL** — recomendado para un gran número de clientes o configuraciones multinodo. El instalador puede instalar PostgreSQL localmente por ti, o aceptar un DSN a un servidor existente.
 
-En tiempo de ejecución, el backend se selecciona mediante variables de entorno (el instalador las escribe por ti en `/etc/default/x-ui`):
+En tiempo de ejecución, el backend se selecciona mediante variables de entorno (el instalador las escribe por ti en `/etc/default/primevpn`):
 
 ```
 XUI_DB_TYPE=postgres
@@ -119,9 +119,9 @@ XUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable
 ### Migrar una instalación de SQLite existente a PostgreSQL
 
 ```bash
-x-ui migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
-# luego define XUI_DB_TYPE y XUI_DB_DSN en /etc/default/x-ui y reinicia:
-systemctl restart x-ui
+primevpn migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
+# luego define XUI_DB_TYPE y XUI_DB_DSN en /etc/default/primevpn y reinicia:
+systemctl restart primevpn
 ```
 
 El archivo SQLite de origen permanece intacto; elimínalo manualmente una vez que hayas verificado el nuevo backend.
@@ -136,7 +136,7 @@ docker compose --profile postgres up -d
 
 
 ```bash
-docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
+docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/primevpn
 ```
 
 ## Variables de Entorno
@@ -145,7 +145,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
 | --- | --- | --- |
 | `XUI_DB_TYPE` | Backend de base de datos: `sqlite` o `postgres` | `sqlite` |
 | `XUI_DB_DSN` | Cadena de conexión de PostgreSQL (cuando `XUI_DB_TYPE=postgres`) | — |
-| `XUI_DB_FOLDER` | Directorio del archivo de base de datos SQLite | `/etc/x-ui` |
+| `XUI_DB_FOLDER` | Directorio del archivo de base de datos SQLite | `/etc/primevpn` |
 | `XUI_DB_MAX_OPEN_CONNS` | Máximo de conexiones abiertas (pool de PostgreSQL) | — |
 | `XUI_DB_MAX_IDLE_CONNS` | Máximo de conexiones inactivas (pool de PostgreSQL) | — |
 | `XUI_INIT_WEB_BASE_PATH` | La ruta URI inicial para el panel web | `/` |

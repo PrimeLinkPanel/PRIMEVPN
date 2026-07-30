@@ -18,7 +18,7 @@ from pathlib import Path
 from urllib.parse import urlparse, unquote
 
 
-# === HEIMDALL UI HELPERS ===
+# === PRIMEVPN UI HELPERS ===
 UI_RESET = "\033[0m"
 UI_PURPLE = "\033[38;5;141m"
 UI_CYAN = "\033[38;5;117m"
@@ -54,10 +54,10 @@ def ui_item(num, label):
 
 def ui_input(prompt_text):
     return input(f"\033[1;38;5;141m{prompt_text}\033[0m")
-# === END HEIMDALL UI HELPERS ===
+# === END PRIMEVPN UI HELPERS ===
 
 
-HEIMDALL_DB = os.environ.get("HEIMDALL_DB", "xui")
+PRIMEVPN_DB = os.environ.get("PRIMEVPN_DB", "xui")
 PSQL_USER = os.environ.get("PSQL_USER", "postgres")
 ALPHABET = string.ascii_lowercase + string.digits
 
@@ -109,13 +109,13 @@ def run_cmd(cmd, input_text=None, env=None):
         die(f"command failed: {' '.join(cmd)}")
     return res.stdout, res.stderr
 
-def run_heimdall_psql(sql):
-    cmd = ["sudo", "-u", PSQL_USER, "psql", "-d", HEIMDALL_DB, "-v", "ON_ERROR_STOP=1", "-Atc", sql]
+def run_primevpn_psql(sql):
+    cmd = ["sudo", "-u", PSQL_USER, "psql", "-d", PRIMEVPN_DB, "-v", "ON_ERROR_STOP=1", "-Atc", sql]
     out, _ = run_cmd(cmd)
     return out
 
-def run_heimdall_psql_script(sql):
-    cmd = ["sudo", "-u", PSQL_USER, "psql", "-d", HEIMDALL_DB, "-v", "ON_ERROR_STOP=1"]
+def run_primevpn_psql_script(sql):
+    cmd = ["sudo", "-u", PSQL_USER, "psql", "-d", PRIMEVPN_DB, "-v", "ON_ERROR_STOP=1"]
     return run_cmd(cmd, input_text=sql)
 
 def parse_env_file(path):
@@ -879,9 +879,9 @@ def parse_inbound_ids(raw):
             seen.add(i)
     return clean
 
-def validate_heimdall_tables():
+def validate_primevpn_tables():
     required = {"clients", "client_inbounds", "client_traffics", "inbounds"}
-    out = run_heimdall_psql("""
+    out = run_primevpn_psql("""
 SELECT table_name
 FROM information_schema.tables
 WHERE table_schema='public'
@@ -893,8 +893,8 @@ ORDER BY table_name;
     if missing:
         die(f"missing PRIMEVPN tables: {missing}")
 
-def fetch_heimdall_inbounds():
-    out = run_heimdall_psql("""
+def fetch_primevpn_inbounds():
+    out = run_primevpn_psql("""
 SELECT
   id || '|' ||
   COALESCE(protocol,'') || '|' ||
@@ -924,7 +924,7 @@ def validate_target_inbounds(inbound_ids, protocol=None):
     if not inbound_ids:
         return []
 
-    all_rows = fetch_heimdall_inbounds()
+    all_rows = fetch_primevpn_inbounds()
     by_id = {r["id"]: r for r in all_rows}
     missing = [i for i in inbound_ids if i not in by_id]
     if missing:
@@ -1084,7 +1084,7 @@ def build_clients(rows, inbound_ids, protocol, on_hold_policy, email_prefix, reg
                 "hwid_limit_ignored": r.get("hwid_limit"),
                 "data_limit_reset_strategy": r.get("data_limit_reset_strategy"),
             },
-            "heimdall": {
+            "primevpn": {
                 "email": client["email"],
                 "uuid": client["uuid"],
                 "total_gb": client["total_gb"],
@@ -1105,7 +1105,7 @@ def build_clients(rows, inbound_ids, protocol, on_hold_policy, email_prefix, reg
                 "traffic_policy": traffic_policy,
                 "hwid_policy": "ignored",
                 "speed_policy": "upload_mbps=0 download_mbps=0",
-                "owner_policy": "owner_admin_id=NULL then x-ui restart/fallback assigns Owner",
+                "owner_policy": "owner_admin_id=NULL then primevpn restart/fallback assigns Owner",
             },
             "warnings": warnings,
         })
@@ -1131,7 +1131,7 @@ FROM clients c
 JOIN input_uuids i ON i.uuid = c.uuid
 ORDER BY 1;
 """
-    out = run_heimdall_psql(sql).strip()
+    out = run_primevpn_psql(sql).strip()
     return out.splitlines() if out else []
 
 def build_insert_sql(clients):
@@ -1270,14 +1270,14 @@ WHERE i.id = b.inbound_id;
     stmts.append("COMMIT;")
     return "\n".join(stmts)
 
-def backup_heimdall_db():
+def backup_primevpn_db():
     ts = datetime.utcnow().strftime("%Y%m%dT%H%M%S.%fZ")
-    bkdir = Path(f"/root/heimdall-backup-before-yui-migration-{ts}")
+    bkdir = Path(f"/root/primevpn-backup-before-yui-migration-{ts}")
     bkdir.mkdir(parents=True, exist_ok=True)
     dump = bkdir / "xui-before-yui-migration.dump"
 
     with dump.open("wb") as f:
-        res = subprocess.run(["sudo", "-u", PSQL_USER, "pg_dump", "-Fc", "-d", HEIMDALL_DB], stdout=f, stderr=subprocess.PIPE, cwd="/tmp")
+        res = subprocess.run(["sudo", "-u", PSQL_USER, "pg_dump", "-Fc", "-d", PRIMEVPN_DB], stdout=f, stderr=subprocess.PIPE, cwd="/tmp")
 
     if res.returncode != 0:
         print(res.stderr.decode(errors="ignore"), file=sys.stderr)
@@ -1288,11 +1288,11 @@ def backup_heimdall_db():
     return bkdir
 
 def restart_xui():
-    run_cmd(["systemctl", "restart", "x-ui"])
+    run_cmd(["systemctl", "restart", "primevpn"])
     run_cmd(["sleep", "8"])
-    out, _ = run_cmd(["systemctl", "is-active", "x-ui"])
+    out, _ = run_cmd(["systemctl", "is-active", "primevpn"])
     if out.strip() != "active":
-        die("x-ui did not become active after restart")
+        die("primevpn did not become active after restart")
 
 def verify_imported_clients(clients):
     emails = ",".join(sql_literal(c["email"]) for c in clients)
@@ -1313,10 +1313,10 @@ FROM clients
 WHERE email IN ({emails})
 ORDER BY email;
 """
-    return run_heimdall_psql(sql)
+    return run_primevpn_psql(sql)
 
 def print_inbounds():
-    rows = fetch_heimdall_inbounds()
+    rows = fetch_primevpn_inbounds()
     print()
     print("PRIMEVPN existing inbounds:")
     if not rows:
@@ -1536,10 +1536,10 @@ def print_interactive_overview(panel_label, detected_from, source_kind, rows):
     print(f"      └─ {_tree_value('Status', status_text)}")
     print()
 
-    print("HEIMDALL")
+    print("PRIMEVPN")
     print("└─ Inbounds")
 
-    inbounds = fetch_heimdall_inbounds()
+    inbounds = fetch_primevpn_inbounds()
 
     if not inbounds:
         print("   └─ No inbound found")
@@ -1712,7 +1712,7 @@ def main():
             print("HWID_POLICY=ignored limit_ip=0")
             print()
 
-        validate_heimdall_tables()
+        validate_primevpn_tables()
         inbound_ids = parse_inbound_ids(args.inbounds)
         inbound_infos = validate_target_inbounds(inbound_ids)
 
@@ -1796,12 +1796,12 @@ def main():
 
         print()
         print("BACKUP_START")
-        bkdir = backup_heimdall_db()
+        bkdir = backup_primevpn_db()
         print(f"BACKUP_DIR={bkdir}")
 
         print()
         print("REAL_IMPORT_START")
-        stdout, stderr = run_heimdall_psql_script(sql_text)
+        stdout, stderr = run_primevpn_psql_script(sql_text)
         print(stdout)
 
         if stderr.strip():

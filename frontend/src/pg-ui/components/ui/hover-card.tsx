@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as HoverCardPrimitive from '@radix-ui/react-hover-card'
+import * as HoverCardPrimitive from '@radiprimevpn/react-hover-card'
 
 import { cn } from '@/pg-ui/lib/utils';
 

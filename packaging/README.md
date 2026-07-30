@@ -16,8 +16,8 @@ installed versions:
 
 - `install.sh`
 - `update.sh`
-- `x-ui.sh`
-- `x-ui.rc`
-- `x-ui.service.arch`
-- `x-ui.service.debian`
-- `x-ui.service.rhel`
+- `primevpn.sh`
+- `primevpn.rc`
+- `primevpn.service.arch`
+- `primevpn.service.debian`
+- `primevpn.service.rhel`

@@ -30,7 +30,7 @@ func seedLoginTestUser(t *testing.T, username, password, status string) {
 }
 
 func TestCheckUserAllowsActiveAdmin(t *testing.T) {
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 
@@ -52,7 +52,7 @@ func TestCheckUserAllowsActiveAdmin(t *testing.T) {
 }
 
 func TestCheckUserRejectsDisabledAdmin(t *testing.T) {
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 
@@ -74,7 +74,7 @@ func TestCheckUserRejectsDisabledAdmin(t *testing.T) {
 }
 
 func TestCheckUserRejectsUnknownAdmin(t *testing.T) {
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 
@@ -91,7 +91,7 @@ func TestCheckUserRejectsUnknownAdmin(t *testing.T) {
 }
 
 func TestCheckUserRejectsLimitedAdminWhenBlockFeatureEnabled(t *testing.T) {
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 

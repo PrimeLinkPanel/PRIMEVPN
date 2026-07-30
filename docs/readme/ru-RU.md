@@ -17,7 +17,7 @@
 
 **PRIMEVPN** — продвинутая веб-панель управления с открытым исходным кодом для управления серверами [Xray-core](https://github.com/XTLS/Xray-core). Она предоставляет аккуратный многоязычный интерфейс для развёртывания, настройки и мониторинга широкого спектра протоколов прокси и VPN — от одного VPS до развёртываний с несколькими узлами.
 
-Созданный как улучшенный форк оригинального проекта X-UI, PRIMEVPN добавляет более широкую поддержку протоколов, повышенную стабильность, учёт трафика по каждому клиенту и множество функций для удобства использования.
+Созданный как улучшенный форк оригинального проекта PRIMEVPN, PRIMEVPN добавляет более широкую поддержку протоколов, повышенную стабильность, учёт трафика по каждому клиенту и множество функций для удобства использования.
 
 > [!IMPORTANT]
 > Этот проект предназначен только для личного использования. Пожалуйста, не используйте его в незаконных целях или в производственной среде.
@@ -82,7 +82,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
-Во время установки генерируются случайные имя пользователя, пароль и путь доступа. После установки выполните `x-ui`, чтобы открыть меню управления, где можно запускать/останавливать сервис, просматривать или сбрасывать учётные данные для входа, управлять SSL-сертификатами и многое другое.
+Во время установки генерируются случайные имя пользователя, пароль и путь доступа. После установки выполните `primevpn`, чтобы открыть меню управления, где можно запускать/останавливать сервис, просматривать или сбрасывать учётные данные для входа, управлять SSL-сертификатами и многое другое.
 
 Полную документацию смотрите в [вики проекта](https://github.com/sh7CBAC/PRIMEVPN/wiki).
 
@@ -91,7 +91,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 Установщик также работает в **неинтерактивном** режиме для cloud-init.
 Задайте `XUI_NONINTERACTIVE=1` (или передайте по конвейеру без TTY), и установка пройдёт от начала до конца
 без единого запроса: будут сгенерированы случайные учётные данные и записаны в
-`/etc/x-ui/install-result.env`. Смотрите [`deploy/`](../../deploy/) для:
+`/etc/primevpn/install-result.env`. Смотрите [`deploy/`](../../deploy/) для:
 
 - [Cloud-init user-data](../../deploy/cloud-init/) — автоматическая установка в любом облаке (Hetzner/AWS/DO/Vultr/GCP/Azure/Oracle)
 - [Заметки по Hetzner Cloud](../../deploy/marketplace/hetzner/) — развёртывание на Hetzner на базе cloud-init
@@ -106,10 +106,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 
 PRIMEVPN поддерживает два бэкенда, выбираемых при установке:
 
-- **SQLite** (по умолчанию) — единый файл по пути `/etc/x-ui/x-ui.db`. Без настройки, идеально для небольших и средних развёртываний.
+- **SQLite** (по умолчанию) — единый файл по пути `/etc/primevpn/primevpn.db`. Без настройки, идеально для небольших и средних развёртываний.
 - **PostgreSQL** — рекомендуется при большом числе клиентов или конфигурациях с несколькими узлами. Установщик может установить PostgreSQL локально за вас или принять DSN к существующему серверу.
 
-Во время выполнения бэкенд выбирается через переменные окружения (установщик записывает их за вас в `/etc/default/x-ui`):
+Во время выполнения бэкенд выбирается через переменные окружения (установщик записывает их за вас в `/etc/default/primevpn`):
 
 ```
 XUI_DB_TYPE=postgres
@@ -119,9 +119,9 @@ XUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable
 ### Перенос существующей установки SQLite в PostgreSQL
 
 ```bash
-x-ui migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
-# затем задайте XUI_DB_TYPE и XUI_DB_DSN в /etc/default/x-ui и перезапустите:
-systemctl restart x-ui
+primevpn migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
+# затем задайте XUI_DB_TYPE и XUI_DB_DSN в /etc/default/primevpn и перезапустите:
+systemctl restart primevpn
 ```
 
 Исходный файл SQLite остаётся нетронутым; удалите его вручную после проверки нового бэкенда.
@@ -136,7 +136,7 @@ docker compose --profile postgres up -d
 
 
 ```bash
-docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
+docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/primevpn
 ```
 
 ## Переменные окружения
@@ -145,7 +145,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/sh7cbac/heimdall
 | --- | --- | --- |
 | `XUI_DB_TYPE` | Бэкенд базы данных: `sqlite` или `postgres` | `sqlite` |
 | `XUI_DB_DSN` | Строка подключения PostgreSQL (когда `XUI_DB_TYPE=postgres`) | — |
-| `XUI_DB_FOLDER` | Каталог для файла базы данных SQLite | `/etc/x-ui` |
+| `XUI_DB_FOLDER` | Каталог для файла базы данных SQLite | `/etc/primevpn` |
 | `XUI_DB_MAX_OPEN_CONNS` | Максимум открытых соединений (пул PostgreSQL) | — |
 | `XUI_DB_MAX_IDLE_CONNS` | Максимум простаивающих соединений (пул PostgreSQL) | — |
 | `XUI_INIT_WEB_BASE_PATH` | Начальный URI-путь для веб-панели | `/` |

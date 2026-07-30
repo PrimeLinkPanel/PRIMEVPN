@@ -15,7 +15,7 @@ import (
 func setupClientCreateFanoutDB(t *testing.T) {
 	t.Helper()
 
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() {
@@ -162,8 +162,8 @@ func clientFanoutMedian(values []time.Duration) time.Duration {
 }
 
 func TestCreateFanoutScaleDiagnostic(t *testing.T) {
-	if os.Getenv("HEIMDALL_RUN_PERF_DIAGNOSTIC") != "1" {
-		t.Skip("set HEIMDALL_RUN_PERF_DIAGNOSTIC=1 to run")
+	if os.Getenv("PRIMEVPN_RUN_PERF_DIAGNOSTIC") != "1" {
+		t.Skip("set PRIMEVPN_RUN_PERF_DIAGNOSTIC=1 to run")
 	}
 
 	const repetitions = 3

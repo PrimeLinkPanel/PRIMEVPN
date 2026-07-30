@@ -11,7 +11,7 @@ Virtuozzo、Arch、Manjaro、openSUSE（Tumbleweed/Leap）、Alpine——以及 
 
 <Callout type="warn">
   请以 **root** 身份（或使用 `sudo`）运行脚本安装程序。它会安装服务、
-  配置 `x-ui` 管理命令，并将面板设为开机自启。
+  配置 `primevpn` 管理命令，并将面板设为开机自启。
 </Callout>
 
 <Tabs items={['Script', 'Docker', 'Manual']}>
@@ -19,7 +19,7 @@ Virtuozzo、Arch、Manjaro、openSUSE（Tumbleweed/Leap）、Alpine——以及 
 <Tab value="Script">
 
 官方脚本是推荐的安装方式。安装过程中，它会生成一个**随机**的用户名、密码和访问（Web 根）路径，配置服务，
-并安装 `x-ui` 管理命令。
+并安装 `primevpn` 管理命令。
 
 ```bash title="latest stable"
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
@@ -38,8 +38,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
-安装完成后，记下打印出的登录信息并运行 `x-ui` 打开
-[管理菜单](/docs/guide/update-uninstall#the-x-ui-management-menu)，然后
+安装完成后，记下打印出的登录信息并运行 `primevpn` 打开
+[管理菜单](/docs/guide/update-uninstall#the-primevpn-management-menu)，然后
 继续阅读[首次登录](/docs/guide/first-login)。
 
 </Tab>
@@ -64,15 +64,15 @@ docker compose --profile postgres up -d
 
 ```bash title="docker run"
 docker run -d \
-  -v $PWD/db/:/etc/x-ui/ \
+  -v $PWD/db/:/etc/primevpn/ \
   -v $PWD/cert/:/root/cert/ \
   --network=host \
   --restart=unless-stopped \
   --name PRIMEVPN \
-  ghcr.io/sh7cbac/heimdall:latest
+  ghcr.io/sh7cbac/primevpn:latest
 ```
 
-`db/` 卷保存 SQLite 数据库（`/etc/x-ui/x-ui.db`），`cert/`
+`db/` 卷保存 SQLite 数据库（`/etc/primevpn/primevpn.db`），`cert/`
 保存 TLS 证书，因此你的数据可在升级后保留。
 
 </Tab>
@@ -98,7 +98,7 @@ docker run -d \
 
 你在安装时选择存储后端：
 
-- **SQLite**（默认）——位于 `/etc/x-ui/x-ui.db` 的单个文件。无需任何配置。
+- **SQLite**（默认）——位于 `/etc/primevpn/primevpn.db` 的单个文件。无需任何配置。
 - **PostgreSQL**——适用于客户端数量庞大或多节点的部署。安装程序
   可以在本地安装它，也可以使用你提供的 DSN。
 
@@ -109,7 +109,7 @@ docker run -d \
 安装程序也可**非交互式**运行，用于自动化。设置
 `XUI_NONINTERACTIVE=1`（或在无 TTY 的环境下运行），它便会全程零提示地完成
 端到端安装，生成随机凭据并写入
-`/etc/x-ui/install-result.env`：
+`/etc/primevpn/install-result.env`：
 
 ```bash
 XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
@@ -130,7 +130,7 @@ XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/P
   <Card
     title="更新与卸载"
     href="/docs/guide/update-uninstall"
-    description="x-ui 菜单、更新与移除。"
+    description="primevpn 菜单、更新与移除。"
   />
   <Card
     title="REALITY"

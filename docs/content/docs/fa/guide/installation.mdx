@@ -11,7 +11,7 @@ Virtuozzo، Arch، Manjaro، openSUSE (Tumbleweed/Leap)، Alpine — و همچن
 
 <Callout type="warn">
   نصب‌کنندهٔ اسکریپتی را به‌صورت **root** (یا با `sudo`) اجرا کنید. این اسکریپت یک
-  سرویس نصب می‌کند، دستور مدیریتی `x-ui` را راه‌اندازی می‌کند و پنل را در زمان
+  سرویس نصب می‌کند، دستور مدیریتی `primevpn` را راه‌اندازی می‌کند و پنل را در زمان
   بوت فعال می‌سازد.
 </Callout>
 
@@ -21,7 +21,7 @@ Virtuozzo، Arch، Manjaro، openSUSE (Tumbleweed/Leap)، Alpine — و همچن
 
 اسکریپت رسمی مسیر توصیه‌شده است. این اسکریپت در طول نصب یک نام کاربری، رمز عبور و
 مسیر دسترسی (مسیر پایهٔ وب) **تصادفی** تولید می‌کند، سرویس را راه‌اندازی می‌کند و
-دستور مدیریتی `x-ui` را نصب می‌کند.
+دستور مدیریتی `primevpn` را نصب می‌کند.
 
 ```bash title="latest stable"
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
@@ -40,8 +40,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
-پس از پایان نصب، مشخصات ورود چاپ‌شده را یادداشت کنید و دستور `x-ui` را اجرا کنید تا
-[منوی مدیریت](/docs/guide/update-uninstall#the-x-ui-management-menu) باز شود، سپس
+پس از پایان نصب، مشخصات ورود چاپ‌شده را یادداشت کنید و دستور `primevpn` را اجرا کنید تا
+[منوی مدیریت](/docs/guide/update-uninstall#the-primevpn-management-menu) باز شود، سپس
 به [نخستین ورود](/docs/guide/first-login) ادامه دهید.
 
 </Tab>
@@ -66,15 +66,15 @@ docker compose --profile postgres up -d
 
 ```bash title="docker run"
 docker run -d \
-  -v $PWD/db/:/etc/x-ui/ \
+  -v $PWD/db/:/etc/primevpn/ \
   -v $PWD/cert/:/root/cert/ \
   --network=host \
   --restart=unless-stopped \
   --name PRIMEVPN \
-  ghcr.io/sh7cbac/heimdall:latest
+  ghcr.io/sh7cbac/primevpn:latest
 ```
 
-والیوم `db/` پایگاه‌دادهٔ SQLite (`/etc/x-ui/x-ui.db`) را نگه می‌دارد و `cert/`
+والیوم `db/` پایگاه‌دادهٔ SQLite (`/etc/primevpn/primevpn.db`) را نگه می‌دارد و `cert/`
 گواهی‌های TLS را، بنابراین داده‌های شما در ارتقاها حفظ می‌شوند.
 
 </Tab>
@@ -101,7 +101,7 @@ docker run -d \
 
 شما بک‌اند ذخیره‌سازی را در زمان نصب انتخاب می‌کنید:
 
-- **SQLite** (پیش‌فرض) — یک فایل واحد در مسیر `/etc/x-ui/x-ui.db`. بدون نیاز به هیچ تنظیماتی.
+- **SQLite** (پیش‌فرض) — یک فایل واحد در مسیر `/etc/primevpn/primevpn.db`. بدون نیاز به هیچ تنظیماتی.
 - **PostgreSQL** — برای تعداد کلاینت بالا یا پیکربندی‌های چندنودی. نصب‌کننده
   می‌تواند آن را به‌صورت محلی نصب کند یا از یک DSN که شما ارائه می‌دهید استفاده کند.
 
@@ -113,7 +113,7 @@ docker run -d \
 نصب‌کننده برای خودکارسازی به‌صورت **غیرتعاملی** نیز اجرا می‌شود.
 `XUI_NONINTERACTIVE=1` را تنظیم کنید (یا بدون TTY اجرا کنید) تا نصب به‌صورت
 سرتاسری و بدون هیچ پرسشی انجام شود، مشخصات تصادفی تولید کند و آن‌ها را در
-`/etc/x-ui/install-result.env` بنویسد:
+`/etc/primevpn/install-result.env` بنویسد:
 
 ```bash
 XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
@@ -134,7 +134,7 @@ DigitalOcean، Vultr، GCP، Azure، Oracle) دارد.
   <Card
     title="به‌روزرسانی و حذف نصب"
     href="/docs/guide/update-uninstall"
-    description="منوی x-ui، به‌روزرسانی‌ها و حذف."
+    description="منوی primevpn، به‌روزرسانی‌ها و حذف."
   />
   <Card
     title="REALITY"

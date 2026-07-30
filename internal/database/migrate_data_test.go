@@ -19,7 +19,7 @@ func TestMigrateData_CompositeKeyTableLargerThanBatch(t *testing.T) {
 	}
 
 	// Seed a SQLite source with the full schema and >500 client_inbounds rows.
-	srcPath := t.TempDir() + "/x-ui.db"
+	srcPath := t.TempDir() + "/primevpn.db"
 	src, err := gorm.Open(sqlite.Open(srcPath), &gorm.Config{Logger: logger.Discard})
 	if err != nil {
 		t.Fatalf("open sqlite: %v", err)
@@ -69,7 +69,7 @@ func TestMigrateData_PreservesFalseDefaultedColumns(t *testing.T) {
 		t.Skip("set XUI_TEST_PG_DSN to a reachable Postgres to run this test")
 	}
 
-	srcPath := t.TempDir() + "/x-ui.db"
+	srcPath := t.TempDir() + "/primevpn.db"
 	src, err := gorm.Open(sqlite.Open(srcPath), &gorm.Config{Logger: logger.Discard})
 	if err != nil {
 		t.Fatalf("open sqlite: %v", err)
@@ -146,7 +146,7 @@ func TestMigrateData_FailedCopyLeavesDestinationUntouched(t *testing.T) {
 
 	seedSource := func(username string) string {
 		t.Helper()
-		srcPath := t.TempDir() + "/x-ui.db"
+		srcPath := t.TempDir() + "/primevpn.db"
 		src, err := gorm.Open(sqlite.Open(srcPath), &gorm.Config{Logger: logger.Discard})
 		if err != nil {
 			t.Fatalf("open sqlite: %v", err)

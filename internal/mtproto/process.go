@@ -54,7 +54,7 @@ var (
 )
 
 // procLogWriter consumes the mtg child process's stdout/stderr. It splits the
-// stream into lines, forwards each one to the x-ui log — so mtg's own messages,
+// stream into lines, forwards each one to the primevpn log — so mtg's own messages,
 // including why it cannot reach Telegram, become visible in the panel log viewer
 // and journald — and remembers the most recent line for GetResult.
 type procLogWriter struct {

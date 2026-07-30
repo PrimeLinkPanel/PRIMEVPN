@@ -27,9 +27,9 @@ const REMARK_MODELS: Record<string, string> = { i: 'Inbound', e: 'Email', o: 'Ot
 const REMARK_SAMPLES: Record<string, string> = { i: 'Germany', e: 'john', o: 'Relay' };
 const REMARK_SEPARATORS = [' ', '-', '_', '@', ':', '~', '|', ',', '.', '/'];
 
-const OURENUS_SUB_TEMPLATE_DIR = '/usr/local/x-ui/sub_templates/ourenus';
-const SANAEI_SUB_TEMPLATE_SENTINEL = '__heimdall_sanaei_default__';
-const CUSTOM_SUB_TEMPLATE_DIR = '/usr/local/x-ui/sub_templates/custom';
+const OURENUS_SUB_TEMPLATE_DIR = '/usr/local/primevpn/sub_templates/ourenus';
+const SANAEI_SUB_TEMPLATE_SENTINEL = '__primevpn_sanaei_default__';
+const CUSTOM_SUB_TEMPLATE_DIR = '/usr/local/primevpn/sub_templates/custom';
 
 type SubscriptionTemplatePreset = 'default' | 'sanaei' | 'custom';
 
@@ -252,7 +252,7 @@ export default function SubscriptionGeneralTab({ allSetting, updateSetting }: Su
                   {subscriptionTemplatePreset === 'custom' && (
                     <Input
                       value={allSetting.subThemeDir}
-                      placeholder="/usr/local/x-ui/sub_templates/custom"
+                      placeholder="/usr/local/primevpn/sub_templates/custom"
                       onChange={(e) => updateSetting({ subThemeDir: e.target.value })}
                     />
                   )}

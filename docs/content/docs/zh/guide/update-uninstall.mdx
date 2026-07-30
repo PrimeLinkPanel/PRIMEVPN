@@ -1,17 +1,17 @@
 ---
 title: 更新与卸载
-description: 使用 x-ui 菜单和命令行管理 PRIMEVPN——更新稳定版或开发版、修改设置，以及干净地卸载。
+description: 使用 primevpn 菜单和命令行管理 PRIMEVPN——更新稳定版或开发版、修改设置，以及干净地卸载。
 icon: RefreshCw
 ---
 
-脚本安装完成后，`x-ui` 命令就是你的控制中心。不带参数运行它会进入交互式菜单，
+脚本安装完成后，`primevpn` 命令就是你的控制中心。不带参数运行它会进入交互式菜单，
 或传入一个子命令来执行单次操作。
 
 ```bash
-x-ui
+primevpn
 ```
 
-## The `x-ui` management menu
+## The `primevpn` management menu
 
 菜单（项 `0`–`27`）在顶部显示面板/Xray 状态，然后列出：
 
@@ -20,7 +20,7 @@ x-ui
 | 1     | Install                                | 从远程脚本（重新）安装                                       |
 | 2     | Update                                 | 更新到最新的**稳定版**                                       |
 | 3     | Update to Dev Channel (latest commit)  | 更新到滚动的 `dev-latest` 构建                               |
-| 4     | Update Menu                            | 仅更新 `x-ui` 菜单脚本                                       |
+| 4     | Update Menu                            | 仅更新 `primevpn` 菜单脚本                                       |
 | 5     | Legacy Version (Disabled)              | PRIMEVPN 已禁用上游旧版本安装                              |
 | 6     | Uninstall                              | 移除 PRIMEVPN（见下文）                                        |
 | 7     | Reset Username & Password              | 设置新凭据；可选择禁用 2FA                                   |
@@ -50,29 +50,29 @@ x-ui
 
 ## 命令行子命令
 
-对于脚本和快速操作，`x-ui` 也可直接接受一个子命令：
+对于脚本和快速操作，`primevpn` 也可直接接受一个子命令：
 
 | Command                    | Action                                              |
 | -------------------------- | --------------------------------------------------- |
-| `x-ui start` / `stop` / `restart` | 控制服务                                     |
-| `x-ui restart-xray`        | 仅重新加载 Xray-core                               |
-| `x-ui status`              | 显示状态                                           |
-| `x-ui settings`            | 显示当前设置                                       |
-| `x-ui enable` / `disable`  | 开关开机自启                                       |
-| `x-ui log`                 | 跟踪查看调试日志                                   |
-| `x-ui update`              | 更新到最新的稳定版                                 |
-| `x-ui update-dev`          | 更新到滚动的 `dev-latest` 构建                     |
-| `x-ui legacy`              | 返回错误；上游旧版本安装已禁用                             |
-| `x-ui update-all-geofiles` | 更新所有 geo 文件，如有变化则重启                  |
-| `x-ui migrate-db --dsn …`  | 将 SQLite → PostgreSQL 迁移（见 [数据库](/docs/reference/database)） |
-| `x-ui pgclient [ver]`      | 安装或升级 PostgreSQL 客户端工具                            |
-| `x-ui install` / `uninstall` | 安装 / 卸载                                       |
+| `primevpn start` / `stop` / `restart` | 控制服务                                     |
+| `primevpn restart-xray`        | 仅重新加载 Xray-core                               |
+| `primevpn status`              | 显示状态                                           |
+| `primevpn settings`            | 显示当前设置                                       |
+| `primevpn enable` / `disable`  | 开关开机自启                                       |
+| `primevpn log`                 | 跟踪查看调试日志                                   |
+| `primevpn update`              | 更新到最新的稳定版                                 |
+| `primevpn update-dev`          | 更新到滚动的 `dev-latest` 构建                     |
+| `primevpn legacy`              | 返回错误；上游旧版本安装已禁用                             |
+| `primevpn update-all-geofiles` | 更新所有 geo 文件，如有变化则重启                  |
+| `primevpn migrate-db --dsn …`  | 将 SQLite → PostgreSQL 迁移（见 [数据库](/docs/reference/database)） |
+| `primevpn pgclient [ver]`      | 安装或升级 PostgreSQL 客户端工具                            |
+| `primevpn install` / `uninstall` | 安装 / 卸载                                       |
 
 ## 更新
 
-- **稳定版：** 菜单选项 **2** 或 `x-ui update`。重新运行安装脚本
+- **稳定版：** 菜单选项 **2** 或 `primevpn update`。重新运行安装脚本
   同样会就地更新。
-- **开发版渠道：** 菜单选项 **3** 或 `x-ui update-dev`——即滚动的
+- **开发版渠道：** 菜单选项 **3** 或 `primevpn update-dev`——即滚动的
   `dev-latest` 逐提交构建（并非稳定版）。
 - **上游旧版本：** PRIMEVPN 已禁用此路径；请改用稳定版或开发版渠道。
 
@@ -82,16 +82,16 @@ x-ui
 <Callout type="info">
   Docker 用户的更新方式不同——拉取新镜像并重新创建容器
   （`docker compose pull && docker compose up -d`），而不是使用
-  `x-ui` 更新命令。
+  `primevpn` 更新命令。
 </Callout>
 
 ## 卸载
 
-菜单选项 **6** 或 `x-ui uninstall`。它会停止并禁用服务、移除服务单元，
-并删除 `/etc/x-ui/` 和安装目录。如果面板使用的是本地安装的 PostgreSQL，
+菜单选项 **6** 或 `primevpn uninstall`。它会停止并禁用服务、移除服务单元，
+并删除 `/etc/primevpn/` 和安装目录。如果面板使用的是本地安装的 PostgreSQL，
 它还会询问是否一并清除（这是一次单独的、不可逆的确认）。
 
 <Callout type="warn">
-  卸载会删除数据库（`/etc/x-ui/x-ui.db`）和你的配置。
+  卸载会删除数据库（`/etc/primevpn/primevpn.db`）和你的配置。
   如果以后可能还需要，请先[备份](/docs/operations/backup-restore)。
 </Callout>

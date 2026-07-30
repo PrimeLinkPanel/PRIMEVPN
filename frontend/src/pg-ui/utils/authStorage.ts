@@ -2,8 +2,8 @@ const AUTH_TOKEN_KEYS = [
   'token',
   'authToken',
   'accessToken',
-  'x-ui-token',
-  'heimdall.auth.token',
+  'primevpn-token',
+  'primevpn.auth.token',
 ] as const;
 
 export function getAuthToken(): string | null {

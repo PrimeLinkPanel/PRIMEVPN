@@ -54,7 +54,7 @@ body:
     attributes:
       label: Relevant logs
       description: |
-        Panel logs (`journalctl -u x-ui -n 200`) and/or the browser DevTools
+        Panel logs (`journalctl -u primevpn -n 200`) and/or the browser DevTools
         console output. **Redact** tokens, real domains, IPs, and client UUIDs.
       render: shell
     validations:

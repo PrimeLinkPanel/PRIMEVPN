@@ -29,7 +29,7 @@ func TestSniffImportKind(t *testing.T) {
 	}
 
 	t.Run("panel migration dump", func(t *testing.T) {
-		dbPath := filepath.Join(t.TempDir(), "x-ui.db")
+		dbPath := filepath.Join(t.TempDir(), "primevpn.db")
 		if err := database.InitDB(dbPath); err != nil {
 			t.Fatalf("InitDB: %v", err)
 		}

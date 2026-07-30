@@ -1,5 +1,5 @@
 import { cn } from '@/pg-ui/lib/utils';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from '@radiprimevpn/react-slot';
 import { cva } from 'class-variance-authority';
 import type { VariantProps } from 'class-variance-authority';
 import { LoaderCircleIcon } from 'lucide-react';

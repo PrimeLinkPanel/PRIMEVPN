@@ -12,7 +12,7 @@ import (
 
 func initAccurateBillingTestDB(t *testing.T) {
 	t.Helper()
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 }

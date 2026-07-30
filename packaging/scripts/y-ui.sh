@@ -8,7 +8,7 @@ yellow='\033[0;33m'
 blue='\033[0;34m'
 plain='\033[0m'
 
-### HEIMDALL UI HELPERS ###
+### PRIMEVPN UI HELPERS ###
 ui_rule() {
     local width="${YUI_BOX_WIDTH:-44}"
     local line=""
@@ -70,7 +70,7 @@ ui_item() {
     printf '  [38;5;%sm%s)[0m %s
 ' "$color" "$num" "$label"
 }
-### END HEIMDALL UI HELPERS ###
+### END PRIMEVPN UI HELPERS ###
 
 
 clear_screen() {
@@ -111,13 +111,13 @@ fi
 
 case "${release}" in
     ubuntu | debian | armbian)
-        xui_env_file="/etc/default/x-ui"
+        xui_env_file="/etc/default/primevpn"
         ;;
     arch | manjaro | parch | alpine)
-        xui_env_file="/etc/conf.d/x-ui"
+        xui_env_file="/etc/conf.d/primevpn"
         ;;
     *)
-        xui_env_file="/etc/sysconfig/x-ui"
+        xui_env_file="/etc/sysconfig/primevpn"
         ;;
 esac
 
@@ -253,9 +253,9 @@ ensure_systemd_environment_file() {
         return 0
     fi
 
-    install -d -m 755 /etc/systemd/system/x-ui.service.d
+    install -d -m 755 /etc/systemd/system/primevpn.service.d
 
-    cat > /etc/systemd/system/x-ui.service.d/10-y-ui-env.conf <<ENVEOF
+    cat > /etc/systemd/system/primevpn.service.d/10-y-ui-env.conf <<ENVEOF
 [Service]
 EnvironmentFile=-${xui_env_file}
 ENVEOF
@@ -265,26 +265,26 @@ ENVEOF
 
 restart_xui() {
     if [[ "${release}" == "alpine" ]] && command -v rc-service >/dev/null 2>&1; then
-        if rc-service x-ui restart; then
-            info "x-ui restarted successfully."
+        if rc-service primevpn restart; then
+            info "primevpn restarted successfully."
             return 0
         fi
 
-        error "Failed to restart x-ui."
+        error "Failed to restart primevpn."
         return 1
     fi
 
     if command -v systemctl >/dev/null 2>&1; then
         ensure_systemd_environment_file
 
-        if systemctl restart x-ui; then
-            info "x-ui restarted successfully."
+        if systemctl restart primevpn; then
+            info "primevpn restarted successfully."
             return 0
         fi
 
-        error "Failed to restart x-ui."
+        error "Failed to restart primevpn."
         echo
-        journalctl -u x-ui -n 30 --no-pager
+        journalctl -u primevpn -n 30 --no-pager
         return 1
     fi
 

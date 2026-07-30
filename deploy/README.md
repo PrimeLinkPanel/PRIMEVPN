@@ -28,4 +28,4 @@ secure random / default):
 `XUI_SERVER_IP` (fallback IP for the displayed access URL when auto-detection fails),
 `XUI_DB_TYPE` (`sqlite`|`postgres`), `XUI_DB_DSN`.
 
-The resulting credentials are written to `/etc/x-ui/install-result.env` (mode 600).
+The resulting credentials are written to `/etc/primevpn/install-result.env` (mode 600).

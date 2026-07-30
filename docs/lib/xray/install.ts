@@ -11,7 +11,7 @@ export interface InstallOptions {
 }
 
 const REPO_RAW = 'https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh';
-const IMAGE = 'ghcr.io/sh7cbac/heimdall:latest';
+const IMAGE = 'ghcr.io/sh7cbac/primevpn:latest';
 
 function isLatest(version: string): boolean {
   const v = version.trim().toLowerCase();
@@ -37,7 +37,7 @@ export function buildDockerRun(options: InstallOptions): string {
   if (options.panelPort.trim()) lines.push(`  -e XUI_PORT=${options.panelPort.trim()}`);
   if (options.webBasePath.trim())
     lines.push(`  -e XUI_INIT_WEB_BASE_PATH=${options.webBasePath.trim()}`);
-  lines.push(`  -v $PWD/db/:/etc/x-ui/`);
+  lines.push(`  -v $PWD/db/:/etc/primevpn/`);
   lines.push(`  -v $PWD/cert/:/root/cert/`);
   lines.push(`  --network=host`);
   lines.push(`  --restart=unless-stopped`);
@@ -61,7 +61,7 @@ export function buildDockerCompose(options: InstallOptions): string {
     `    image: ${IMAGE}`,
     `    container_name: PRIMEVPN`,
     `    volumes:`,
-    `      - ./db/:/etc/x-ui/`,
+    `      - ./db/:/etc/primevpn/`,
     `      - ./cert/:/root/cert/`,
     `    environment:`,
     ...env,

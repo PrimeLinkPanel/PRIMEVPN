@@ -10,7 +10,7 @@ import (
 // Locks the #5665 guard: composite-PK client_inbounds has no id column, so the
 // sequence-reset SQL must never be issued for it.
 func TestTableWithIdColumn_SkipsCompositeKeyModels(t *testing.T) {
-	if err := InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = CloseDB() })
@@ -30,7 +30,7 @@ func TestTableWithIdColumn_SkipsCompositeKeyModels(t *testing.T) {
 // Exercises the #5665 AutoMigrate skip on SQLite (the check is dialect-agnostic):
 // settled after InitDB, not settled with a missing column or table.
 func TestPostgresModelSettled_TracksSchemaPresence(t *testing.T) {
-	if err := InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := InitDB(filepath.Join(t.TempDir(), "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = CloseDB() })

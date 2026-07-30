@@ -24,7 +24,7 @@ http://<your-server-ip>:<port>/<web-base-path>
 При установке через скрипт по завершении выводится сводка учётных данных,
 которая также записывается в файл, доступный только пользователю root:
 
-```bash title="/etc/x-ui/install-result.env (mode 600)"
+```bash title="/etc/primevpn/install-result.env (mode 600)"
 XUI_USERNAME=...
 XUI_PASSWORD=...
 XUI_PANEL_PORT=...
@@ -37,12 +37,12 @@ XUI_DB_TYPE=sqlite
 Если вы их пропустили, воспользуйтесь инструментами управления:
 
 ```bash
-x-ui              # menu → 11 (View Current Settings)
-x-ui settings     # or the one-shot form
+primevpn              # menu → 11 (View Current Settings)
+primevpn settings     # or the one-shot form
 ```
 
 В случае **Docker** прочитайте сгенерированные учётные данные из логов
-контейнера или выполните `docker exec -it <container> x-ui setting -show`.
+контейнера или выполните `docker exec -it <container> primevpn setting -show`.
 
 <Callout type="warn">
   Если ваша панель всё ещё использует учётные данные по умолчанию `admin` /
@@ -54,7 +54,7 @@ x-ui settings     # or the one-shot form
 
 Нестандартный порт и длинный случайный **базовый веб-путь** значительно
 усложняют обнаружение панели. Измените их в разделе **Panel Settings** в
-интерфейсе или через меню `x-ui`:
+интерфейсе или через меню `primevpn`:
 
 - **7 — Reset Username & Password** (с возможностью одновременно отключить 2FA)
 - **8 — Reset Web Base Path** (генерирует случайный путь)
@@ -69,7 +69,7 @@ PRIMEVPN поддерживает двухфакторную аутентифи�
 Authenticator, Aegis и т. п.). Включите её в разделе **Panel Settings** — после
 включения страница входа будет запрашивать 6-значный код в дополнение к паролю,
 а её активация заставит всех войти заново. Отключить 2FA можно через пункт меню
-**Reset Username & Password** или командой `x-ui setting -resetTwoFactor`.
+**Reset Username & Password** или командой `primevpn setting -resetTwoFactor`.
 
 ## Встроенная защита входа
 
@@ -110,7 +110,7 @@ Authenticator, Aegis и т. п.). Включите её в разделе **Pane
 <Step>
 ### Разместите панель за TLS
 
-Используйте действительный сертификат (через управление SSL в меню `x-ui` или
+Используйте действительный сертификат (через управление SSL в меню `primevpn` или
 обратный прокси), чтобы панель была доступна только по HTTPS.
 </Step>
 

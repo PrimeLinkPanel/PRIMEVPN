@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "HEIMDALL Panel API",
+    "title": "PRIMEVPN Panel API",
     "version": "3.x",
-    "description": "Programmatic interface to a HEIMDALL panel. Most protected APIs accept either a browser session cookie or an API token from Settings → Security → API Token. Operations marked browser-session-only reject Bearer tokens. Treat every API token like a panel password."
+    "description": "Programmatic interface to a PRIMEVPN panel. Most protected APIs accept either a browser session cookie or an API token from Settings → Security → API Token. Operations marked browser-session-only reject Bearer tokens. Treat every API token like a panel password."
   },
   "servers": [
     {
@@ -21,7 +21,7 @@
       "cookieAuth": {
         "type": "apiKey",
         "in": "cookie",
-        "name": "heimdall",
+        "name": "primevpn",
         "description": "Session cookie set by POST /login. Browser-only."
       }
     },
@@ -2789,7 +2789,7 @@
     },
     {
       "name": "Nodes",
-      "description": "Manage remote HEIMDALL panels acting as nodes for a central panel. All endpoints under /panel/api/nodes."
+      "description": "Manage remote PRIMEVPN panels acting as nodes for a central panel. All endpoints under /panel/api/nodes."
     },
     {
       "name": "Hosts",
@@ -4455,7 +4455,7 @@
         "tags": [
           "Server"
         ],
-        "summary": "Check whether a newer HEIMDALL release is available on GitHub.",
+        "summary": "Check whether a newer PRIMEVPN release is available on GitHub.",
         "operationId": "get_panel_api_server_getPanelUpdateInfo",
         "responses": {
           "200": {
@@ -11856,7 +11856,7 @@
         "tags": [
           "Settings"
         ],
-        "summary": "Restart the entire HEIMDALL process after a 3-second grace period. The connection drops immediately; the panel comes back online ~5-10 seconds later.",
+        "summary": "Restart the entire PRIMEVPN process after a 3-second grace period. The connection drops immediately; the panel comes back online ~5-10 seconds later.",
         "operationId": "post_panel_api_setting_restartPanel",
         "responses": {
           "200": {

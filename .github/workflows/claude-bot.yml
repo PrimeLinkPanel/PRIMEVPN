@@ -55,7 +55,7 @@ jobs:
               process (internal/xray/process.go) and also imports
               github.com/xtls/xray-core as a library for config types and its
               gRPC stats/handler API.
-            - Storage: SQLite by default (file at /etc/x-ui/x-ui.db);
+            - Storage: SQLite by default (file at /etc/primevpn/primevpn.db);
               PostgreSQL optional. Backend chosen at runtime via env vars.
             - Frontend: React 19 + Ant Design 6 + Vite 8 + TypeScript in
               frontend/, built into internal/web/dist/, which the Go server
@@ -63,7 +63,7 @@ jobs:
               tree no longer exist.
 
             Repository map:
-            - main.go                  entry point + the `x-ui` management CLI
+            - main.go                  entry point + the `primevpn` management CLI
                                        (subcommands: run, migrate, migrate-db,
                                        setting, cert, ...)
             - internal/config/         embedded name/version, env parsing
@@ -115,32 +115,32 @@ jobs:
             - tools/openapigen/        Go generator for the OpenAPI spec and
                                        frontend API types
             - docs/                    extra docs (custom subscription templates)
-            - install.sh, update.sh, x-ui.sh, x-ui.service.*  install/upgrade
+            - install.sh, update.sh, primevpn.sh, primevpn.service.*  install/upgrade
               + systemd units
             - Dockerfile, docker-compose.yml, packaging/docker/entrypoint.sh, packaging/docker/init.sh
-            - packaging/windows/, x-ui.rc  Windows packaging policy and support notes. (A top-level
-              x-ui/ folder, if present, is gitignored local runtime data, not
+            - packaging/windows/, primevpn.rc  Windows packaging policy and support notes. (A top-level
+              primevpn/ folder, if present, is gitignored local runtime data, not
               source.)
 
             Verified runtime facts (still confirm in code/README/wiki before quoting):
             - Linux install: bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
             - Windows is also a supported platform (see README "Supported
               Platforms" and packaging/windows/).
-            - Management menu: run `x-ui` on the server.
+            - Management menu: run `primevpn` on the server.
             - Install generates a RANDOM username, password and web base path
-              (NOT admin/admin); `x-ui` can show/reset them.
-            - SQLite DB: /etc/x-ui/x-ui.db (folder overridable via XUI_DB_FOLDER).
-            - Installer env/config file: /etc/default/x-ui
+              (NOT admin/admin); `primevpn` can show/reset them.
+            - SQLite DB: /etc/primevpn/primevpn.db (folder overridable via XUI_DB_FOLDER).
+            - Installer env/config file: /etc/default/primevpn
             - Env vars (full list; see README table and internal/config/):
               XUI_DB_TYPE (sqlite|postgres, default sqlite), XUI_DB_DSN,
-              XUI_DB_FOLDER (default /etc/x-ui), XUI_DB_MAX_OPEN_CONNS,
+              XUI_DB_FOLDER (default /etc/primevpn), XUI_DB_MAX_OPEN_CONNS,
               XUI_DB_MAX_IDLE_CONNS, XUI_INIT_WEB_BASE_PATH (default /),
               XUI_LOG_LEVEL (default info),
               XUI_LOG_FOLDER, XUI_BIN_FOLDER, XUI_SKIP_HSTS, XUI_DEBUG.
-            - SQLite -> PostgreSQL: `x-ui migrate-db --dsn "postgres://..."`, then
-              set XUI_DB_TYPE/XUI_DB_DSN in /etc/default/x-ui and
-              `systemctl restart x-ui`. The source SQLite file is left in place.
-            - Docker image: ghcr.io/sh7cbac/heimdall. PostgreSQL profile:
+            - SQLite -> PostgreSQL: `primevpn migrate-db --dsn "postgres://..."`, then
+              set XUI_DB_TYPE/XUI_DB_DSN in /etc/default/primevpn and
+              `systemctl restart primevpn`. The source SQLite file is left in place.
+            - Docker image: ghcr.io/sh7cbac/primevpn. PostgreSQL profile:
               `docker compose --profile postgres up -d`. custom-core limiter IP-limit
               enforcement needs NET_ADMIN + NET_RAW (compose grants them via
               cap_add; a bare `docker run` must add
@@ -181,7 +181,7 @@ jobs:
               promise fixes, timelines, or releases.
             - When information is missing, request it as a short numbered list
               of exactly what is needed and why (e.g. panel version from
-              `x-ui`, OS, install method, relevant logs).
+              `primevpn`, OS, install method, relevant logs).
             - One comment only; keep it as short as completeness allows.
             - End with one italic line stating the reply was generated
               automatically and a maintainer may follow up.
@@ -240,7 +240,7 @@ jobs:
                Xray config logic in internal/xray/, subscriptions in
                internal/sub/, MTProto in internal/mtproto/, schema in
                internal/database/ and internal/database/model/, UI behavior in
-               frontend/src/, install/upgrade logic in install.sh / x-ui.sh /
+               frontend/src/, install/upgrade logic in install.sh / primevpn.sh /
                main.go. Confirm exact option names, defaults, file paths, CLI
                flags, and error strings in the source. For "is this fixed /
                which version" questions, check the latest release and recent
@@ -251,7 +251,7 @@ jobs:
 
             5. CATEGORIZE: Add the most fitting existing label(s)
                (bug / enhancement / question / documentation / invalid). If key
-               info is missing (version from `x-ui`, OS, install method - script
+               info is missing (version from `primevpn`, OS, install method - script
                vs Docker, Xray/inbound config, or relevant logs), also add the
                "clarification needed" label.
                If the issue's stated type is wrong - for example filed as a
@@ -361,13 +361,13 @@ jobs:
             Xray-core as a managed child process (internal/xray/process.go)
             and imports github.com/xtls/xray-core for config types and its
             gRPC stats/handler API. Storage is SQLite by default
-            (/etc/x-ui/x-ui.db) or PostgreSQL (XUI_DB_TYPE/XUI_DB_DSN).
+            (/etc/primevpn/primevpn.db) or PostgreSQL (XUI_DB_TYPE/XUI_DB_DSN).
             Frontend is React 19 + Ant Design 6 + Vite 8 + TypeScript in
             frontend/, built into internal/web/dist/ which the Go server
             embeds and serves.
 
             Repository map:
-            - main.go                  entry point + the x-ui management CLI
+            - main.go                  entry point + the primevpn management CLI
             - internal/config/         embedded name/version, env parsing
             - internal/database/       GORM init, migrations
               - internal/database/model/  models + inbound Protocol enum
@@ -392,7 +392,7 @@ jobs:
             - frontend/                React + TypeScript source
             - tools/openapigen/        OpenAPI spec + frontend API types
             - docs/                    extra docs
-            - install.sh, update.sh, x-ui.sh, main.go  install/upgrade + CLI
+            - install.sh, update.sh, primevpn.sh, main.go  install/upgrade + CLI
 
             PROJECT CONVENTIONS to respect in every edit you make:
             - No inline // comments in Go/JS/Vue/TS edits (HTML <!-- --> is
@@ -553,13 +553,13 @@ jobs:
             Xray-core as a managed child process (internal/xray/process.go)
             and imports github.com/xtls/xray-core for config types and its
             gRPC stats/handler API. Storage is SQLite by default
-            (/etc/x-ui/x-ui.db) or PostgreSQL (XUI_DB_TYPE/XUI_DB_DSN).
+            (/etc/primevpn/primevpn.db) or PostgreSQL (XUI_DB_TYPE/XUI_DB_DSN).
             Frontend is React 19 + Ant Design 6 + Vite 8 + TypeScript in
             frontend/, built into internal/web/dist/ which the Go server
             embeds and serves.
 
             Repository map:
-            - main.go                  entry point + the x-ui management CLI
+            - main.go                  entry point + the primevpn management CLI
             - internal/config/         embedded name/version, env parsing
             - internal/database/       GORM init, migrations
               - internal/database/model/  models + inbound Protocol enum
@@ -759,7 +759,7 @@ jobs:
             --append-system-prompt "You are replying to an @claude mention from the repository owner in the sh7CBAC/PRIMEVPN repository, an open-source web panel for managing Xray-core servers. Only the owner can trigger you, so you may make code changes and open pull requests when the owner asks. The full repo source is checked out in the working directory; use Read, Glob and Grep to open and verify the relevant files before stating any default, path, flag, option name, or behavior.
 
             Key layout:
-            - main.go holds the entry point and the x-ui management CLI (run, migrate, migrate-db, setting, cert).
+            - main.go holds the entry point and the primevpn management CLI (run, migrate, migrate-db, setting, cert).
             - internal/config/ parses env vars (XUI_DEBUG, XUI_LOG_LEVEL, XUI_LOG_FOLDER, XUI_BIN_FOLDER, XUI_SKIP_HSTS, XUI_DB_FOLDER, XUI_DB_TYPE, XUI_DB_DSN).
             - internal/database/ and internal/database/model/ hold the GORM schema (Inbound, Client, Setting, User) and the inbound protocol enum (vmess, vless, tunnel, http, trojan, shadowsocks, mixed, wireguard, hysteria, mtproto).
             - internal/mtproto/ runs MTProto (Telegram) proxy inbounds via the bundled mtg binary.
@@ -775,7 +775,7 @@ jobs:
             - tools/openapigen generates the OpenAPI spec and frontend API types.
             - docs/ holds extra documentation.
 
-            Stack and runtime facts: Backend is Go (module github.com/mhsanaei/PRIMEVPN/v3) with Gin and GORM; storage is SQLite by default at /etc/x-ui/x-ui.db or PostgreSQL via XUI_DB_TYPE and XUI_DB_DSN; further env vars include XUI_DB_FOLDER, XUI_DB_MAX_OPEN_CONNS, XUI_DB_MAX_IDLE_CONNS, XUI_INIT_WEB_BASE_PATH, the installer writes env to /etc/default/x-ui; SQLite to PostgreSQL migration is x-ui migrate-db --dsn followed by a service restart; install uses install.sh and the x-ui menu, generating random initial credentials; Docker image is ghcr.io/sh7cbac/heimdall and custom-core limiter IP-limit enforcement needs NET_ADMIN and NET_RAW; Windows is a supported platform. Do not hardcode a version: for version or is-this-fixed questions, check the latest release and recent commits or closed PRs with gh.
+            Stack and runtime facts: Backend is Go (module github.com/mhsanaei/PRIMEVPN/v3) with Gin and GORM; storage is SQLite by default at /etc/primevpn/primevpn.db or PostgreSQL via XUI_DB_TYPE and XUI_DB_DSN; further env vars include XUI_DB_FOLDER, XUI_DB_MAX_OPEN_CONNS, XUI_DB_MAX_IDLE_CONNS, XUI_INIT_WEB_BASE_PATH, the installer writes env to /etc/default/primevpn; SQLite to PostgreSQL migration is primevpn migrate-db --dsn followed by a service restart; install uses install.sh and the primevpn menu, generating random initial credentials; Docker image is ghcr.io/sh7cbac/primevpn and custom-core limiter IP-limit enforcement needs NET_ADMIN and NET_RAW; Windows is a supported platform. Do not hardcode a version: for version or is-this-fixed questions, check the latest release and recent commits or closed PRs with gh.
 
             Style: professional, courteous, and matter-of-fact; no emoji, no exclamation marks, no filler; lead with the answer in the first sentence; use fenced code blocks for commands and backtick formatting for paths and setting names; distinguish what you confirmed in the source (name the file) from what you infer; never promise fixes, timelines, or releases. Ground every claim in the code or the README and wiki; do not invent features, paths, flags, or commands, and do not stop at the first plausible match. Token cost is not a concern, so investigate as deeply as the question needs.
 

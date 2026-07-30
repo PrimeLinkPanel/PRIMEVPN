@@ -43,7 +43,7 @@ export default function TwoFactorModal({
     setQrValue('');
     if (token) {
       const totp = new OTPAuth.TOTP({
-        issuer: 'HEIMDALL',
+        issuer: 'PRIMEVPN',
         label: 'Administrator',
         algorithm: 'SHA1',
         digits: 6,

@@ -9,7 +9,7 @@ PRIMEVPN همه چیز را — inboundها، کلاینت‌ها و تنظیم�
 
 ## SQLite (پیش‌فرض)
 
-یک فایل واحد در مسیر `/etc/x-ui/x-ui.db`. بدون نیاز به هیچ راه‌اندازی، ایده‌آل برای
+یک فایل واحد در مسیر `/etc/primevpn/primevpn.db`. بدون نیاز به هیچ راه‌اندازی، ایده‌آل برای
 استقرارهای کوچک و متوسط. این پوشه با
 [`XUI_DB_FOLDER`](/docs/reference/env-vars#database) قابل تنظیم است (در ویندوز به‌طور
 پیش‌فرض کنار فایل اجرایی قرار می‌گیرد).
@@ -19,9 +19,9 @@ PRIMEVPN همه چیز را — inboundها، کلاینت‌ها و تنظیم�
 برای تعداد بالای کلاینت‌ها یا راه‌اندازی‌های چندنودی توصیه می‌شود. نصب‌کننده می‌تواند
 PostgreSQL را به‌صورت محلی برای شما نصب کند، یا یک DSN به سروری موجود را بپذیرد. در زمان
 اجرا بک‌اند از طریق متغیرهای محیطی انتخاب می‌شود که نصب‌کننده آن‌ها را در
-`/etc/default/x-ui` می‌نویسد:
+`/etc/default/primevpn` می‌نویسد:
 
-```bash title="/etc/default/x-ui"
+```bash title="/etc/default/primevpn"
 XUI_DB_TYPE=postgres
 XUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable
 ```
@@ -44,14 +44,14 @@ docker compose --profile postgres up -d
 یک نصب موجود SQLite را با دستور داخلی به PostgreSQL منتقل کنید:
 
 ```bash
-x-ui migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
+primevpn migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
 ```
 
-سپس `XUI_DB_TYPE` و `XUI_DB_DSN` را در `/etc/default/x-ui` تنظیم کرده و سرویس را مجدداً
+سپس `XUI_DB_TYPE` و `XUI_DB_DSN` را در `/etc/default/primevpn` تنظیم کرده و سرویس را مجدداً
 راه‌اندازی کنید:
 
 ```bash
-systemctl restart x-ui
+systemctl restart primevpn
 ```
 
 <Callout type="info">

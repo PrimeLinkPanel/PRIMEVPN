@@ -1196,7 +1196,7 @@ update_PRIMEVPN() {
     expected_xui_version="${tag_version#v}"
     installed_xui_version="${installed_xui_version#v}"
     if [[ -z "${installed_xui_version}" || "${installed_xui_version}" != "${expected_xui_version}" ]]; then
-        _fail "ERROR: Installed HEIMDALL version verification failed. expected=${expected_xui_version}, got=${installed_xui_version:-unknown}"
+        _fail "ERROR: Installed PRIMEVPN version verification failed. expected=${expected_xui_version}, got=${installed_xui_version:-unknown}"
     fi
 
     echo -e "${green}PRIMEVPN ${tag_version}${plain} updating finished, it is running now..."

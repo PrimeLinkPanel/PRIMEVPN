@@ -1,5 +1,5 @@
 import { cn } from '@/pg-ui/lib/utils';
-import * as ProgressPrimitive from '@radix-ui/react-progress'
+import * as ProgressPrimitive from '@radiprimevpn/react-progress'
 import * as React from 'react'
 
 const Progress = React.forwardRef<

@@ -11,7 +11,7 @@ across `amd64`, `386`, `arm64`, `armv7`, `armv6`, `armv5`, and `s390x`.
 
 <Callout type="warn">
   Run the script installer as **root** (or with `sudo`). It installs a service,
-  sets up the `x-ui` management command, and enables the panel on boot.
+  sets up the `primevpn` management command, and enables the panel on boot.
 </Callout>
 
 <Tabs items={['Script', 'Docker', 'Manual']}>
@@ -20,7 +20,7 @@ across `amd64`, `386`, `arm64`, `armv7`, `armv6`, `armv5`, and `s390x`.
 
 The official script is the recommended path. During installation it generates a
 **random** username, password, and access (web base) path, sets up the service,
-and installs the `x-ui` management command.
+and installs the `primevpn` management command.
 
 ```bash title="latest stable"
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
@@ -39,8 +39,8 @@ Install the rolling **dev** build (the latest per-commit pre-release from `main`
 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
-When it finishes, note the printed login details and run `x-ui` to open the
-[management menu](/docs/guide/update-uninstall#the-x-ui-management-menu), then
+When it finishes, note the printed login details and run `primevpn` to open the
+[management menu](/docs/guide/update-uninstall#the-primevpn-management-menu), then
 continue to [First login](/docs/guide/first-login).
 
 </Tab>
@@ -65,15 +65,15 @@ Prefer the prebuilt image? It's published to the GitHub Container Registry:
 
 ```bash title="docker run"
 docker run -d \
-  -v $PWD/db/:/etc/x-ui/ \
+  -v $PWD/db/:/etc/primevpn/ \
   -v $PWD/cert/:/root/cert/ \
   --network=host \
   --restart=unless-stopped \
   --name PRIMEVPN \
-  ghcr.io/sh7cbac/heimdall:latest
+  ghcr.io/sh7cbac/primevpn:latest
 ```
 
-The `db/` volume holds the SQLite database (`/etc/x-ui/x-ui.db`) and `cert/`
+The `db/` volume holds the SQLite database (`/etc/primevpn/primevpn.db`) and `cert/`
 holds TLS certificates, so your data survives upgrades.
 
 </Tab>
@@ -99,7 +99,7 @@ Tailor the command to your setup:
 
 You pick the storage backend at install time:
 
-- **SQLite** (default) — a single file at `/etc/x-ui/x-ui.db`. Zero setup.
+- **SQLite** (default) — a single file at `/etc/primevpn/primevpn.db`. Zero setup.
 - **PostgreSQL** — for high client counts or multi-node setups. The installer
   can install it locally or use a DSN you provide.
 
@@ -111,7 +111,7 @@ migration.
 The installer also runs **non-interactively** for automation. Set
 `XUI_NONINTERACTIVE=1` (or run with no TTY) and it installs end-to-end with zero
 prompts, generating random credentials and writing them to
-`/etc/x-ui/install-result.env`:
+`/etc/primevpn/install-result.env`:
 
 ```bash
 XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
@@ -132,7 +132,7 @@ cloud (Hetzner, AWS, DigitalOcean, Vultr, GCP, Azure, Oracle).
   <Card
     title="Update & uninstall"
     href="/docs/guide/update-uninstall"
-    description="The x-ui menu, updates, and removal."
+    description="The primevpn menu, updates, and removal."
   />
   <Card
     title="REALITY"

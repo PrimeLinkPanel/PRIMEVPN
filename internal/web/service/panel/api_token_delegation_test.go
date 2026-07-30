@@ -17,7 +17,7 @@ func initDelegatedAPITokenTestDB(t *testing.T) {
 	t.Helper()
 	dir := t.TempDir()
 	t.Setenv("XUI_DB_FOLDER", dir)
-	if err := database.InitDB(filepath.Join(dir, "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(dir, "primevpn.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

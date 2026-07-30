@@ -5,22 +5,22 @@ icon: Variable
 ---
 
 PRIMEVPN 从 `XUI_*` 环境变量中读取其运行时配置。使用脚本安装时，安装程序会将
-这些变量写入服务环境文件（`/etc/default/x-ui`，或视发行版而定的
-`/etc/conf.d/x-ui` / `/etc/sysconfig/x-ui`）；使用 Docker 时，则在
+这些变量写入服务环境文件（`/etc/default/primevpn`，或视发行版而定的
+`/etc/conf.d/primevpn` / `/etc/sysconfig/primevpn`）；使用 Docker 时，则在
 `docker-compose.yml` 或 `docker run -e` 中设置。默认值已足够合理——只需设置
-你需要更改的项，然后重启即可：`systemctl restart x-ui`。
+你需要更改的项，然后重启即可：`systemctl restart primevpn`。
 
 ## 数据库
 
 | Variable                 | Default     | Description                                                          |
 | ------------------------ | ----------- | -------------------------------------------------------------------- |
 | `XUI_DB_TYPE`            | `sqlite`    | 后端：`sqlite`，或 `postgres`（也接受 `postgresql` / `pg`）。       |
-| `XUI_DB_FOLDER`          | `/etc/x-ui` | SQLite 数据库文件（`x-ui.db`）所在的文件夹。                         |
+| `XUI_DB_FOLDER`          | `/etc/primevpn` | SQLite 数据库文件（`primevpn.db`）所在的文件夹。                         |
 | `XUI_DB_DSN`             | —           | PostgreSQL 连接字符串（当 `XUI_DB_TYPE=postgres` 时使用）。          |
 | `XUI_DB_MAX_OPEN_CONNS`  | —           | PostgreSQL 连接池中的最大打开连接数。                               |
 | `XUI_DB_MAX_IDLE_CONNS`  | —           | PostgreSQL 连接池中的最大空闲连接数。                               |
 
-默认的 SQLite 数据库路径为 `/etc/x-ui/x-ui.db`。有关 SQLite ↔ PostgreSQL 的
+默认的 SQLite 数据库路径为 `/etc/primevpn/primevpn.db`。有关 SQLite ↔ PostgreSQL 的
 细节，参见 [数据库](/docs/reference/database)。
 
 ## 面板
@@ -37,7 +37,7 @@ PRIMEVPN 从 `XUI_*` 环境变量中读取其运行时配置。使用脚本安�
 | ---------------- | ---------------- | ----------------------------------------------------------- |
 | `XUI_LOG_LEVEL`  | `info`           | `debug`、`info`、`notice`、`warning` 或 `error`。           |
 | `XUI_DEBUG`      | `false`          | 调试模式（强制将日志级别设为 `debug`）。                    |
-| `XUI_LOG_FOLDER` | `/var/log/x-ui`  | 日志输出目录。                                              |
+| `XUI_LOG_FOLDER` | `/var/log/primevpn`  | 日志输出目录。                                              |
 | `XUI_BIN_FOLDER` | `bin`            | 存放 Xray-core 二进制文件及 geosite/geoip 文件的文件夹。    |
 
 ## 内存与性能分析
@@ -78,4 +78,4 @@ PRIMEVPN 从 `XUI_*` 环境变量中读取其运行时配置。使用脚本安�
 
 | Variable             | Description                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------- |
-| `XUI_NONINTERACTIVE` | 设为 `1`（或在无 TTY 的环境下运行）即可在零提示的情况下完成安装；生成的凭据会写入 `/etc/x-ui/install-result.env`。参见 [安装](/docs/guide/installation#unattended--cloud-init)。 |
+| `XUI_NONINTERACTIVE` | 设为 `1`（或在无 TTY 的环境下运行）即可在零提示的情况下完成安装；生成的凭据会写入 `/etc/primevpn/install-result.env`。参见 [安装](/docs/guide/installation#unattended--cloud-init)。 |

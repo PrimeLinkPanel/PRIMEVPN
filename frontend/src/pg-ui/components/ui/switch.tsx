@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as SwitchPrimitives from '@radix-ui/react-switch'
+import * as SwitchPrimitives from '@radiprimevpn/react-switch'
 
 import { cn } from '@/pg-ui/lib/utils';
 

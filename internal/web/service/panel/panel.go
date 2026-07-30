@@ -250,7 +250,7 @@ func (s *PanelService) startUpdate(useDev bool) (int64, error) {
 	statusFileEnv := "XUI_UPDATE_STATUS_FILE=" + statusFile
 
 	if systemdRun, err := exec.LookPath("systemd-run"); err == nil {
-		unitName := fmt.Sprintf("x-ui-web-update-%d", time.Now().Unix())
+		unitName := fmt.Sprintf("primevpn-web-update-%d", time.Now().Unix())
 		cmd := exec.CommandContext(context.Background(), systemdRun,
 			"--unit", unitName,
 			"--setenv", "XUI_MAIN_FOLDER="+mainFolder,
@@ -369,7 +369,7 @@ func downloadPanelUpdater() (string, error) {
 		return "", fmt.Errorf("download panel updater: unexpected HTTP %d", resp.StatusCode)
 	}
 
-	file, err := os.CreateTemp("", "heimdall-update-*.sh")
+	file, err := os.CreateTemp("", "primevpn-update-*.sh")
 	if err != nil {
 		return "", err
 	}
@@ -494,7 +494,7 @@ func resolveUpdateFolders() (string, string) {
 		}
 	}
 	if mainFolder == "" {
-		mainFolder = "/usr/local/x-ui"
+		mainFolder = "/usr/local/primevpn"
 	}
 
 	serviceFolder := os.Getenv("XUI_SERVICE")

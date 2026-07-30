@@ -29,7 +29,7 @@ close and the configured inactivity delay elapses.
 ## Firewall
 
 Open only the ports you actually use: SSH, the panel port, the subscription
-port, and your inbound ports. The `x-ui` menu (**22 — Firewall Management**) wraps
+port, and your inbound ports. The `primevpn` menu (**22 — Firewall Management**) wraps
 `ufw`, or generate rules here:
 
 <FirewallRulesGenerator />
@@ -41,7 +41,7 @@ port, and your inbound ports. The `x-ui` menu (**22 — Firewall Management**) w
 
 ## Network tuning (BBR)
 
-The `x-ui` menu (**25 — Enable BBR**) toggles Google's BBR congestion control
+The `primevpn` menu (**25 — Enable BBR**) toggles Google's BBR congestion control
 (`net.ipv4.tcp_congestion_control = bbr`, `net.core.default_qdisc = fq`), which
 often improves throughput on congested links.
 
