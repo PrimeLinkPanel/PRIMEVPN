@@ -4,8 +4,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
 )
 
 // EffectiveFlowsByEmails resolves intended flow for many clients in one batched

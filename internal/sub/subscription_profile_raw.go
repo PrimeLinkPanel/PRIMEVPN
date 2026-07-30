@@ -7,7 +7,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
 )
 
 // modernSubscriptionProfileLinks is the raw/share-link counterpart of the

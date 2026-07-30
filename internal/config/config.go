@@ -1,4 +1,4 @@
-// Package config provides configuration management utilities for the 3x-ui panel,
+// Package config provides configuration management utilities for the PRIMEVPN panel,
 // including version information, logging levels, database paths, and environment variable handling.
 package config
 
@@ -41,7 +41,7 @@ const (
 	Error   LogLevel = "error"
 )
 
-// GetBaseVersion returns the raw embedded release version of the 3x-ui panel
+// GetBaseVersion returns the raw embedded release version of the PRIMEVPN panel
 // (e.g. "3.4.0"). This is the panel's own version, not the Xray version. For the
 // version a panel advertises/displays (which adds a "dev+<sha>" label on dev
 // builds), use GetPanelVersion.
@@ -49,7 +49,7 @@ func GetBaseVersion() string {
 	return strings.TrimSpace(version)
 }
 
-// GetName returns the name of the 3x-ui application.
+// GetName returns the name of the PRIMEVPN application.
 func GetName() string {
 	return strings.TrimSpace(name)
 }
@@ -216,7 +216,7 @@ func GetLogFolder() string {
 	// scatters a log/ directory through the source tree (one per tested package).
 	// Redirect test runs to a shared temp folder so the source tree stays clean.
 	if testing.Testing() {
-		return filepath.Join(os.TempDir(), "3x-ui-test-log")
+		return filepath.Join(os.TempDir(), "PRIMEVPN-test-log")
 	}
 	if runtime.GOOS == "windows" {
 		return filepath.Join(".", "log")

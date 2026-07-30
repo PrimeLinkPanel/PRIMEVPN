@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
 )
 
 func TestNormalizeKeepsMtls(t *testing.T) {

@@ -4,7 +4,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
 )
 
 func TestSniffImportKind(t *testing.T) {

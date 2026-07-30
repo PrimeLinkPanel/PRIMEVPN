@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/util/common"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service/integration"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service/outbound"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/common"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service/integration"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service/outbound"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xray"
 
 	"github.com/gin-gonic/gin"
 )

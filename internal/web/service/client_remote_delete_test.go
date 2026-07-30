@@ -7,9 +7,9 @@ import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xray"
 )
 
 func inboundHasClientEmail(t *testing.T, inboundSvc *InboundService, inboundID int, email string) bool {

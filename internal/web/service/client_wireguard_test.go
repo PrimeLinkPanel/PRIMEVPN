@@ -3,8 +3,8 @@ package service
 import (
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	wgutil "github.com/mhsanaei/3x-ui/v3/internal/util/wireguard"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	wgutil "github.com/mhsanaei/PRIMEVPN/v3/internal/util/wireguard"
 )
 
 func TestAllocateWireguardAddress(t *testing.T) {

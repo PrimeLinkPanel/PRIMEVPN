@@ -9,11 +9,11 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/common"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/common"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xray"
 
 	"gorm.io/gorm"
 )
@@ -863,7 +863,7 @@ func (s *ClientService) BulkDelete(inboundSvc *InboundService, emails []string, 
 
 	if len(successIds) > 0 {
 		// Serialize row cleanup against the traffic poll and preserve
-		// Heimdall's activity lifecycle. When accounting is retained, shift
+		// PRIMEVPN's activity lifecycle. When accounting is retained, shift
 		// group baselines before deleting ClientRecord rows; otherwise the
 		// complete traffic purge below performs that adjustment exactly once.
 		err = runSerializedTx(func(tx *gorm.DB) error {

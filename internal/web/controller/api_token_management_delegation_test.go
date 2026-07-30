@@ -13,11 +13,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/crypto"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service/panel"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/session"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/crypto"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service/panel"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/session"
 )
 
 type apiTokenManagementEnvelope struct {

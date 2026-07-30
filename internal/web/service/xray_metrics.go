@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/eventbus"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/eventbus"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
 )
 
 type xrayMetricsState struct {

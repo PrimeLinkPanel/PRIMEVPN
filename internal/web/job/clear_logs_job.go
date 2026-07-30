@@ -3,8 +3,8 @@ package job
 import (
 	"os"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xray"
 )
 
 const defaultMaxXrayLogBytes int64 = 64 << 20
@@ -29,7 +29,7 @@ func NewPruneXrayLogsJob() *PruneXrayLogsJob {
 
 // Run clears configured Xray access and error logs during daily cleanup.
 //
-// Heimdall's native client-IP enforcement does not consume legacy IP-limit
+// PRIMEVPN's native client-IP enforcement does not consume legacy IP-limit
 // or banned-IP log files, so those files are neither created nor rotated.
 func (j *ClearLogsJob) Run() {
 	wipeXrayLogs()

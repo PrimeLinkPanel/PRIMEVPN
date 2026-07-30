@@ -8,8 +8,8 @@ import (
 	"github.com/goccy/go-json"
 	yaml "github.com/goccy/go-yaml"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	wgutil "github.com/mhsanaei/3x-ui/v3/internal/util/wireguard"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	wgutil "github.com/mhsanaei/PRIMEVPN/v3/internal/util/wireguard"
 )
 
 type SubClashService struct {
@@ -492,7 +492,7 @@ func (s *SubClashService) buildWireguardProxy(subReq *SubService, inbound *model
 	return proxy
 }
 
-// buildXhttpClashOpts converts xhttpSettings from 3x-ui's camelCase JSON
+// buildXhttpClashOpts converts xhttpSettings from PRIMEVPN's camelCase JSON
 // storage into the kebab-case map that Mihomo expects under xhttp-opts.
 //
 // Only client-relevant fields are included (allowlist approach).

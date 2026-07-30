@@ -8,9 +8,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service/panel"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service/panel"
 )
 
 func mountDelegatedScopeTestRoutes(engine *gin.Engine, api *APIController) {

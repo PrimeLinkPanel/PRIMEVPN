@@ -1,6 +1,6 @@
 ---
 title: Security
-description: Harden 3x-ui — panel auth and 2FA, custom-core IP limits, firewall rules, BBR, and staying current.
+description: Harden PRIMEVPN — panel auth and 2FA, custom-core IP limits, firewall rules, BBR, and staying current.
 icon: ShieldCheck
 ---
 
@@ -21,7 +21,7 @@ See [First login](/docs/guide/first-login) for the full checklist.
 
 Set a **Limit IP** value per client (see [Clients](/docs/config/clients)). A value
 of `0` is unlimited; a positive value accepts the first N distinct active source
-IPs. Heimdall's pinned custom Xray core rejects additional source IPs before
+IPs. PRIMEVPN's pinned custom Xray core rejects additional source IPs before
 outbound dispatch. No access-log parser, external banning service, or firewall
 jail is required. A slot is released after all dispatch contexts for the address
 close and the configured inactivity delay elapses.
@@ -47,6 +47,6 @@ often improves throughput on congested links.
 
 ## Keep current
 
-Update 3x-ui and Xray-core regularly — security fixes land in new releases. Watch
-the [releases page](https://github.com/sh7CBAC/Heimdall/releases) and see
+Update PRIMEVPN and Xray-core regularly — security fixes land in new releases. Watch
+the [releases page](https://github.com/sh7CBAC/PRIMEVPN/releases) and see
 [Update & uninstall](/docs/guide/update-uninstall).

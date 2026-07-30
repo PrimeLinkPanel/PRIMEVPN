@@ -1,4 +1,4 @@
-name: Heimdall Container Publishing Disabled
+name: PRIMEVPN Container Publishing Disabled
 
 on:
   workflow_dispatch:
@@ -17,6 +17,6 @@ jobs:
         run: |
           set -Eeuo pipefail
 
-          echo "Automatic Heimdall container publishing is disabled."
+          echo "Automatic PRIMEVPN container publishing is disabled."
           echo "Container images must not substitute an official prebuilt core."
           echo "The v1.5.0 stable distribution is linux-amd64 archive only."

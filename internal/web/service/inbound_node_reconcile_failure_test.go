@@ -11,8 +11,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/runtime"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/runtime"
 )
 
 // One rejected inbound must not abort reconciliation of the remaining

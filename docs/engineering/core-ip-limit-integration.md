@@ -60,4 +60,4 @@ go build -trimpath -o x-ui-panel ./main.go
 
 ## Legacy IP-limit components
 
-`CheckClientIpJob` remains only for compatibility and online-client observation. IP-limit enforcement is performed exclusively by the pinned Heimdall custom core.
+`CheckClientIpJob` remains only for compatibility and online-client observation. IP-limit enforcement is performed exclusively by the pinned PRIMEVPN custom core.

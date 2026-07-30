@@ -87,7 +87,7 @@ export default function VersionModal({ open, status, onClose, onBusy }: VersionM
                   type="info"
                   className="mb-12"
                   showIcon
-                  message="Heimdall Custom Xray Core is locked"
+                  message="PRIMEVPN Custom Xray Core is locked"
                   description="Core switching from the panel is disabled to preserve Speed Limit, Upload/Download Limit, and Core-Level Connection Limit features."
                 />
                 <div className="version-list">

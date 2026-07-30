@@ -1058,7 +1058,7 @@ export const sections: readonly Section[] = [
     title: 'Admins',
     auth: 'cookie-only',
     description:
-      'Manage Heimdall panel administrator accounts from an active browser session. Bearer API tokens are rejected. Access follows administrator RBAC permissions, and password hashes are never returned.',
+      'Manage PRIMEVPN panel administrator accounts from an active browser session. Bearer API tokens are rejected. Access follows administrator RBAC permissions, and password hashes are never returned.',
     endpoints: [
       {
         method: 'GET',
@@ -1178,7 +1178,7 @@ export const sections: readonly Section[] = [
     title: 'Admin Roles',
     auth: 'cookie-only',
     description:
-      'Manage Heimdall dashboard roles and RBAC presets from an active browser session. Bearer API tokens are rejected. Access follows role-management RBAC permissions; built-in and owner roles retain their backend protections.',
+      'Manage PRIMEVPN dashboard roles and RBAC presets from an active browser session. Bearer API tokens are rejected. Access follows role-management RBAC permissions; built-in and owner roles retain their backend protections.',
     endpoints: [
       {
         method: 'GET',

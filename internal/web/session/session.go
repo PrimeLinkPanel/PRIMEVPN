@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -19,7 +19,7 @@ const (
 	loginEpochKey       = "LOGIN_EPOCH"
 	apiAuthUserKey      = "api_auth_user"
 	apiAuthPrincipalKey = "api_auth_principal"
-	sessionCookieName   = "3x-ui"
+	sessionCookieName   = "PRIMEVPN"
 )
 
 const APIAuthPrincipalKindMTLS = "mtls"

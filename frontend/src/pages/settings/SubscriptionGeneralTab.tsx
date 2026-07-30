@@ -10,16 +10,16 @@ import { catTabLabel } from './catTabLabel';
 import { sanitizePath, normalizePath } from './uriPath';
 import { SMART_IRAN_DIRECT_RULES_JSON, isSmartIranDirectRules } from './smartIranDirect';
 
-type HeimdallSettingExtras = {
+type PRIMEVPNSettingExtras = {
   remarkModel?: string;
 };
 
 function getRemarkModelSetting(allSetting: unknown): string {
-  return ((allSetting as HeimdallSettingExtras).remarkModel || '').toString();
+  return ((allSetting as PRIMEVPNSettingExtras).remarkModel || '').toString();
 }
 
 function withRemarkModelPatch(remarkModel: string) {
-  return { remarkModel } as Partial<never> & HeimdallSettingExtras;
+  return { remarkModel } as Partial<never> & PRIMEVPNSettingExtras;
 }
 
 
@@ -102,7 +102,7 @@ export default function SubscriptionGeneralTab({ allSetting, updateSetting }: Su
     updateSetting(withRemarkModelPatch(sep + tail));
   }
 
-  // Preserve Heimdall remark-model helpers after upstream sync; the full UI wiring is validated later.
+  // Preserve PRIMEVPN remark-model helpers after upstream sync; the full UI wiring is validated later.
   void REMARK_MODELS;
   void REMARK_SEPARATORS;
   void remarkSample;
@@ -229,7 +229,7 @@ export default function SubscriptionGeneralTab({ allSetting, updateSetting }: Su
                 <>
                   {t('pages.settings.subThemeDirDesc')}{' '}
                   <a
-                    href="https://github.com/sh7CBAC/Heimdall-Panel/blob/main/docs/custom-subscription-templates.md"
+                    href="https://github.com/sh7CBAC/PRIMEVPN-Panel/blob/main/docs/custom-subscription-templates.md"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -244,7 +244,7 @@ export default function SubscriptionGeneralTab({ allSetting, updateSetting }: Su
                     onChange={setSubscriptionTemplatePreset}
                     style={{ width: '100%' }}
                     options={[
-                      { value: 'default', label: 'Default Heimdall' },
+                      { value: 'default', label: 'Default PRIMEVPN' },
                       { value: 'sanaei', label: 'Sanaei' },
                       { value: 'custom', label: 'Custom Path' },
                     ]}

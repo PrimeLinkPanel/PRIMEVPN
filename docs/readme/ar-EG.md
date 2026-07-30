@@ -2,22 +2,22 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../media/3x-ui-dark.png">
-    <img alt="3x-ui" src="../../media/3x-ui-light.png">
+    <source media="(prefers-color-scheme: dark)" srcset="../../media/PRIMEVPN-dark.png">
+    <img alt="PRIMEVPN" src="../../media/PRIMEVPN-light.png">
   </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/sh7CBAC/Heimdall/releases"><img src="https://img.shields.io/github/v/release/sh7CBAC/Heimdall" alt="Release"></a>
-  <a href="https://github.com/sh7CBAC/Heimdall/actions"><img src="https://img.shields.io/github/actions/workflow/status/sh7CBAC/Heimdall/release.yml.svg" alt="Build"></a>
-  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/sh7CBAC/Heimdall.svg" alt="GO Version"></a>
-  <a href="https://github.com/sh7CBAC/Heimdall/releases/latest"><img src="https://img.shields.io/github/downloads/sh7CBAC/Heimdall/total.svg" alt="Downloads"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/releases"><img src="https://img.shields.io/github/v/release/sh7CBAC/PRIMEVPN" alt="Release"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/actions"><img src="https://img.shields.io/github/actions/workflow/status/sh7CBAC/PRIMEVPN/release.yml.svg" alt="Build"></a>
+  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/sh7CBAC/PRIMEVPN.svg" alt="GO Version"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/releases/latest"><img src="https://img.shields.io/github/downloads/sh7CBAC/PRIMEVPN/total.svg" alt="Downloads"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true" alt="License"></a>
 </p>
 
-**3X-UI** هي لوحة تحكم ويب متقدمة ومفتوحة المصدر لإدارة خوادم [Xray-core](https://github.com/XTLS/Xray-core). توفّر واجهة نظيفة ومتعددة اللغات لنشر وتكوين ومراقبة مجموعة واسعة من بروتوكولات الوكيل وVPN — من خادم VPS واحد إلى عمليات النشر متعددة العقد.
+**PRIMEVPN** هي لوحة تحكم ويب متقدمة ومفتوحة المصدر لإدارة خوادم [Xray-core](https://github.com/XTLS/Xray-core). توفّر واجهة نظيفة ومتعددة اللغات لنشر وتكوين ومراقبة مجموعة واسعة من بروتوكولات الوكيل وVPN — من خادم VPS واحد إلى عمليات النشر متعددة العقد.
 
-تم بناء 3X-UI كنسخة محسّنة (fork) من مشروع X-UI الأصلي، وتضيف دعمًا أوسع للبروتوكولات، واستقرارًا محسّنًا، ومحاسبة للترافيك لكل عميل، والعديد من ميزات تحسين تجربة الاستخدام.
+تم بناء PRIMEVPN كنسخة محسّنة (fork) من مشروع X-UI الأصلي، وتضيف دعمًا أوسع للبروتوكولات، واستقرارًا محسّنًا، ومحاسبة للترافيك لكل عميل، والعديد من ميزات تحسين تجربة الاستخدام.
 
 > [!IMPORTANT]
 > هذا المشروع مخصص للاستخدام الشخصي فقط. يرجى عدم استخدامه لأغراض غير قانونية أو في بيئة إنتاجية.
@@ -67,24 +67,24 @@
 ## البدء السريع
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
 ```
 
 لتثبيت إصدار محدد، أضِف وسمه (مثل `vX.Y.Z`):
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) vX.Y.Z
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) vX.Y.Z
 ```
 
 لتثبيت بنية **dev** المتجددة (أحدث إصدار أولي لكل التزام (commit) من `main`، وليس إصدارًا مستقرًا)، مرّر `dev-latest`:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) dev-latest
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
 أثناء التثبيت، يتم إنشاء اسم مستخدم وكلمة مرور ومسار وصول عشوائية. بعد التثبيت، شغّل `x-ui` لفتح قائمة الإدارة، حيث يمكنك بدء/إيقاف الخدمة، وعرض أو إعادة تعيين بيانات تسجيل الدخول، وإدارة شهادات SSL، والمزيد.
 
-للحصول على الوثائق الكاملة، يرجى زيارة [ويكي المشروع](https://github.com/sh7CBAC/Heimdall/wiki).
+للحصول على الوثائق الكاملة، يرجى زيارة [ويكي المشروع](https://github.com/sh7CBAC/PRIMEVPN/wiki).
 
 ### التثبيت غير التفاعلي
 
@@ -104,7 +104,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.
 
 ## خيارات قاعدة البيانات
 
-يدعم 3X-UI خلفيتين (backends) يتم اختيارهما أثناء التثبيت:
+يدعم PRIMEVPN خلفيتين (backends) يتم اختيارهما أثناء التثبيت:
 
 - **SQLite** (افتراضي) — ملف واحد في `/etc/x-ui/x-ui.db`. بدون إعداد، مثالي لعمليات النشر الصغيرة والمتوسطة.
 - **PostgreSQL** — موصى به لأعداد العملاء الكبيرة أو الإعدادات متعددة العقد. يمكن للمثبِّت تثبيت PostgreSQL محليًا لك، أو قبول DSN لخادم موجود.
@@ -180,9 +180,9 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 
 ## أدوات المجتمع
 
-أدوات وتكاملات بناها المجتمع حول 3x-ui.
+أدوات وتكاملات بناها المجتمع حول PRIMEVPN.
 
-- [terraform-provider-3x-ui](https://github.com/batonogov/terraform-provider-threexui) (الترخيص: **MIT**): _إدارة الاتصالات الواردة والعملاء وإعدادات اللوحة وتكوين Xray كرمز باستخدام Terraform / OpenTofu._
+- [terraform-provider-PRIMEVPN](https://github.com/batonogov/terraform-provider-threexui) (الترخيص: **MIT**): _إدارة الاتصالات الواردة والعملاء وإعدادات اللوحة وتكوين Xray كرمز باستخدام Terraform / OpenTofu._
 
 ## دعم المشروع
 
@@ -198,4 +198,4 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 
 ## النجوم عبر الزمن
 
-[![Stargazers over time](https://starchart.cc/sh7CBAC/Heimdall.svg?variant=adaptive)](https://starchart.cc/sh7CBAC/Heimdall)
+[![Stargazers over time](https://starchart.cc/sh7CBAC/PRIMEVPN.svg?variant=adaptive)](https://starchart.cc/sh7CBAC/PRIMEVPN)

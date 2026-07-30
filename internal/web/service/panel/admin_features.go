@@ -5,9 +5,9 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	core "github.com/mhsanaei/3x-ui/v3/internal/web/service"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	core "github.com/mhsanaei/PRIMEVPN/v3/internal/web/service"
 
 	"gorm.io/gorm"
 )

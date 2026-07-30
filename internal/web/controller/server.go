@@ -8,13 +8,13 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/entity"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/global"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service/panel"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/websocket"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/entity"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/global"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service/panel"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/websocket"
 
 	"github.com/gin-gonic/gin"
 )
@@ -195,14 +195,14 @@ func (a *ServerController) getPanelUpdateInfo(c *gin.Context) {
 	jsonObj(c, info, nil)
 }
 
-// installXray is intentionally disabled in Heimdall.
-// Heimdall ships a pinned, verified core build; this endpoint must not install
+// installXray is intentionally disabled in PRIMEVPN.
+// PRIMEVPN ships a pinned, verified core build; this endpoint must not install
 // vanilla Xray releases from XTLS/Xray-core.
 func (a *ServerController) installXray(c *gin.Context) {
 	jsonMsg(
 		c,
 		I18nWeb(c, "pages.index.xraySwitchVersionPopover"),
-		fmt.Errorf("Xray core updates are disabled in Heimdall; use the pinned Heimdall core release workflow"),
+		fmt.Errorf("Xray core updates are disabled in PRIMEVPN; use the pinned PRIMEVPN core release workflow"),
 	)
 }
 

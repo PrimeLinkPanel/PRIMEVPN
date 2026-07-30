@@ -5,8 +5,8 @@ import (
 	"math"
 	"strings"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/profilefinalmask"
-	"github.com/mhsanaei/3x-ui/v3/internal/xhttpprofile"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/profilefinalmask"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xhttpprofile"
 )
 
 // subscriptionEndpoint is the client-facing endpoint produced from one

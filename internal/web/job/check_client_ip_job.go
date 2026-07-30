@@ -6,10 +6,10 @@ import (
 	"sort"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service"
 
 	"gorm.io/gorm"
 )
@@ -22,7 +22,7 @@ type IPWithTimestamp struct {
 
 // CheckClientIpJob records online client IP observations for panel display
 // and cross-node attribution. Simultaneous-IP enforcement remains entirely
-// inside Heimdall's custom Xray Core.
+// inside PRIMEVPN's custom Xray Core.
 type CheckClientIpJob struct {
 	xrayService service.XrayService
 }
@@ -44,7 +44,7 @@ func (j *CheckClientIpJob) Run() {
 		return
 	}
 
-	// Heimdall's custom Xray Core enforces simultaneous-IP limits directly
+	// PRIMEVPN's custom Xray Core enforces simultaneous-IP limits directly
 	// from client-ip-limits.json. This compatibility job only records online
 	// IPs for panel display and node attribution.
 	j.processObserved(observed, true)

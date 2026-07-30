@@ -3,13 +3,13 @@ package sub
 import (
 	"encoding/json"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
 )
 
 // inboundHasSubscriptionProfiles reports whether the inbound already carries
-// Heimdall Multi-Profile / Subscription Profiles in streamSettings.externalProxy.
+// PRIMEVPN Multi-Profile / Subscription Profiles in streamSettings.externalProxy.
 //
-// Heimdall product rule:
+// PRIMEVPN product rule:
 //   - Subscription Profiles are the primary, product-facing multi-output feature.
 //   - Managed Hosts are only a compatibility/fallback layer.
 //   - Therefore Hosts must not override an inbound that already has profiles.

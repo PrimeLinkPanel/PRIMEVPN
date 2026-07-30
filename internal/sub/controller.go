@@ -5,7 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
 	"html/template"
 	"math"
 	"net/http"
@@ -19,8 +19,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service"
 )
 
 // writeSubError translates a service-layer result into an HTTP response.
@@ -434,13 +434,13 @@ func (a *SUBController) serveSubPage(c *gin.Context, basePath string, page PageD
 		"announce":      a.subAnnounce,
 	}
 
-	const defaultHeimdallSubThemeDir = "/usr/local/x-ui/sub_templates/ourenus"
+	const defaultPRIMEVPNSubThemeDir = "/usr/local/x-ui/sub_templates/ourenus"
 	const sanaeiDefaultSubThemeDir = "__heimdall_sanaei_default__"
 
 	themeDir, _ := a.settingService.GetSubThemeDir()
 	themeDir = strings.TrimSpace(themeDir)
 	if themeDir == "" {
-		themeDir = defaultHeimdallSubThemeDir
+		themeDir = defaultPRIMEVPNSubThemeDir
 	} else if themeDir == sanaeiDefaultSubThemeDir {
 		themeDir = ""
 	}

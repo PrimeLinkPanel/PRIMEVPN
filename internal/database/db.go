@@ -16,11 +16,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/crypto"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/random"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/config"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/crypto"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/random"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xray"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
@@ -1243,7 +1243,7 @@ func runSeeders(isUsersEmpty bool) error {
 		return err
 	}
 
-	// Heimdall enforces per-client IP limits inside the custom Xray Core.
+	// PRIMEVPN enforces per-client IP limits inside the custom Xray Core.
 	// The upstream legacy reset seeder must therefore never clear persisted
 	// limitIp values.
 	// Self-gated on the "WireguardPeersToClients" row.

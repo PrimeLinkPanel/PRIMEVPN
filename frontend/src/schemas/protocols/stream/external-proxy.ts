@@ -174,7 +174,7 @@ export const ExternalProxyEntrySchema = z.object({
   flow: z.string().optional(),
   runtime: SubscriptionProfileRuntimeSchema.optional(),
 
-  // Heimdall phase-1 parity with Managed Hosts.
+  // PRIMEVPN phase-1 parity with Managed Hosts.
   excludeFromSubTypes: z.array(SubscriptionProfileSubTypeSchema).optional(),
   vlessRoute: SubscriptionProfileVlessRouteSchema,
   mihomoIpVersion: z.preprocess(

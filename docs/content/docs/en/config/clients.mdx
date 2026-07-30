@@ -1,6 +1,6 @@
 ---
 title: Clients
-description: Manage 3x-ui clients — credentials, traffic and expiry limits, IP limits, groups, bulk actions, external links, and online status.
+description: Manage PRIMEVPN clients — credentials, traffic and expiry limits, IP limits, groups, bulk actions, external links, and online status.
 icon: Users
 ---
 
@@ -17,7 +17,7 @@ inbounds** at once, with per-client traffic accounting.
 | **Password**   | Trojan, Shadowsocks   | The client credential.                                             |
 | **Auth**       | Hysteria2             | The client credential.                                             |
 | **Flow**       | VLESS                 | XTLS flow, e.g. `xtls-rprx-vision`.                                |
-| **Limit IP**   | all                   | Max simultaneous source IPs (enforced by the Heimdall custom core).        |
+| **Limit IP**   | all                   | Max simultaneous source IPs (enforced by the PRIMEVPN custom core).        |
 | **Total (GB)** | all                   | Traffic quota; the client is disabled when exhausted.              |
 | **Expiry**     | all                   | Date after which the client stops working.                        |
 | **Reset**      | all                   | Auto-renew period in **days** (rolls the quota over).              |
@@ -36,7 +36,7 @@ inbounds** at once, with per-client traffic accounting.
 
 - **Traffic / expiry** caps disable the client when hit; a **Reset** period
   auto-renews the quota.
-- **Limit IP** caps simultaneous source IPs inside the Heimdall custom core, before outbound dispatch. You can view a client's recent IPs and clear them from the client's actions.
+- **Limit IP** caps simultaneous source IPs inside the PRIMEVPN custom core, before outbound dispatch. You can view a client's recent IPs and clear them from the client's actions.
 - **Online status** and **last-online** times are tracked per client (and per
   node in multi-node setups).
 

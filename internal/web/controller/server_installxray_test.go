@@ -10,10 +10,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/op/go-logging"
 
-	xuilogger "github.com/mhsanaei/3x-ui/v3/internal/logger"
+	xuilogger "github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
 )
 
-func TestServerControllerInstallXrayDisabledForHeimdall(t *testing.T) {
+func TestServerControllerInstallXrayDisabledForPRIMEVPN(t *testing.T) {
 	xuilogger.InitLogger(logging.ERROR)
 	gin.SetMode(gin.TestMode)
 
@@ -43,6 +43,6 @@ func TestServerControllerInstallXrayDisabledForHeimdall(t *testing.T) {
 
 	if !strings.Contains(strings.ToLower(envelope.Msg), "heimdall") ||
 		!strings.Contains(strings.ToLower(envelope.Msg), "disabled") {
-		t.Fatalf("response msg = %q, want Heimdall disabled message", envelope.Msg)
+		t.Fatalf("response msg = %q, want PRIMEVPN disabled message", envelope.Msg)
 	}
 }

@@ -35,7 +35,7 @@ jobs:
             --max-turns 300
             --allowedTools "Bash(gh:*),Read,Glob,Grep"
           prompt: |
-            You are the issue-triage assistant for the sh7CBAC/Heimdall
+            You are the issue-triage assistant for the sh7CBAC/PRIMEVPN
             repository, an open-source web control panel for managing
             Xray-core servers. A new issue was just opened. Act like a
             professional support engineer: every technical statement you make
@@ -50,7 +50,7 @@ jobs:
             Read/Glob/Grep instead of assuming.
 
             Stack (confirm in go.mod / frontend/package.json if it matters):
-            - Backend: Go 1.26 (module github.com/mhsanaei/3x-ui/v3), Gin,
+            - Backend: Go 1.26 (module github.com/mhsanaei/PRIMEVPN/v3), Gin,
               GORM. The panel runs Xray-core as a separately managed child
               process (internal/xray/process.go) and also imports
               github.com/xtls/xray-core as a library for config types and its
@@ -123,7 +123,7 @@ jobs:
               source.)
 
             Verified runtime facts (still confirm in code/README/wiki before quoting):
-            - Linux install: bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh)
+            - Linux install: bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
             - Windows is also a supported platform (see README "Supported
               Platforms" and packaging/windows/).
             - Management menu: run `x-ui` on the server.
@@ -205,9 +205,9 @@ jobs:
                you are highly confident it matches one of:
                  - Body empty or only whitespace, punctuation, or emoji.
                  - Pure gibberish / random characters with no real request.
-                 - Obvious advertising, promotion, or links unrelated to 3x-ui.
+                 - Obvious advertising, promotion, or links unrelated to PRIMEVPN.
                  - A throwaway test issue (just "test", "asdf", "hello", etc.).
-                 - No relation at all to 3x-ui / Xray.
+                 - No relation at all to PRIMEVPN / Xray.
                If it clearly matches one of these:
                  a) gh issue comment ${{ github.event.issue.number }} --body "..."
                     (short, polite: closed because it lacks a valid, actionable
@@ -338,7 +338,7 @@ jobs:
             --max-turns 250
             --allowedTools "Bash(gh:*),Bash(git:*),Read,Glob,Grep,Edit,Write"
           prompt: |
-            You are the pull-request fix assistant for the sh7CBAC/Heimdall
+            You are the pull-request fix assistant for the sh7CBAC/PRIMEVPN
             repository, an open-source web control panel for managing
             Xray-core servers. A pull request from a trusted author (owner,
             member, or collaborator) was just opened. Act like a senior
@@ -357,7 +357,7 @@ jobs:
             Read/Glob/Grep instead of assuming.
 
             Stack: Backend is Go 1.26 (module
-            github.com/mhsanaei/3x-ui/v3) with Gin and GORM; it runs
+            github.com/mhsanaei/PRIMEVPN/v3) with Gin and GORM; it runs
             Xray-core as a managed child process (internal/xray/process.go)
             and imports github.com/xtls/xray-core for config types and its
             gRPC stats/handler API. Storage is SQLite by default
@@ -532,7 +532,7 @@ jobs:
             --max-turns 250
             --allowedTools "Bash(gh:*),Read,Glob,Grep"
           prompt: |
-            You are the pull-request review assistant for the sh7CBAC/Heimdall
+            You are the pull-request review assistant for the sh7CBAC/PRIMEVPN
             repository, an open-source web control panel for managing
             Xray-core servers. A pull request from an external author (not a member or collaborator) was just opened. This run is
             REVIEW ONLY: you must NOT edit code, check out the PR branch,
@@ -549,7 +549,7 @@ jobs:
             untrusted).
 
             Stack: Backend is Go 1.26 (module
-            github.com/mhsanaei/3x-ui/v3) with Gin and GORM; it runs
+            github.com/mhsanaei/PRIMEVPN/v3) with Gin and GORM; it runs
             Xray-core as a managed child process (internal/xray/process.go)
             and imports github.com/xtls/xray-core for config types and its
             gRPC stats/handler API. Storage is SQLite by default
@@ -756,7 +756,7 @@ jobs:
             --effort max
             --max-turns 250
             --allowedTools "Bash(gh:*),Bash(git:*),Read,Glob,Grep,Edit,Write"
-            --append-system-prompt "You are replying to an @claude mention from the repository owner in the sh7CBAC/Heimdall repository, an open-source web panel for managing Xray-core servers. Only the owner can trigger you, so you may make code changes and open pull requests when the owner asks. The full repo source is checked out in the working directory; use Read, Glob and Grep to open and verify the relevant files before stating any default, path, flag, option name, or behavior.
+            --append-system-prompt "You are replying to an @claude mention from the repository owner in the sh7CBAC/PRIMEVPN repository, an open-source web panel for managing Xray-core servers. Only the owner can trigger you, so you may make code changes and open pull requests when the owner asks. The full repo source is checked out in the working directory; use Read, Glob and Grep to open and verify the relevant files before stating any default, path, flag, option name, or behavior.
 
             Key layout:
             - main.go holds the entry point and the x-ui management CLI (run, migrate, migrate-db, setting, cert).
@@ -775,7 +775,7 @@ jobs:
             - tools/openapigen generates the OpenAPI spec and frontend API types.
             - docs/ holds extra documentation.
 
-            Stack and runtime facts: Backend is Go (module github.com/mhsanaei/3x-ui/v3) with Gin and GORM; storage is SQLite by default at /etc/x-ui/x-ui.db or PostgreSQL via XUI_DB_TYPE and XUI_DB_DSN; further env vars include XUI_DB_FOLDER, XUI_DB_MAX_OPEN_CONNS, XUI_DB_MAX_IDLE_CONNS, XUI_INIT_WEB_BASE_PATH, the installer writes env to /etc/default/x-ui; SQLite to PostgreSQL migration is x-ui migrate-db --dsn followed by a service restart; install uses install.sh and the x-ui menu, generating random initial credentials; Docker image is ghcr.io/sh7cbac/heimdall and custom-core limiter IP-limit enforcement needs NET_ADMIN and NET_RAW; Windows is a supported platform. Do not hardcode a version: for version or is-this-fixed questions, check the latest release and recent commits or closed PRs with gh.
+            Stack and runtime facts: Backend is Go (module github.com/mhsanaei/PRIMEVPN/v3) with Gin and GORM; storage is SQLite by default at /etc/x-ui/x-ui.db or PostgreSQL via XUI_DB_TYPE and XUI_DB_DSN; further env vars include XUI_DB_FOLDER, XUI_DB_MAX_OPEN_CONNS, XUI_DB_MAX_IDLE_CONNS, XUI_INIT_WEB_BASE_PATH, the installer writes env to /etc/default/x-ui; SQLite to PostgreSQL migration is x-ui migrate-db --dsn followed by a service restart; install uses install.sh and the x-ui menu, generating random initial credentials; Docker image is ghcr.io/sh7cbac/heimdall and custom-core limiter IP-limit enforcement needs NET_ADMIN and NET_RAW; Windows is a supported platform. Do not hardcode a version: for version or is-this-fixed questions, check the latest release and recent commits or closed PRs with gh.
 
             Style: professional, courteous, and matter-of-fact; no emoji, no exclamation marks, no filler; lead with the answer in the first sentence; use fenced code blocks for commands and backtick formatting for paths and setting names; distinguish what you confirmed in the source (name the file) from what you infer; never promise fixes, timelines, or releases. Ground every claim in the code or the README and wiki; do not invent features, paths, flags, or commands, and do not stop at the first plausible match. Token cost is not a concern, so investigate as deeply as the question needs.
 

@@ -1,4 +1,4 @@
-// Package main is the entry point for the 3x-ui web panel application.
+// Package main is the entry point for the PRIMEVPN web panel application.
 // It initializes the database, web server, and handles command-line operations for managing the panel.
 package main
 
@@ -15,24 +15,24 @@ import (
 	"time"
 	_ "unsafe"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/sub"
-	"github.com/mhsanaei/3x-ui/v3/internal/tunnelmonitor"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/crypto"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/sys"
-	"github.com/mhsanaei/3x-ui/v3/internal/web"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/global"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service/panel"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service/tgbot"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/config"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/sub"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/tunnelmonitor"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/crypto"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/sys"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/global"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service/panel"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service/tgbot"
 
 	"github.com/joho/godotenv"
 	"github.com/op/go-logging"
 )
 
-// runWebServer initializes and starts the web server for the 3x-ui panel.
+// runWebServer initializes and starts the web server for the PRIMEVPN panel.
 func runWebServer() {
 	log.Printf("Starting %v %v", config.GetName(), config.GetPanelVersion())
 
@@ -480,7 +480,7 @@ func GetApiToken(getApiToken bool) {
 	fmt.Println("apiToken:", created.Token)
 }
 
-// migrateDb performs database migration operations for the 3x-ui panel.
+// migrateDb performs database migration operations for the PRIMEVPN panel.
 func migrateDb() {
 	inboundService := service.InboundService{}
 
@@ -510,7 +510,7 @@ func loadServiceEnvFile() {
 	}
 }
 
-// main is the entry point of the 3x-ui application.
+// main is the entry point of the PRIMEVPN application.
 // It parses command-line arguments to run the web server, migrate database, or update settings.
 func main() {
 	loadServiceEnvFile()

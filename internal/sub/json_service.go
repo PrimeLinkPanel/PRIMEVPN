@@ -7,9 +7,9 @@ import (
 	"maps"
 	"strings"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/json_util"
-	wgutil "github.com/mhsanaei/3x-ui/v3/internal/util/wireguard"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/json_util"
+	wgutil "github.com/mhsanaei/PRIMEVPN/v3/internal/util/wireguard"
 )
 
 //go:embed default.json

@@ -1,4 +1,4 @@
-// Pure builders for 3x-ui install commands (script + Docker). No React/DOM.
+// Pure builders for PRIMEVPN install commands (script + Docker). No React/DOM.
 
 export type InstallMethod = 'script' | 'docker';
 
@@ -10,7 +10,7 @@ export interface InstallOptions {
   webBasePath: string;
 }
 
-const REPO_RAW = 'https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh';
+const REPO_RAW = 'https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh';
 const IMAGE = 'ghcr.io/sh7cbac/heimdall:latest';
 
 function isLatest(version: string): boolean {
@@ -41,7 +41,7 @@ export function buildDockerRun(options: InstallOptions): string {
   lines.push(`  -v $PWD/cert/:/root/cert/`);
   lines.push(`  --network=host`);
   lines.push(`  --restart=unless-stopped`);
-  lines.push(`  --name 3x-ui`);
+  lines.push(`  --name PRIMEVPN`);
   lines.push(`  ${IMAGE}`);
   return lines.join(' \\\n');
 }
@@ -57,9 +57,9 @@ export function buildDockerCompose(options: InstallOptions): string {
 
   return [
     `services:`,
-    `  3x-ui:`,
+    `  PRIMEVPN:`,
     `    image: ${IMAGE}`,
-    `    container_name: 3x-ui`,
+    `    container_name: PRIMEVPN`,
     `    volumes:`,
     `      - ./db/:/etc/x-ui/`,
     `      - ./cert/:/root/cert/`,

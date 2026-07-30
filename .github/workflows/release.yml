@@ -1,4 +1,4 @@
-name: Heimdall Release Policy Check
+name: PRIMEVPN Release Policy Check
 
 on:
   workflow_dispatch:

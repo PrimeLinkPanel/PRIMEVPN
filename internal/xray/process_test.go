@@ -14,7 +14,7 @@ import (
 
 	"github.com/op/go-logging"
 
-	xuilogger "github.com/mhsanaei/3x-ui/v3/internal/logger"
+	xuilogger "github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
 )
 
 func TestWriteFileAtomicModeAndRenameFailure(t *testing.T) {

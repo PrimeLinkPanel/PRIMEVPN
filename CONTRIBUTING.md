@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for taking the time to contribute to 3x-ui. This guide gets a development panel running locally and explains the conventions the project follows so changes land cleanly.
+Thanks for taking the time to contribute to PRIMEVPN. This guide gets a development panel running locally and explains the conventions the project follows so changes land cleanly.
 
 ## Prerequisites
 
@@ -50,8 +50,8 @@ Cross-building the Linux SQLite target from Windows (or vice versa) requires a s
 ## First-time setup
 
 ```bash
-git clone https://github.com/sh7CBAC/Heimdall.git
-cd 3x-ui
+git clone https://github.com/sh7CBAC/PRIMEVPN.git
+cd PRIMEVPN
 
 cp .env.example .env
 
@@ -88,7 +88,7 @@ Open [http://localhost:2053](http://localhost:2053) and log in with `admin` / `a
 
 ### Inside VS Code
 
-The repo checks in two VS Code launch profiles in `.vscode/launch.json`: **Run 3x-ui (Debug)** for the default SQLite setup, and **Run 3x-ui (Postgres)** which points `XUI_DB_TYPE`/`XUI_DB_DSN` at a local PostgreSQL. The Postgres profile also prepends the PostgreSQL `bin` to `PATH` so the panel can find `pg_dump`/`pg_restore` (the `postgresql-client` tools used for DB backup/restore) — adjust the DSN and that path to your machine:
+The repo checks in two VS Code launch profiles in `.vscode/launch.json`: **Run PRIMEVPN (Debug)** for the default SQLite setup, and **Run PRIMEVPN (Postgres)** which points `XUI_DB_TYPE`/`XUI_DB_DSN` at a local PostgreSQL. The Postgres profile also prepends the PostgreSQL `bin` to `PATH` so the panel can find `pg_dump`/`pg_restore` (the `postgresql-client` tools used for DB backup/restore) — adjust the DSN and that path to your machine:
 
 ```jsonc
 {
@@ -96,7 +96,7 @@ The repo checks in two VS Code launch profiles in `.vscode/launch.json`: **Run 3
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run 3x-ui (Debug)",
+      "name": "Run PRIMEVPN (Debug)",
       "type": "go",
       "request": "launch",
       "mode": "auto",
@@ -111,7 +111,7 @@ The repo checks in two VS Code launch profiles in `.vscode/launch.json`: **Run 3
       "console": "integratedTerminal"
     },
     {
-      "name": "Run 3x-ui (Postgres)",
+      "name": "Run PRIMEVPN (Postgres)",
       "type": "go",
       "request": "launch",
       "mode": "auto",
@@ -312,6 +312,6 @@ must match the override, for example `XUI_PORT: "8080"` with `ports: ["8080:8080
 
 ## Issues
 
-- Bug reports and feature requests: [GitHub Issues](https://github.com/sh7CBAC/Heimdall/issues)
+- Bug reports and feature requests: [GitHub Issues](https://github.com/sh7CBAC/PRIMEVPN/issues)
 
 Before filing a bug, include the OS, Go version, panel version (`/panel/api/server/status` or the dashboard footer), and the relevant excerpt from `x-ui/3xui.log`.

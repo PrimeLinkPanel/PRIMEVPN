@@ -1,6 +1,6 @@
 # Changelog
 
-Notable Heimdall changes are documented here.
+Notable PRIMEVPN changes are documented here.
 
 ## Unreleased
 
@@ -8,7 +8,7 @@ Notable Heimdall changes are documented here.
 
 - Removed the vendored Windows OpenSSL installer from source and release archives; Windows users obtain third-party OpenSSL separately when needed.
 - Reorganized packaging and localized documentation.
-- Established Heimdall-owned documentation, CI, release, and container links.
+- Established PRIMEVPN-owned documentation, CI, release, and container links.
 
 ## 1.5.0
 
@@ -22,7 +22,7 @@ Notable Heimdall changes are documented here.
 ### Changed
 
 - Reworked the subscription-profile editor, transport layouts, field ownership, and security controls across supported transports.
-- Canonicalized the linux-amd64 release process to reproduce the validated live panel and package the audited Heimdall custom Xray runtime.
+- Canonicalized the linux-amd64 release process to reproduce the validated live panel and package the audited PRIMEVPN custom Xray runtime.
 - Refined CLI menu borders, spacing, usage rows, and terminal alignment.
 
 ### Fixed

@@ -2,22 +2,22 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../media/3x-ui-dark.png">
-    <img alt="3x-ui" src="../../media/3x-ui-light.png">
+    <source media="(prefers-color-scheme: dark)" srcset="../../media/PRIMEVPN-dark.png">
+    <img alt="PRIMEVPN" src="../../media/PRIMEVPN-light.png">
   </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/sh7CBAC/Heimdall/releases"><img src="https://img.shields.io/github/v/release/sh7CBAC/Heimdall" alt="Release"></a>
-  <a href="https://github.com/sh7CBAC/Heimdall/actions"><img src="https://img.shields.io/github/actions/workflow/status/sh7CBAC/Heimdall/release.yml.svg" alt="Build"></a>
-  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/sh7CBAC/Heimdall.svg" alt="GO Version"></a>
-  <a href="https://github.com/sh7CBAC/Heimdall/releases/latest"><img src="https://img.shields.io/github/downloads/sh7CBAC/Heimdall/total.svg" alt="Downloads"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/releases"><img src="https://img.shields.io/github/v/release/sh7CBAC/PRIMEVPN" alt="Release"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/actions"><img src="https://img.shields.io/github/actions/workflow/status/sh7CBAC/PRIMEVPN/release.yml.svg" alt="Build"></a>
+  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/sh7CBAC/PRIMEVPN.svg" alt="GO Version"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/releases/latest"><img src="https://img.shields.io/github/downloads/sh7CBAC/PRIMEVPN/total.svg" alt="Downloads"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true" alt="License"></a>
 </p>
 
-**3X-UI** — продвинутая веб-панель управления с открытым исходным кодом для управления серверами [Xray-core](https://github.com/XTLS/Xray-core). Она предоставляет аккуратный многоязычный интерфейс для развёртывания, настройки и мониторинга широкого спектра протоколов прокси и VPN — от одного VPS до развёртываний с несколькими узлами.
+**PRIMEVPN** — продвинутая веб-панель управления с открытым исходным кодом для управления серверами [Xray-core](https://github.com/XTLS/Xray-core). Она предоставляет аккуратный многоязычный интерфейс для развёртывания, настройки и мониторинга широкого спектра протоколов прокси и VPN — от одного VPS до развёртываний с несколькими узлами.
 
-Созданный как улучшенный форк оригинального проекта X-UI, 3X-UI добавляет более широкую поддержку протоколов, повышенную стабильность, учёт трафика по каждому клиенту и множество функций для удобства использования.
+Созданный как улучшенный форк оригинального проекта X-UI, PRIMEVPN добавляет более широкую поддержку протоколов, повышенную стабильность, учёт трафика по каждому клиенту и множество функций для удобства использования.
 
 > [!IMPORTANT]
 > Этот проект предназначен только для личного использования. Пожалуйста, не используйте его в незаконных целях или в производственной среде.
@@ -67,24 +67,24 @@
 ## Быстрый старт
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
 ```
 
 Чтобы установить конкретную версию, добавьте её тег (например, `vX.Y.Z`):
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) vX.Y.Z
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) vX.Y.Z
 ```
 
 Чтобы установить скользящую **dev**-сборку (новейший предварительный релиз по каждому коммиту из ветки `main`, а не стабильный релиз), передайте `dev-latest`:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) dev-latest
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
 Во время установки генерируются случайные имя пользователя, пароль и путь доступа. После установки выполните `x-ui`, чтобы открыть меню управления, где можно запускать/останавливать сервис, просматривать или сбрасывать учётные данные для входа, управлять SSL-сертификатами и многое другое.
 
-Полную документацию смотрите в [вики проекта](https://github.com/sh7CBAC/Heimdall/wiki).
+Полную документацию смотрите в [вики проекта](https://github.com/sh7CBAC/PRIMEVPN/wiki).
 
 ### Автоматическая установка
 
@@ -104,7 +104,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.
 
 ## Варианты базы данных
 
-3X-UI поддерживает два бэкенда, выбираемых при установке:
+PRIMEVPN поддерживает два бэкенда, выбираемых при установке:
 
 - **SQLite** (по умолчанию) — единый файл по пути `/etc/x-ui/x-ui.db`. Без настройки, идеально для небольших и средних развёртываний.
 - **PostgreSQL** — рекомендуется при большом числе клиентов или конфигурациях с несколькими узлами. Установщик может установить PostgreSQL локально за вас или принять DSN к существующему серверу.
@@ -180,9 +180,9 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 
 ## Инструменты сообщества
 
-Инструменты и интеграции, созданные сообществом вокруг 3x-ui.
+Инструменты и интеграции, созданные сообществом вокруг PRIMEVPN.
 
-- [terraform-provider-3x-ui](https://github.com/batonogov/terraform-provider-threexui) (Лицензия: **MIT**): _Управление входящими, клиентами, настройками панели и конфигурацией Xray через код с помощью Terraform / OpenTofu._
+- [terraform-provider-PRIMEVPN](https://github.com/batonogov/terraform-provider-threexui) (Лицензия: **MIT**): _Управление входящими, клиентами, настройками панели и конфигурацией Xray через код с помощью Terraform / OpenTofu._
 
 ## Поддержка проекта
 
@@ -199,4 +199,4 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 
 ## Звезды с течением времени
 
-[![Stargazers over time](https://starchart.cc/sh7CBAC/Heimdall.svg?variant=adaptive)](https://starchart.cc/sh7CBAC/Heimdall)
+[![Stargazers over time](https://starchart.cc/sh7CBAC/PRIMEVPN.svg?variant=adaptive)](https://starchart.cc/sh7CBAC/PRIMEVPN)

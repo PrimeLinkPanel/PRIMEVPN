@@ -2,22 +2,22 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../media/3x-ui-dark.png">
-    <img alt="3x-ui" src="../../media/3x-ui-light.png">
+    <source media="(prefers-color-scheme: dark)" srcset="../../media/PRIMEVPN-dark.png">
+    <img alt="PRIMEVPN" src="../../media/PRIMEVPN-light.png">
   </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/sh7CBAC/Heimdall/releases"><img src="https://img.shields.io/github/v/release/sh7CBAC/Heimdall" alt="Release"></a>
-  <a href="https://github.com/sh7CBAC/Heimdall/actions"><img src="https://img.shields.io/github/actions/workflow/status/sh7CBAC/Heimdall/release.yml.svg" alt="Build"></a>
-  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/sh7CBAC/Heimdall.svg" alt="GO Version"></a>
-  <a href="https://github.com/sh7CBAC/Heimdall/releases/latest"><img src="https://img.shields.io/github/downloads/sh7CBAC/Heimdall/total.svg" alt="Downloads"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/releases"><img src="https://img.shields.io/github/v/release/sh7CBAC/PRIMEVPN" alt="Release"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/actions"><img src="https://img.shields.io/github/actions/workflow/status/sh7CBAC/PRIMEVPN/release.yml.svg" alt="Build"></a>
+  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/sh7CBAC/PRIMEVPN.svg" alt="GO Version"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/releases/latest"><img src="https://img.shields.io/github/downloads/sh7CBAC/PRIMEVPN/total.svg" alt="Downloads"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true" alt="License"></a>
 </p>
 
-**3X-UI**, [Xray-core](https://github.com/XTLS/Xray-core) sunucularını yönetmek için geliştirilmiş profesyonel, açık kaynaklı bir web kontrol panelidir. Tek bir sanal sunucudan (VPS) çok düğümlü (multi-node) dağıtımlara kadar çok çeşitli proxy ve VPN protokollerini kurmak, yapılandırmak ve izlemek için temiz, çok dilli bir arayüz sağlar.
+**PRIMEVPN**, [Xray-core](https://github.com/XTLS/Xray-core) sunucularını yönetmek için geliştirilmiş profesyonel, açık kaynaklı bir web kontrol panelidir. Tek bir sanal sunucudan (VPS) çok düğümlü (multi-node) dağıtımlara kadar çok çeşitli proxy ve VPN protokollerini kurmak, yapılandırmak ve izlemek için temiz, çok dilli bir arayüz sağlar.
 
-Orijinal X-UI projesinin geliştirilmiş bir çatallaması (fork) olarak inşa edilen 3X-UI; çok daha geniş protokol desteği, artırılmış kararlılık, kullanıcı başına trafik hesaplama ve kullanım kolaylığı sağlayan birçok yeni özellik sunar.
+Orijinal X-UI projesinin geliştirilmiş bir çatallaması (fork) olarak inşa edilen PRIMEVPN; çok daha geniş protokol desteği, artırılmış kararlılık, kullanıcı başına trafik hesaplama ve kullanım kolaylığı sağlayan birçok yeni özellik sunar.
 
 > [!IMPORTANT]
 > Bu proje yalnızca kişisel kullanım için tasarlanmıştır. Lütfen yasadışı amaçlar için veya üretim (production) ortamında kullanmayın.
@@ -67,24 +67,24 @@ Orijinal X-UI projesinin geliştirilmiş bir çatallaması (fork) olarak inşa e
 ## Hızlı Başlangıç
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
 ```
 
 Belirli bir sürümü kurmak için, etiketini (ör. `vX.Y.Z`) ekleyin:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) vX.Y.Z
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) vX.Y.Z
 ```
 
 Sürekli güncellenen **dev** sürümünü (kararlı bir sürüm değil; `main` dalından her commit'te oluşturulan en son ön sürüm) kurmak için `dev-latest` değerini geçirin:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) dev-latest
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
 Kurulum sırasında rastgele bir kullanıcı adı, şifre ve erişim yolu oluşturulur. Kurulumdan sonra, hizmeti başlatabileceğiniz/durdurabileceğiniz, giriş bilgilerinizi görüntüleyebileceğiniz veya sıfırlayabileceğiniz, SSL sertifikalarını yönetebileceğiniz ve çok daha fazlasını yapabileceğiniz yönetim menüsünü açmak için terminalde `x-ui` komutunu çalıştırın.
 
-Tam dokümantasyon için lütfen [proje Wiki sayfasını](https://github.com/sh7CBAC/Heimdall/wiki) ziyaret edin.
+Tam dokümantasyon için lütfen [proje Wiki sayfasını](https://github.com/sh7CBAC/PRIMEVPN/wiki) ziyaret edin.
 
 ### Etkileşimsiz kurulum
 
@@ -104,7 +104,7 @@ sona hiçbir soru sormadan tamamlanır, rastgele kimlik bilgileri oluşturup bun
 
 ## Veritabanı Seçenekleri
 
-3X-UI kurulum sırasında seçilebilecek iki arka uç (backend) destekler:
+PRIMEVPN kurulum sırasında seçilebilecek iki arka uç (backend) destekler:
 
 - **SQLite** (varsayılan) — `/etc/x-ui/x-ui.db` konumunda tek bir dosya. Kurulum gerektirmez, küçük ve orta ölçekli dağıtımlar için idealdir.
 - **PostgreSQL** — Yüksek kullanıcı sayıları veya çoklu düğüm (multi-node) kurulumları için önerilir. Yükleyici sizin için yerel olarak PostgreSQL kurabilir veya mevcut bir sunucuya DSN bağlantısı kabul edebilir.
@@ -180,9 +180,9 @@ Katkılarınızı her zaman bekliyoruz. Bir sorun (issue) açmadan veya pull req
 
 ## Topluluk Araçları
 
-3x-ui çevresindeki topluluk tarafından oluşturulmuş araçlar ve entegrasyonlar.
+PRIMEVPN çevresindeki topluluk tarafından oluşturulmuş araçlar ve entegrasyonlar.
 
-- [terraform-provider-3x-ui](https://github.com/batonogov/terraform-provider-threexui) (Lisans: **MIT**): _Gelen bağlantılarnı, kullanıcıları, panel ayarlarını ve Xray yapılandırmasını Terraform / OpenTofu ile kod olarak (as code) yönetin._
+- [terraform-provider-PRIMEVPN](https://github.com/batonogov/terraform-provider-threexui) (Lisans: **MIT**): _Gelen bağlantılarnı, kullanıcıları, panel ayarlarını ve Xray yapılandırmasını Terraform / OpenTofu ile kod olarak (as code) yönetin._
 
 ## Projeyi Destekleyin
 
@@ -199,4 +199,4 @@ Katkılarınızı her zaman bekliyoruz. Bir sorun (issue) açmadan veya pull req
 
 ## Yıldız Tablosu
 
-[![Zaman içerisindeki yıldız sayısı](https://starchart.cc/sh7CBAC/Heimdall.svg?variant=adaptive)](https://starchart.cc/sh7CBAC/Heimdall)
+[![Zaman içerisindeki yıldız sayısı](https://starchart.cc/sh7CBAC/PRIMEVPN.svg?variant=adaptive)](https://starchart.cc/sh7CBAC/PRIMEVPN)

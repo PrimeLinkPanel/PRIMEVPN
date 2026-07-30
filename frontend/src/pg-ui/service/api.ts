@@ -213,7 +213,7 @@ function normalizeAdmin(value: unknown): AdminDetails {
   };
 }
 
-function pgAdminToHeimdallPayload(data: Record<string, unknown>): Record<string, unknown> {
+function pgAdminToPRIMEVPNPayload(data: Record<string, unknown>): Record<string, unknown> {
   return {
     username: toString(data.username).trim(),
     password: toString(data.password).trim(),
@@ -232,7 +232,7 @@ function pgAdminToHeimdallPayload(data: Record<string, unknown>): Record<string,
   };
 }
 
-function pgRoleToHeimdallPayload(data: Record<string, unknown>): Record<string, unknown> {
+function pgRoleToPRIMEVPNPayload(data: Record<string, unknown>): Record<string, unknown> {
   return {
     name: toString(data.name).trim(),
     permissions: data.permissions ?? {},
@@ -361,7 +361,7 @@ export function useCreateAdmin() {
     mutationFn: async (arg: unknown) => {
       const input = asRecord(arg);
         const data = asRecord(input.data ?? arg);
-      const created = await apiPost('/panel/api/admins/add', pgAdminToHeimdallPayload(data));
+      const created = await apiPost('/panel/api/admins/add', pgAdminToPRIMEVPNPayload(data));
       return normalizeAdmin(created ?? data);
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ['pg-ui', 'admins'] }),
@@ -406,7 +406,7 @@ export function useModifyAdminById() {
         permission_overrides: data.permission_overrides ?? existing.permission_overrides,
       };
 
-      const updated = await apiPost(`/panel/api/admins/update/${adminId}`, pgAdminToHeimdallPayload(merged));
+      const updated = await apiPost(`/panel/api/admins/update/${adminId}`, pgAdminToPRIMEVPNPayload(merged));
       return normalizeAdmin(updated ?? { ...merged, id: adminId });
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ['pg-ui', 'admins'] }),
@@ -446,7 +446,7 @@ export function useCreateRole() {
     mutationFn: async (arg: unknown) => {
       const input = asRecord(arg);
         const data = asRecord(input.data ?? arg);
-      const created = await apiPost('/panel/api/admin-roles/add', pgRoleToHeimdallPayload(data));
+      const created = await apiPost('/panel/api/admin-roles/add', pgRoleToPRIMEVPNPayload(data));
       return normalizeRole(created ?? data);
     },
     onSuccess: () => {
@@ -463,7 +463,7 @@ export function useModifyRole() {
       const input = asRecord(arg);
         const roleId = toNumber(input.roleId ?? input.id);
       const data = asRecord(input.data ?? input.payload ?? arg);
-      const updated = await apiPost(`/panel/api/admin-roles/update/${roleId}`, pgRoleToHeimdallPayload(data));
+      const updated = await apiPost(`/panel/api/admin-roles/update/${roleId}`, pgRoleToPRIMEVPNPayload(data));
       return normalizeRole(updated ?? { ...data, id: roleId });
     },
     onSuccess: () => {

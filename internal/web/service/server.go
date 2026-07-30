@@ -26,12 +26,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/common"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/sys"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/config"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/common"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/sys"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xray"
 
 	"github.com/google/uuid"
 	utls "github.com/refraction-networking/utls"
@@ -932,7 +932,7 @@ func parseXrayDigestSHA256(dgst []byte) (string, error) {
 }
 
 func (s *ServerService) UpdateXray(version string) error {
-	return fmt.Errorf("Heimdall uses a custom Xray Core; changing the Xray Core from the panel/API is disabled to preserve Speed & Connection Limit features")
+	return fmt.Errorf("PRIMEVPN uses a custom Xray Core; changing the Xray Core from the panel/API is disabled to preserve Speed & Connection Limit features")
 }
 
 func (s *ServerService) GetLogs(count string, level string, syslog string) []string {

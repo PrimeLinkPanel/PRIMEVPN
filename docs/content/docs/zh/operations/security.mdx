@@ -1,6 +1,6 @@
 ---
 title: 安全加固
-description: 加固 3x-ui——面板认证与 2FA、自定义核心 IP 限制、防火墙规则、BBR，以及保持更新。
+description: 加固 PRIMEVPN——面板认证与 2FA、自定义核心 IP 限制、防火墙规则、BBR，以及保持更新。
 icon: ShieldCheck
 ---
 
@@ -19,7 +19,7 @@ icon: ShieldCheck
 ## 自定义核心 IP 限制
 
 为每个客户端设置 **Limit IP**（参见[客户端](/docs/config/clients)）。`0` 表示不限制；
-正数表示接受最先出现的 N 个不同活动源 IP。Heimdall 固定使用的自定义 Xray 核心会在
+正数表示接受最先出现的 N 个不同活动源 IP。PRIMEVPN 固定使用的自定义 Xray 核心会在
 流量进入 outbound 之前拒绝额外源 IP。该机制不需要访问日志解析器、外部封禁服务或
 防火墙 jail。当某个地址的全部 dispatch 上下文关闭并超过配置的空闲延迟后，其名额会被释放。
 
@@ -43,6 +43,6 @@ icon: ShieldCheck
 
 ## 保持更新
 
-定期更新 3x-ui 和 Xray-core——安全修复会随新版本发布。请关注
-[发布页面](https://github.com/sh7CBAC/Heimdall/releases)，并参见
+定期更新 PRIMEVPN 和 Xray-core——安全修复会随新版本发布。请关注
+[发布页面](https://github.com/sh7CBAC/PRIMEVPN/releases)，并参见
 [更新与卸载](/docs/guide/update-uninstall)。

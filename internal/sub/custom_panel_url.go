@@ -3,8 +3,8 @@ package sub
 import (
 	"strings"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/util/common"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/common"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service"
 )
 
 func BuildSubscriptionURL(host string, subID string) (string, error) {

@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
 )
 
 func seedSubDB(t *testing.T) {
@@ -122,7 +122,7 @@ func TestSub_DisabledHostSkipped(t *testing.T) {
 	}
 }
 
-// #4 — Heimdall rule: when both Managed Hosts and explicit Subscription
+// #4 — PRIMEVPN rule: when both Managed Hosts and explicit Subscription
 // Profiles are set, Subscription Profiles win and Hosts are ignored.
 func TestSub_SubscriptionProfilesOverrideHosts(t *testing.T) {
 	seedSubDB(t)

@@ -139,7 +139,7 @@ export default function IndexPage() {
   }
 
   function openTelegram() {
-    window.open('https://t.me/HeimdallStudio', '_blank', 'noopener,noreferrer');
+    window.open('https://t.me/PRIMEVPNStudio', '_blank', 'noopener,noreferrer');
   }
 
   async function openConfig() {
@@ -248,12 +248,12 @@ export default function IndexPage() {
                           key="tg"
                           role="button"
                           tabIndex={0}
-                          aria-label="@HeimdallStudio"
+                          aria-label="@PRIMEVPNStudio"
                           onClick={openTelegram}
                           onKeyDown={activateOnKey(openTelegram)}
                         >
                           <TelegramFilled className="tg-icon" aria-hidden="true" />
-                          {!isMobile && <span>@HeimdallStudio</span>}
+                          {!isMobile && <span>@PRIMEVPNStudio</span>}
                         </Space>,
                         <Space
                           key="panel-version"

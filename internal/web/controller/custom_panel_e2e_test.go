@@ -13,12 +13,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/sub"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service/panel"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/sub"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/service/panel"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xray"
 )
 
 const customPanelE2EUsername = "adapter-e2e-user"

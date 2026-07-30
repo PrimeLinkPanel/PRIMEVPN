@@ -5,9 +5,9 @@ import (
 	"path"
 	"strings"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/web/entity"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/middleware"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/session"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/entity"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/middleware"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/web/session"
 
 	"github.com/gin-gonic/gin"
 )

@@ -2,22 +2,22 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../media/3x-ui-dark.png">
-    <img alt="3x-ui" src="../../media/3x-ui-light.png">
+    <source media="(prefers-color-scheme: dark)" srcset="../../media/PRIMEVPN-dark.png">
+    <img alt="PRIMEVPN" src="../../media/PRIMEVPN-light.png">
   </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/sh7CBAC/Heimdall/releases"><img src="https://img.shields.io/github/v/release/sh7CBAC/Heimdall" alt="Release"></a>
-  <a href="https://github.com/sh7CBAC/Heimdall/actions"><img src="https://img.shields.io/github/actions/workflow/status/sh7CBAC/Heimdall/release.yml.svg" alt="Build"></a>
-  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/sh7CBAC/Heimdall.svg" alt="GO Version"></a>
-  <a href="https://github.com/sh7CBAC/Heimdall/releases/latest"><img src="https://img.shields.io/github/downloads/sh7CBAC/Heimdall/total.svg" alt="Downloads"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/releases"><img src="https://img.shields.io/github/v/release/sh7CBAC/PRIMEVPN" alt="Release"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/actions"><img src="https://img.shields.io/github/actions/workflow/status/sh7CBAC/PRIMEVPN/release.yml.svg" alt="Build"></a>
+  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/sh7CBAC/PRIMEVPN.svg" alt="GO Version"></a>
+  <a href="https://github.com/sh7CBAC/PRIMEVPN/releases/latest"><img src="https://img.shields.io/github/downloads/sh7CBAC/PRIMEVPN/total.svg" alt="Downloads"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true" alt="License"></a>
 </p>
 
-**3X-UI** 是一个先进的开源 Web 控制面板，用于管理 [Xray-core](https://github.com/XTLS/Xray-core) 服务器。它提供简洁、多语言的界面，用于部署、配置和监控各种代理与 VPN 协议——从单台 VPS 到多节点部署。
+**PRIMEVPN** 是一个先进的开源 Web 控制面板，用于管理 [Xray-core](https://github.com/XTLS/Xray-core) 服务器。它提供简洁、多语言的界面，用于部署、配置和监控各种代理与 VPN 协议——从单台 VPS 到多节点部署。
 
-3X-UI 作为原始 X-UI 项目的增强分支（fork），增加了更广泛的协议支持、更好的稳定性、按客户端的流量统计以及许多提升使用体验的功能。
+PRIMEVPN 作为原始 X-UI 项目的增强分支（fork），增加了更广泛的协议支持、更好的稳定性、按客户端的流量统计以及许多提升使用体验的功能。
 
 > [!IMPORTANT]
 > 本项目仅供个人使用。请勿将其用于非法目的，也请勿在生产环境中使用。
@@ -67,24 +67,24 @@
 ## 快速开始
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
 ```
 
 若要安装特定版本，请在命令后附加对应的标签（例如 `vX.Y.Z`）：
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) vX.Y.Z
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) vX.Y.Z
 ```
 
 若要安装滚动更新的 **dev** 版本（来自 `main` 的最新逐次提交预发布版本，而非稳定版本），请传入 `dev-latest`：
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) dev-latest
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
 安装过程中会生成随机的用户名、密码和访问路径。安装完成后，运行 `x-ui` 打开管理菜单，您可以在其中启动/停止服务、查看或重置登录凭据、管理 SSL 证书等。
 
-完整文档请参阅 [项目Wiki](https://github.com/sh7CBAC/Heimdall/wiki)。
+完整文档请参阅 [项目Wiki](https://github.com/sh7CBAC/PRIMEVPN/wiki)。
 
 ### 无人值守安装
 
@@ -104,7 +104,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.
 
 ## 数据库选项
 
-3X-UI 支持两种后端，可在安装时选择：
+PRIMEVPN 支持两种后端，可在安装时选择：
 
 - **SQLite**（默认）— 位于 `/etc/x-ui/x-ui.db` 的单个文件。无需配置，适合中小型部署。
 - **PostgreSQL** — 推荐用于大量客户端或多节点设置。安装程序可以为您在本地安装 PostgreSQL，或接受指向现有服务器的 DSN。
@@ -180,9 +180,9 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 
 ## 社区工具
 
-社区围绕 3x-ui 构建的工具和集成。
+社区围绕 PRIMEVPN 构建的工具和集成。
 
-- [terraform-provider-3x-ui](https://github.com/batonogov/terraform-provider-threexui) (许可证: **MIT**): _使用 Terraform / OpenTofu 通过代码管理入站、客户端、面板设置和 Xray 配置。_
+- [terraform-provider-PRIMEVPN](https://github.com/batonogov/terraform-provider-threexui) (许可证: **MIT**): _使用 Terraform / OpenTofu 通过代码管理入站、客户端、面板设置和 Xray 配置。_
 
 ## 支持项目
 
@@ -199,4 +199,4 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 
 ## 随时间变化的星标数
 
-[![Stargazers over time](https://starchart.cc/sh7CBAC/Heimdall.svg?variant=adaptive)](https://starchart.cc/sh7CBAC/Heimdall)
+[![Stargazers over time](https://starchart.cc/sh7CBAC/PRIMEVPN.svg?variant=adaptive)](https://starchart.cc/sh7CBAC/PRIMEVPN)

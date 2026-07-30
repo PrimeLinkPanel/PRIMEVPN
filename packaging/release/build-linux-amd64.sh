@@ -154,7 +154,7 @@ PANEL_BINARY="$WORK/x-ui"
         -buildvcs=false \
         -ldflags='-s -w' \
         -o "$PANEL_BINARY" \
-        github.com/mhsanaei/3x-ui/v3
+        github.com/mhsanaei/PRIMEVPN/v3
 )
 
 test -s "$PANEL_BINARY" ||

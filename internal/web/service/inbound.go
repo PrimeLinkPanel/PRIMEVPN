@@ -1,4 +1,4 @@
-// Package service provides business logic services for the 3x-ui web panel,
+// Package service provides business logic services for the PRIMEVPN web panel,
 // including inbound/outbound management, user administration, settings, and Xray integration.
 package service
 
@@ -12,14 +12,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/mtproto"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/common"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/netsafe"
-	wgutil "github.com/mhsanaei/3x-ui/v3/internal/util/wireguard"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/logger"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/mtproto"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/common"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/netsafe"
+	wgutil "github.com/mhsanaei/PRIMEVPN/v3/internal/util/wireguard"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xray"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"

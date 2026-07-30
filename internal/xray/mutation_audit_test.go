@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/util/json_util"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/util/json_util"
 )
 
 // ---------------------------------------------------------------------------

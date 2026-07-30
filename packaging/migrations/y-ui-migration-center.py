@@ -790,7 +790,7 @@ FROM (
         source_username = str(row.get("source_username") or "").strip()
 
         # Important: Hiddify's username has a random suffix. The real human
-        # client name is user.name, so map user.name -> Heimdall email/name.
+        # client name is user.name, so map user.name -> PRIMEVPN email/name.
         target_name = source_name or source_username or str(row.get("uuid") or "").strip()
         if not target_name:
             continue
@@ -891,7 +891,7 @@ ORDER BY table_name;
     found = set(x.strip() for x in out.splitlines() if x.strip())
     missing = sorted(required - found)
     if missing:
-        die(f"missing Heimdall tables: {missing}")
+        die(f"missing PRIMEVPN tables: {missing}")
 
 def fetch_heimdall_inbounds():
     out = run_heimdall_psql("""
@@ -928,7 +928,7 @@ def validate_target_inbounds(inbound_ids, protocol=None):
     by_id = {r["id"]: r for r in all_rows}
     missing = [i for i in inbound_ids if i not in by_id]
     if missing:
-        die(f"target inbound ids not found in Heimdall: {missing}")
+        die(f"target inbound ids not found in PRIMEVPN: {missing}")
 
     return [by_id[i] for i in inbound_ids]
 
@@ -1029,7 +1029,7 @@ def build_clients(rows, inbound_ids, protocol, on_hold_policy, email_prefix, reg
             comment = f"{comment} | {r.get('_source_label') or 'PasarGuard'} on_hold"
 
         if r.get("data_limit_reset_strategy") and r.get("data_limit_reset_strategy") != "no_reset":
-            warnings.append(f"{r.get('_source_label') or 'Source'} data_limit_reset_strategy={r.get('data_limit_reset_strategy')} not mapped; Heimdall reset=0")
+            warnings.append(f"{r.get('_source_label') or 'Source'} data_limit_reset_strategy={r.get('data_limit_reset_strategy')} not mapped; PRIMEVPN reset=0")
 
         target_email = email_prefix + str(r.get("username"))
 
@@ -1318,7 +1318,7 @@ ORDER BY email;
 def print_inbounds():
     rows = fetch_heimdall_inbounds()
     print()
-    print("Heimdall existing inbounds:")
+    print("PRIMEVPN existing inbounds:")
     if not rows:
         print("  No inbounds found. Press Enter for no inbound attachment.")
         return
@@ -1561,7 +1561,7 @@ def print_interactive_overview(panel_label, detected_from, source_kind, rows):
 
     print()
     print("TARGET")
-    print("└─ Heimdall inbound selection")
+    print("└─ PRIMEVPN inbound selection")
 
     if inbounds:
         print("   ├─ Single inbound: 1")
@@ -1591,7 +1591,7 @@ def interactive_fill(args, detected_url, detected_from):
         rows=rows,
     )
 
-    raw_inbounds = prompt("", "Target Heimdall inbound IDs")
+    raw_inbounds = prompt("", "Target PRIMEVPN inbound IDs")
 
     if raw_inbounds.strip().lower() in {"0", "back", "b", "q", "exit"}:
         args._interactive_back_to_source_panel = True
@@ -1621,7 +1621,7 @@ def print_interactive_duplicate_summary(dupes):
 
     print()
     print("STATUS: stopped")
-    print("REASON: duplicate clients already exist in Heimdall")
+    print("REASON: duplicate clients already exist in PRIMEVPN")
     print("DETAILS:")
 
     if email_count:
@@ -1788,7 +1788,7 @@ def main():
 
         if not args.yes:
             print()
-            confirm = input("Type YES to backup Heimdall DB and run real import: ").strip()
+            confirm = input("Type YES to backup PRIMEVPN DB and run real import: ").strip()
 
             if confirm != "YES":
                 print("IMPORT_CANCELLED")

@@ -10,11 +10,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/profilefinalmask"
-	"github.com/mhsanaei/3x-ui/v3/internal/profilevalidation"
-	"github.com/mhsanaei/3x-ui/v3/internal/xhttpprofile"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/database/model"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/profilefinalmask"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/profilevalidation"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xhttpprofile"
+	"github.com/mhsanaei/PRIMEVPN/v3/internal/xray"
 )
 
 const runtimeProfileTagPrefix = "hm-profile-"

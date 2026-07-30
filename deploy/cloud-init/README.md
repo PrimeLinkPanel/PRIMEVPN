@@ -1,6 +1,6 @@
-# 3x-ui via cloud-init
+# PRIMEVPN via cloud-init
 
-A single [`cloud-init.yaml`](cloud-init.yaml) user-data file that installs 3x-ui
+A single [`cloud-init.yaml`](cloud-init.yaml) user-data file that installs PRIMEVPN
 non-interactively on a fresh Ubuntu/Debian VM and generates **unique random
 credentials per instance**. It works on any cloud-init platform.
 

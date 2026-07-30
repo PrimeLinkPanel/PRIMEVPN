@@ -45,8 +45,8 @@ import './AppSidebar.css';
 
 const SIDEBAR_COLLAPSED_KEY = 'isSidebarCollapsed';
 const DONATE_URL = 'https://reymit.ir/heimdall';
-const DOCS_URL = 'https://github.com/sh7CBAC/Heimdall#readme';
-const REPO_URL = 'https://github.com/sh7CBAC/Heimdall';
+const DOCS_URL = 'https://github.com/sh7CBAC/PRIMEVPN#readme';
+const REPO_URL = 'https://github.com/sh7CBAC/PRIMEVPN';
 const LOGOUT_KEY = '__logout__';
 
 ensurePgAdminI18n();

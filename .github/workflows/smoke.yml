@@ -28,7 +28,7 @@ on:
       - "deploy/**"
       - ".github/workflows/smoke.yml"
   workflow_run:
-    workflows: ["Release Heimdall"]
+    workflows: ["Release PRIMEVPN"]
     types: [completed]
 
 permissions:

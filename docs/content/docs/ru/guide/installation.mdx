@@ -1,10 +1,10 @@
 ---
 title: Установка
-description: Установите 3x-ui с помощью официального скрипта (стабильная, фиксированная или dev-сборка), в автоматическом режиме / через cloud-init либо в Docker — и выберите SQLite или PostgreSQL.
+description: Установите PRIMEVPN с помощью официального скрипта (стабильная, фиксированная или dev-сборка), в автоматическом режиме / через cloud-init либо в Docker — и выберите SQLite или PostgreSQL.
 icon: Download
 ---
 
-3x-ui работает на широком спектре дистрибутивов Linux — Ubuntu, Debian, Armbian,
+PRIMEVPN работает на широком спектре дистрибутивов Linux — Ubuntu, Debian, Armbian,
 Fedora, CentOS, RHEL, AlmaLinux, Rocky Linux, Oracle Linux, Amazon Linux,
 Virtuozzo, Arch, Manjaro, openSUSE (Tumbleweed/Leap), Alpine — а также в Windows,
 на архитектурах `amd64`, `386`, `arm64`, `armv7`, `armv6`, `armv5` и `s390x`.
@@ -24,20 +24,20 @@ Virtuozzo, Arch, Manjaro, openSUSE (Tumbleweed/Leap), Alpine — а также �
 настраивает службу и устанавливает команду управления `x-ui`.
 
 ```bash title="latest stable"
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
 ```
 
 Чтобы установить **конкретную версию**, добавьте её тег:
 
 ```bash title="pinned version"
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) v3.4.0
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) v3.4.0
 ```
 
 Чтобы установить скользящую **dev**-сборку (последний предварительный релиз по
 каждому коммиту из `main` — не стабильный релиз), передайте `dev-latest`:
 
 ```bash title="rolling dev build"
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh) dev-latest
+bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh) dev-latest
 ```
 
 По завершении запишите выведенные данные для входа и выполните `x-ui`, чтобы
@@ -70,7 +70,7 @@ docker run -d \
   -v $PWD/cert/:/root/cert/ \
   --network=host \
   --restart=unless-stopped \
-  --name 3x-ui \
+  --name PRIMEVPN \
   ghcr.io/sh7cbac/heimdall:latest
 ```
 
@@ -82,7 +82,7 @@ docker run -d \
 <Tab value="Manual">
 
 Опытные пользователи могут скачать архив релиза для своей архитектуры со
-[страницы релизов](https://github.com/sh7CBAC/Heimdall/releases), распаковать его и
+[страницы релизов](https://github.com/sh7CBAC/PRIMEVPN/releases), распаковать его и
 запустить бинарный файл как службу systemd. Установочный скрипт автоматизирует
 ровно эти шаги, поэтому он предпочтительнее, если только у вас нет особой причины
 устанавливать вручную.
@@ -117,10 +117,10 @@ docker run -d \
 записав их в `/etc/x-ui/install-result.env`:
 
 ```bash
-XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/Heimdall/main/install.sh)
+XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
 ```
 
-В каталоге [`deploy/`](https://github.com/sh7CBAC/Heimdall/tree/main/deploy)
+В каталоге [`deploy/`](https://github.com/sh7CBAC/PRIMEVPN/tree/main/deploy)
 репозитория есть готовые **cloud-init** user-data для автоматической установки в
 любом облаке (Hetzner, AWS, DigitalOcean, Vultr, GCP, Azure, Oracle).
 
