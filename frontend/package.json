@@ -74,7 +74,7 @@
     "embla-carousel-react": "^8.6.0",
     "es-toolkit": "^1.49.0",
     "i18next": "^26.3.6",
-    "lucide-react": "^0.577.0",
+    "lucide-react": "^1.27.0",
     "otpauth": "^9.5.1",
     "persian-calendar-suite": "^1.5.5",
     "qs": "^6.15.3",
