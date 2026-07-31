@@ -7,7 +7,7 @@
 Install PRIMEVPN with one command:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/sh7CBAC/PRIMEVPN/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/PrimeLinkPanel/PRIMEVPN/main/install.sh)
 ```
 
 During installation, PRIMEVPN downloads the latest public release package, installs the panel, configures the system service, and walks you through the initial setup.
